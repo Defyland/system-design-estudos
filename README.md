@@ -27,5 +27,8 @@ entao ele nao merece uma pasta propria.
 - [Plano de estudo inicial](./STUDY_PLAN.md)
 - [Casos reais pesquisados](./real-world-cases/README.md)
 - [Roadmap priorizado de leitura](./real-world-cases/ROADMAP.md)
+- [Metodo de estudo orientado por casos reais](./CASE_DRIVEN_STUDY.md)
+- [Sequencia guiada em chapters](./chapters/README.md)
+- [Playbook de implementacao e experimentos](./labs/README.md)
 - [Imagem da ementa - pagina 1](./assets/ementa/page-1.png)
 - [Imagem da ementa - pagina 2](./assets/ementa/page-2.png)
