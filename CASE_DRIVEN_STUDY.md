@@ -164,6 +164,7 @@ Se quiser estudar [03 - Filas e Consistencia](./areas/03-filas-e-consistencia/RE
 ## Navegacao pronta
 
 Se preferir uma sequencia guiada em vez de escolher tudo manualmente:
+- abra [STUDY_ORDER.md](./STUDY_ORDER.md)
 - abra [chapters/README.md](./chapters/README.md)
 - siga um chapter por decisao arquitetural
 - use os links do chapter para ir e voltar entre caso, area, notas e lab

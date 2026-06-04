@@ -2,6 +2,10 @@
 
 Sequencia guiada de leitura por decisao arquitetural, nao por empresa inteira.
 
+## Se Voce Nao Quer Escolher
+
+Siga a ordem fechada em [STUDY_ORDER.md](../STUDY_ORDER.md).
+
 ## Como pensar um chapter
 
 Cada chapter pega uma fatia de um caso real:

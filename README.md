@@ -2,6 +2,18 @@
 
 Repositorio de apoio para estudar system design sem inflar a estrutura com pastas de baixo valor.
 
+## Comece Por Aqui
+
+Se voce quer uma sequencia objetiva, abra isto primeiro:
+- [Ordem de Estudo](./STUDY_ORDER.md)
+
+O caminho padrao do repo agora e:
+1. ler [STUDY_ORDER.md](./STUDY_ORDER.md)
+2. seguir os chapters na ordem definida
+3. fazer o lab e o review card do mesmo chapter
+4. a cada 2 chapters, fazer 1 contraste
+5. a cada 4 chapters, fazer 1 capstone
+
 ## O que ficou
 
 Mantive pasta apenas para blocos que de fato acumulam material:
@@ -38,6 +50,7 @@ entao ele nao merece uma pasta propria.
 
 ## Materiais de origem
 
+- [Ordem de estudo recomendada](./STUDY_ORDER.md)
 - [Ementa consolidada](./COURSE_OUTLINE.md)
 - [Plano de estudo](./STUDY_PLAN.md)
 - [Metodo de estudo orientado por casos reais](./CASE_DRIVEN_STUDY.md)
