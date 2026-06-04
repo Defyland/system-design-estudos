@@ -43,7 +43,20 @@ entao ele nao merece uma pasta propria.
 - [Metodo de estudo orientado por casos reais](./CASE_DRIVEN_STUDY.md)
 - [Sequencia guiada em chapters](./chapters/README.md)
 - [Playbook de implementacao e experimentos](./labs/README.md)
-- [Biblioteca de casos reais pesquisados na internet](./real-world-cases/README.md)
-- [Roadmap priorizado de leitura dos casos reais](./real-world-cases/ROADMAP.md)
+- [Revisoes espacadas](./reviews/README.md)
+- [Contrastes de decisao](./decision-contrasts/README.md)
+- [Capstones cumulativos](./capstones/README.md)
 - [Imagem da ementa - pagina 1](./assets/ementa/page-1.png)
 - [Imagem da ementa - pagina 2](./assets/ementa/page-2.png)
+
+## Motor de Retencao
+
+O repositorio agora tem tres camadas para nao depender so de leitura:
+- [reviews/](./reviews/README.md): revisao espacada em `1, 3, 7, 14, 30` dias
+- [decision-contrasts/](./decision-contrasts/README.md): treino para nao confundir opcoes parecidas
+- [capstones/](./capstones/README.md): drills orais cumulativos misturando varios chapters
+
+## Casos reais
+
+- [Biblioteca de casos reais pesquisados na internet](./real-world-cases/README.md)
+- [Roadmap priorizado de leitura dos casos reais](./real-world-cases/ROADMAP.md)

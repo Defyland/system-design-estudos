@@ -34,10 +34,16 @@ Nao reimplemente por esporte. Reimplemente apenas quando a segunda linguagem tro
   - [Shopify - Pods and Modular Monolith](./real-world-cases/01-platforms-and-apps/shopify-pods-and-modular-monolith/README.md)
   - [GitHub - Rails and MySQL at Scale](./real-world-cases/01-platforms-and-apps/github-rails-and-mysql-at-scale/README.md)
   - [Meta - News Feed Ranking](./real-world-cases/05-product-scenarios/meta-news-feed-ranking/README.md)
+- Casos complementares:
+  - [Uber - Unified Checkout](./real-world-cases/05-product-scenarios/uber-unified-checkout/README.md)
+  - [Cloudflare - Edge Platform](./real-world-cases/04-edge-and-delivery/cloudflare-edge-platform/README.md)
 - O que extrair:
   - clarifying questions
   - requisitos, restricoes e SLOs
   - bottlenecks e evolucao da arquitetura
+- Quando implementar:
+  - quase nunca
+  - prefira respostas escritas, diagramas e estimativas
 
 ### 02 - Dados e Armazenamento
 
@@ -46,12 +52,18 @@ Nao reimplemente por esporte. Reimplemente apenas quando a segunda linguagem tro
   - [Shopify - Pods and Modular Monolith](./real-world-cases/01-platforms-and-apps/shopify-pods-and-modular-monolith/README.md)
   - [Dropbox - Magic Pocket Blob Store](./real-world-cases/02-data-storage-and-search/dropbox-magic-pocket-blob-store/README.md)
   - [Dropbox - Nautilus Search](./real-world-cases/02-data-storage-and-search/dropbox-nautilus-search/README.md)
+- Casos complementares:
+  - [Uber - H3 Geospatial Marketplace](./real-world-cases/02-data-storage-and-search/uber-h3-geospatial-marketplace/README.md)
+  - [Twitter - Snowflake IDs](./real-world-cases/02-data-storage-and-search/twitter-snowflake-ids/README.md)
 - O que extrair:
   - modelagem de dados
   - leitura vs escrita
   - indexes, query plan, particionamento e federacao
   - blob/object storage
   - busca, cache e IDs distribuidos
+- Quando implementar:
+  - Rails primeiro
+  - exemplos bons: read replica simulation, cache-aside, object upload flow, id generator
 
 ### 03 - Filas e Consistencia
 
@@ -60,12 +72,19 @@ Nao reimplemente por esporte. Reimplemente apenas quando a segunda linguagem tro
   - [Uber - Cadence Workflows](./real-world-cases/03-async-workflows-and-payments/uber-cadence-workflows/README.md)
   - [Stripe - Idempotent Payments](./real-world-cases/03-async-workflows-and-payments/stripe-idempotent-payments/README.md)
   - [Twitter - Snowflake IDs](./real-world-cases/02-data-storage-and-search/twitter-snowflake-ids/README.md)
+- Casos complementares:
+  - [Discord - Elixir Realtime Scale](./real-world-cases/01-platforms-and-apps/discord-elixir-realtime-scale/README.md)
+  - [Uber - Unified Checkout](./real-world-cases/05-product-scenarios/uber-unified-checkout/README.md)
 - O que extrair:
   - particionamento
   - semanticas de entrega
   - retries, DLQ, idempotencia
   - workflows duraveis
   - CQRS, SAGA e event-driven thinking
+- Quando implementar:
+  - Rails primeiro
+  - reimplemente em Elixir para explorar concorrencia e supervision
+  - reimplemente em Go para workers e throughput
 
 ### 04 - Edge, Rede e Acesso
 
@@ -73,11 +92,17 @@ Nao reimplemente por esporte. Reimplemente apenas quando a segunda linguagem tro
   - [Cloudflare - Edge Platform](./real-world-cases/04-edge-and-delivery/cloudflare-edge-platform/README.md)
   - [Netflix - Open Connect CDN](./real-world-cases/04-edge-and-delivery/netflix-open-connect-cdn/README.md)
   - [Uber - Intelligent Load Management](./real-world-cases/04-edge-and-delivery/uber-intelligent-load-management/README.md)
+- Casos complementares:
+  - [Meta - Video Delivery](./real-world-cases/04-edge-and-delivery/meta-video-delivery/README.md)
+  - [Uber - Unified Checkout](./real-world-cases/05-product-scenarios/uber-unified-checkout/README.md)
 - O que extrair:
   - load balancing
   - DNS e roteamento
   - CDN e invalidacao
   - API gateway, WAF, auth e rate limiting
+- Quando implementar:
+  - Rails primeiro para auth, cache e throttle
+  - Go depois se quiser estudar proxying, rate limiting ou edge services
 
 ### 05 - Arquitetura e Operacao
 
@@ -86,11 +111,18 @@ Nao reimplemente por esporte. Reimplemente apenas quando a segunda linguagem tro
   - [Discord - Elixir Realtime Scale](./real-world-cases/01-platforms-and-apps/discord-elixir-realtime-scale/README.md)
   - [Cloudflare - Edge Platform](./real-world-cases/04-edge-and-delivery/cloudflare-edge-platform/README.md)
   - [Uber - Cadence Workflows](./real-world-cases/03-async-workflows-and-payments/uber-cadence-workflows/README.md)
+- Casos complementares:
+  - [GitHub - Rails and MySQL at Scale](./real-world-cases/01-platforms-and-apps/github-rails-and-mysql-at-scale/README.md)
+  - [Meta - Video Delivery](./real-world-cases/04-edge-and-delivery/meta-video-delivery/README.md)
 - O que extrair:
   - monolito vs microservicos
   - concorrencia e paralelismo
   - service boundaries
   - deployment, resilience e scaling
+- Quando implementar:
+  - Rails primeiro para experimentar boundaries e jobs
+  - Elixir para concorrencia
+  - Go para runtime simples e servicos IO-bound
 
 ## Fluxo de sessao
 
@@ -106,11 +138,18 @@ Para cada sessao de estudo:
    - como aplicaria no seu stack
 5. se restar ambiguidade tecnica, faca um experimento pequeno
 
+## Depois Da Sessao
+
+Depois de terminar um chapter ou slice, nao pare no entendimento imediato:
+1. rode um card em [reviews/](./reviews/README.md)
+2. compare a decisao com uma vizinha em [decision-contrasts/](./decision-contrasts/README.md)
+3. toda semana, prove transferencia com um [capstone](./capstones/README.md)
+
 ## Exemplo de uso
 
 Se quiser estudar [02 - Dados e Armazenamento](./areas/02-dados-e-armazenamento/README.md):
 - comece por GitHub para SQL em escala
-- use Shopify para shard, pod e isolation
+- use Shopify para shard/pod/isolation
 - use Magic Pocket para blob store
 - use Nautilus para busca
 - implemente primeiro em Rails algo como cache-aside ou read/write split
@@ -128,3 +167,6 @@ Se preferir uma sequencia guiada em vez de escolher tudo manualmente:
 - abra [chapters/README.md](./chapters/README.md)
 - siga um chapter por decisao arquitetural
 - use os links do chapter para ir e voltar entre caso, area, notas e lab
+- depois use [reviews/README.md](./reviews/README.md) para reter
+- use [decision-contrasts/README.md](./decision-contrasts/README.md) para afiar julgamento
+- use [capstones/README.md](./capstones/README.md) para misturar temas

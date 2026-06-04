@@ -35,7 +35,7 @@ Cada experimento deve responder:
 - qual conceito estou testando
 - qual caso real inspirou isso
 - qual area do curso isso cobre
-- por que Rails basta ou por que preciso comparar com Elixir ou Go
+- por que Rails basta ou por que preciso comparar com Elixir/Go
 
 ## Ideias de experimentos bons
 
@@ -55,6 +55,12 @@ O experimento deve parar quando voce conseguir responder:
 - o que esse design resolve
 - onde ele quebra
 - quais trade-offs ele introduz
+
+## O Que Fazer Logo Depois
+
+- rode um card em [reviews/](../reviews/README.md)
+- compare com uma decisao parecida em [decision-contrasts/](../decision-contrasts/README.md)
+- se o tema ja estiver firme, suba para um [capstone](../capstones/README.md)
 
 ## Labs por chapter
 

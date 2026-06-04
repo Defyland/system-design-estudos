@@ -43,6 +43,13 @@ Os labs tambem seguem a mesma ideia: drill curto, gabarito oral imediato e respo
 
 O objetivo e que uma leitura de 5 a 10 minutos ensine algo real, force lembranca imediata e valide isso na hora, sem depender de exercicio escrito.
 
+## Depois Do Chapter
+
+Quando terminar um chapter:
+1. rode o card correspondente em [reviews/](../reviews/README.md)
+2. escolha um contraste vizinho em [decision-contrasts/](../decision-contrasts/README.md)
+3. uma vez por semana, puxe um [capstone](../capstones/README.md)
+
 ## Sequencia principal
 
 - [Chapter 01 - Pod Isolation and Tenant Routing](./chapter-01-pod-isolation-and-tenant-routing.md)
@@ -66,7 +73,7 @@ O objetivo e que uma leitura de 5 a 10 minutos ensine algo real, force lembranca
   - Chapters 01, 02
 - NoSQL, search, blob store, cache, distributed IDs:
   - Chapters 03, 04, 08, 12
-- queues, retries, DLQ, idempotencia, CQRS, SAGA e workflows:
+- queues, retries, DLQ, idempotencia, CQRS/SAGA/workflows:
   - Chapters 05, 06, 07, 08
 - load balancers, DNS, API gateway, WAF, rate limiting, auth, CDN:
   - Chapters 10, 11, 13
@@ -74,6 +81,16 @@ O objetivo e que uma leitura de 5 a 10 minutos ensine algo real, force lembranca
   - Chapters 01, 02, 07, 09, 10
 - interview scenarios like payments, feed, ride-hailing, search:
   - Chapters 04, 05, 12, 13, 14
+
+## Gaps To Handle In Area Notes
+
+Alguns topicos do curso nao costumam aparecer isolados em um post famoso unico:
+- Keycloak
+- social login
+- BFF
+- service mesh
+
+Para esses, use os chapters 10 e 13 como ancora e complete pela teoria nas areas.
 
 ## Implementation Rule
 
