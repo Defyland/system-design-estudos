@@ -25,5 +25,7 @@ entao ele nao merece uma pasta propria.
 
 - [Ementa consolidada](./COURSE_OUTLINE.md)
 - [Plano de estudo inicial](./STUDY_PLAN.md)
+- [Casos reais pesquisados](./real-world-cases/README.md)
+- [Roadmap priorizado de leitura](./real-world-cases/ROADMAP.md)
 - [Imagem da ementa - pagina 1](./assets/ementa/page-1.png)
 - [Imagem da ementa - pagina 2](./assets/ementa/page-2.png)
