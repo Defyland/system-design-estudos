@@ -31,6 +31,36 @@ Seu PO diz: "o usuario precisa achar fornecedor perto, fechar compra sem dupla c
 - idempotencia protege retry ambiguo do cliente e do caminho financeiro
 - rate limit e fairness ficam na borda e perto do recurso caro, nao so no controller
 
+## Production Twist
+
+### Page
+
+Uma campanha entra no ar, o PSP comeca a responder mais lento e o app cliente retry demais. Em paralelo, uma regra nova de edge entra para segurar abuso. Resultado: checkout falha, alguns pedidos ficam presos em `processing` e o time nao sabe se deve insistir no retry ou cortar trafego.
+
+### First Dashboard
+
+- conversao por etapa do checkout
+- timeout e erro por metodo de pagamento
+- quantidade de pedidos presos em `processing`
+- conflitos de `Idempotency-Key`
+- 429s no caminho critico
+
+### Immediate Mitigation
+
+- desligue a regra nova de edge se ela toca o caminho critico
+- reduza retries agressivos do cliente
+- preserve idempotencia e reconciliacao antes de liberar novas mutacoes
+
+### Rollback or Hold
+
+Rollback da mudanca recente de edge ou risco que piorou a conversao. Hold na investigacao profunda do PSP ate estabilizar a jornada e impedir dupla execucao de pedido.
+
+### What Not to Change Mid-Incident
+
+- nao desligue idempotencia para "destravar"
+- nao reexecute pedidos cegamente
+- nao mexa em varios metodos de pagamento ao mesmo tempo
+
 ## Trap
 
 - "H3 resolve checkout, gateway resolve auth e Stripe resolve o resto"

@@ -19,6 +19,16 @@
 
 O desenho bom divide responsabilidade: edge bloqueia barato, gateway governa auth tecnica e roteamento, app protege regra de negocio e recursos caros recebem fairness mais perto do dano.
 
+## Production Recall
+
+- `Pergunta`: qual combinacao de numeros voce abre antes de mexer na regra?
+- `Resposta curta`: 429 ou 403 por rota e tenant, junto com CPU ou fila da origem.
+
+## Wrong Production Move
+
+- `Resposta ruim`: "se a origem melhorou, sobe o bloqueio mais ainda".
+- `Troque por isto`: edge bom mata abuso sem matar login, leitura ou receita legitima.
+
 ## Transfer Check
 
 - limite por IP quase nunca conta a historia inteira em produto B2B ou multi-tenant

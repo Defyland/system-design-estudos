@@ -19,6 +19,16 @@
 
 Realtime maduro separa estado efemero, fanout e persistencia. O primeiro passo nao e copiar Discord; e isolar o hotspot que esta roubando ar do resto do sistema.
 
+## Production Recall
+
+- `Pergunta`: qual metrica denuncia o room quente mais rapido?
+- `Resposta curta`: broadcast p99, backlog por fila e skew de subscribers por room.
+
+## Wrong Production Move
+
+- `Resposta ruim`: "deixa tudo no ar para nao piorar UX".
+- `Troque por isto`: senior derruba presence e brilho antes de entregar mensagem ruim para todo mundo.
+
 ## Transfer Check
 
 - Rails aguenta bastante com ActionCable e filas separadas; Elixir ensina mais quando a unidade viva de concorrencia vira o centro do problema

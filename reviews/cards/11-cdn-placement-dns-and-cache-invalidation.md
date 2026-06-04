@@ -19,6 +19,16 @@
 
 CDN bom combina placement, roteamento e freshness. Asset imutavel pede fingerprint e TTL longo; conteudo mutavel pede TTL curto, `stale-while-revalidate` ou purge cirurgico.
 
+## Production Recall
+
+- `Pergunta`: qual numero abre um purge ruim mais rapido?
+- `Resposta curta`: hit ratio caindo junto com origem subindo de repente.
+
+## Wrong Production Move
+
+- `Resposta ruim`: "purga tudo de novo para corrigir".
+- `Troque por isto`: purge demais tambem e incidente; primeiro proteja a origem.
+
 ## Transfer Check
 
 - empresa menor quase sempre compra valor enorme so acertando headers, fingerprint e invalidacao

@@ -19,6 +19,7 @@ Parar de revisar em silos e comecar a puxar dois ou tres chapters para o mesmo p
 - o mesmo marketplace pode precisar de H3, fila simples e idempotencia ao mesmo tempo. Onde cada coisa entra?
 - busca com ACL, indexacao assincrona e feed de atividade puxam quais boundaries diferentes?
 - o que mudaria entre responder isso em Rails e explicar por que Elixir ou Go so entram depois?
+- em cada cenario, qual primeira metrica ou dashboard voce abriria antes de especular?
 
 ## Done When
 

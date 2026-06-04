@@ -141,6 +141,42 @@ O que o codigo ensina e mais importante que a implementacao: existe limite por w
 - `Quando Elixir ensina mais`: quando coordenacao entre nos e geracao concorrente distribuida ficam mais interessantes do que o resto do dominio.
 - `Quando Go ensina mais`: quando um gerador dedicado ou SDK de IDs precisa ser minimo, rapido e chato de tao previsivel.
 
+## Production Mode
+
+### What Breaks First
+
+- clock drift derrubando monotonicidade util
+- `worker_id` duplicado gerando colisao rara e venenosa
+
+### Signals to Watch
+
+- contagem de IDs duplicados
+- diferenca de clock entre nos
+- fallback rate do gerador
+
+### Safe Rollout
+
+- ligue o gerador novo em poucos nos primeiro
+- mantenha UUID ou caminho anterior como escape simples
+
+### Rollback Trigger
+
+- qualquer colisao real
+- drift ou fallback crescendo sem controle
+
+### First 15 Minutes
+
+- tire o no ruim da rotacao
+- volte ao gerador anterior ou a UUID enquanto mede o dano
+- congele nodes com `worker_id` suspeito
+
+### Fixacao de Producao
+
+- `Pergunta`: qual e o primeiro tipo de falha que te assusta num gerador distribuido?
+- `Resposta com as suas palavras`: a falha rara que parece pequena, mas corrompe identidade do sistema inteiro.
+- `Resposta ruim que parece boa`: "se o throughput esta bom, o gerador esta saudavel".
+- `Troque por isto`: gerador bom falha pouco e colide menos ainda; o problema operacional aqui e confianca, nao so velocidade.
+
 ## Por Que Nao Outra Abordagem
 
 Nao "sequence no banco para tudo" quando a topologia ja exige geracao fora do banco ou quando a disponibilidade do sequence passou a limitar varias maquinas ao mesmo gargalo.

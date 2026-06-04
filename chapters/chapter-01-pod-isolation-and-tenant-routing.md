@@ -119,6 +119,48 @@ Isso nao replica o Sorting Hat nem o Pod Mover da Shopify. Replica a ideia certa
 - `Quando Elixir ensina mais`: quando isolamento por tenant aparece em muitos fluxos assincronos e supervisao por workload comeca a importar mais do que controller e CRUD.
 - `Quando Go ensina mais`: quando roteamento fino, ferramentas de migracao ou control plane de pods viram problema proprio de infra.
 
+## Production Mode
+
+### What Breaks First
+
+- drift entre `tenant_directory` e o pod real onde a request deveria cair
+- jobs ou queries cross-pod escapando para o caminho critico
+- movimentacao de tenant ficando no meio do caminho e deixando reads ou writes no pod errado
+
+### Signals to Watch
+
+- taxa de erro por `pod_key` e por tenant
+- skew de carga entre pods
+- contagem de requests e jobs que tentam tocar mais de um pod
+- lag ou duracao de cutover em tenant moves
+
+### Safe Rollout
+
+- comece com um tenant pequeno ou interno
+- rode shadow checks do roteamento antes de mudar o destino real
+- mantenha kill switch por tenant ou por pod
+- congele tenant moves durante mudanca de routing
+
+### Rollback Trigger
+
+- writes chegando ao pod errado
+- erro concentrado no tenant recem-movido
+- crescimento de fluxos cross-pod no request path
+
+### First 15 Minutes
+
+- pause novos tenant moves
+- pinne o tenant afetado ao ultimo pod conhecido como bom
+- confira drift entre diretorio, app e banco
+- desligue o caminho novo de routing antes de investigar otimizacao
+
+### Fixacao de Producao
+
+- `Pergunta`: qual e o primeiro medo operacional aqui?
+- `Resposta com as suas palavras`: mandar request certa para o lugar errado e espalhar dano sem perceber na hora.
+- `Resposta ruim que parece boa`: "se o pod existe, o problema agora e so throughput".
+- `Troque por isto`: podding falha primeiro em contexto, roteamento e mobilidade, nao em glamour de topologia.
+
 ## Por Que Nao Outra Abordagem
 
 Nao "microservicos primeiro", porque o problema original e isolamento de tenant, nao distribuicao funcional. Se o seu request continua precisando tocar o mesmo conjunto de dados do mesmo tenant, quebrar em servicos cedo so adiciona RPC, tracing e coordenacao.

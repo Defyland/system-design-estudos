@@ -134,6 +134,48 @@ O valor do padrao nao esta na elegancia. Esta na honestidade: algumas leituras p
 - `Quando Elixir ensina mais`: quando CDC, read models e workers com muito backpressure passam a importar mais do que o request/response transacional.
 - `Quando Go ensina mais`: quando proxy, schema mover, replicacao ou worker de ingestao viram a parte dura da operacao.
 
+## Production Mode
+
+### What Breaks First
+
+- replica lag transformando leitura quente em bug intermitente
+- cache stale sobrevivendo mais do que o fluxo de negocio tolera
+- migration ou upgrade alterando read path antes de rollback ficar claro
+
+### Signals to Watch
+
+- replica lag p95 e p99
+- cache hit ratio junto com taxa de invalidacao e stale complaints
+- erro e latencia por query depois de rollout
+- lock time, replication delay e migration duration
+
+### Safe Rollout
+
+- canary de leitura em replica por endpoint e por tenant
+- feature flag para stickiness na primary
+- migration pequena, reversivel e com etapa de observacao
+- rollout de cache novo sem apagar o caminho antigo de uma vez
+
+### Rollback Trigger
+
+- read-after-write quebrando no fluxo visivel
+- crescimento rapido de stale read ou miss storm
+- migration pressionando lock, replica ou latencia alem do budget
+
+### First 15 Minutes
+
+- mova reads sensiveis de volta para a primary
+- desligue a cache key nova se a invalidacao ficou errada
+- pause a migration ou segure o rollout antes de tentar tunar query no escuro
+- compare metrica nova contra baseline por endpoint
+
+### Fixacao de Producao
+
+- `Pergunta`: o que voce olha primeiro quando "o banco ficou estranho" depois de rollout?
+- `Resposta com as suas palavras`: eu separo se a dor veio de replica, cache ou migration antes de culpar o banco inteiro.
+- `Resposta ruim que parece boa`: "abre o slow query log e vai otimizando tudo".
+- `Troque por isto`: senior primeiro identifica qual camada quebrou o contrato de leitura ou escrita.
+
 ## Por Que Nao Outra Abordagem
 
 Nao "microservicos primeiro" porque isso troca um problema de dados por um problema de coordenacao. A propria Shopify diz que separa funcionalidade em servicos so por bons motivos, como um fluxo read-only de throughput muito alto ou um boundary de seguranca forte; caso contrario, a complexidade sobe mais que o beneficio ([Under Deconstruction: The State of Shopify's Monolith](https://shopify.engineering/shopify-monolith)).

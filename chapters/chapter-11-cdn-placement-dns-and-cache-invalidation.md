@@ -108,6 +108,42 @@ O desenho do snippet e simples de proposito. Browser recebe vida curta porque po
 - `Quando Elixir ensina mais`: quando fluxos de purge, revalidacao ou entrega concorrente de midia pedem coordenacao viva e supervisionada.
 - `Quando Go ensina mais`: quando edge proxy, cache-fill daemon ou control plane de cache comeca a importar mais do que renderizacao web.
 
+## Production Mode
+
+### What Breaks First
+
+- purge errado criando miss storm na origem
+- stale demais em conteudo sensivel ou mutavel
+
+### Signals to Watch
+
+- hit ratio de CDN
+- origem: RPS e latencia depois de invalidacao
+- reclamacoes de stale content
+
+### Safe Rollout
+
+- canary de TTL e purge por path
+- prefira versionamento a purge em massa
+
+### Rollback Trigger
+
+- origem saturando por miss em cascata
+- conteudo critico ficando velho alem do toleravel
+
+### First 15 Minutes
+
+- pare purge em massa
+- aumente TTL do que e seguro
+- proteja a origem antes de investigar politica fina
+
+### Fixacao de Producao
+
+- `Pergunta`: o que costuma doer mais rapido num erro de CDN?
+- `Resposta com as suas palavras`: a origem leva a pancada inteira quando o cache some de repente.
+- `Resposta ruim que parece boa`: "se limpar o cache tudo volta a ficar correto".
+- `Troque por isto`: limpar demais tambem e incidente; cache errado pode ser melhor que origem morta em alguns fluxos.
+
 ## Por Que Nao Outra Abordagem
 
 Nao "purge tudo a cada deploy" porque isso joga fora o ganho principal do cache e cria janelas de miss em massa exatamente nos momentos de pico.

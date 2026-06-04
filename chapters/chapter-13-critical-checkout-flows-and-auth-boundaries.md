@@ -173,6 +173,49 @@ Esse desenho conversa bem com o modelo da Stripe, em que `PaymentIntent` acompan
 - `Quando Elixir ensina mais`: quando risco, sessao e pagamento passam a se comportar como fluxo com estado, retry e retomada.
 - `Quando Go ensina mais`: quando adaptadores de pagamento, validacao de token ou borda de checkout de alta taxa viram servicos proprios.
 
+## Production Mode
+
+### What Breaks First
+
+- timeout de PSP ou risco deixando checkout em estado ambiguo
+- regra nova de reauth, 3DS ou risk step-up destruindo conversao sem alertar logo
+- boundary novo de checkout recebendo retry burst e prendendo pedidos em `processing`
+
+### Signals to Watch
+
+- checkout conversion por etapa
+- latencia e timeout rate do PSP
+- abandono em `requires_action`
+- idade de requests idempotentes em `processing`
+- erro por payment method, rota de checkout e tenant
+
+### Safe Rollout
+
+- canary por payment method, tenant ou percentual pequeno de trafego
+- observe-only para regra de risco quando possivel
+- mantenha caminho de recovery e replay antes de ligar step-up auth novo
+- preserve contrato de idempotencia durante todo o rollout
+
+### Rollback Trigger
+
+- conversao despencando logo apos a mudanca
+- duplicate charge risk ou divergencia entre pedido interno e PSP
+- crescimento rapido de `requires_action` ou `processing` sem saida clara
+
+### First 15 Minutes
+
+- desligue a regra mais nova de risco, reauth ou payment method antes de mexer em outras camadas
+- preserve checkout idempotente, mesmo que precise degradar UX
+- compare estado de pedido interno contra o PSP antes de reexecutar qualquer acao
+- proteja o caminho de receita bom e suspenda o caminho novo, nao o contrario
+
+### Fixacao de Producao
+
+- `Pergunta`: qual reflexo mata checkout mais rapido que o bug original?
+- `Resposta com as suas palavras`: tentar "destravar" cobranca repetindo mutacao sem saber o estado financeiro real.
+- `Resposta ruim que parece boa`: "o cliente quer comprar, entao libera retry e depois reconcilia".
+- `Troque por isto`: senior primeiro segura ambiguidade e protege dinheiro; velocidade sem estado correto vira prejuizo.
+
 ## Por Que Nao Outra Abordagem
 
 ### Por que nao deixar cada produto integrar pagamento sozinho?

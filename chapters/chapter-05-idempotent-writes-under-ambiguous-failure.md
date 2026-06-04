@@ -158,6 +158,48 @@ O detalhe decisivo nao esta no Ruby em si. Esta no contrato:
 - `Quando Elixir ensina mais`: quando checkout, pagamento e retries deixam de ser so endpoint e passam a se comportar como maquina de estados.
 - `Quando Go ensina mais`: quando adaptadores de PSP, borda de alta taxa ou workers de dedup/replay viram gargalo de infra.
 
+## Production Mode
+
+### What Breaks First
+
+- request ficando presa em `processing` depois de timeout ou crash
+- retry do cliente atravessando a borda e disparando efeito financeiro ambiguo
+- reuso de chave com payload errado confundindo pedido legitimo com corrupcao
+
+### Signals to Watch
+
+- quantidade e idade de registros `processing`
+- taxa de conflito por `Idempotency-Key`
+- PSP timeout rate e diferenca entre sucesso no provedor e sucesso no app
+- hit rate de replay vs create rate de operacoes novas
+
+### Safe Rollout
+
+- habilite idempotencia primeiro em um endpoint e escopo pequenos
+- registre e audite chaves em modo observacao antes de endurecer conflitos
+- mantenha contrato de payload e TTL conservadores ate ver o retry real
+- use flag para novas politicas de replay, nunca para desligar a protecao inteira no susto
+
+### Rollback Trigger
+
+- duplicate charge risk ou divergencia entre pedido interno e PSP
+- crescimento de chaves presas em `processing`
+- conflito legitimo demais por fingerprint ruim ou escopo estreito
+
+### First 15 Minutes
+
+- pare retries agressivos do cliente e do worker
+- compare estado interno com o estado no PSP antes de qualquer replay manual
+- isole chaves presas e force reconciliacao, nao repeticao cega
+- preserve o contrato idempotente mesmo se precisar degradar o endpoint
+
+### Fixacao de Producao
+
+- `Pergunta`: qual e o erro de senior fraco em incidente de idempotencia?
+- `Resposta com as suas palavras`: sair repetindo operacao para ver se volta, sem saber se o dinheiro ja saiu.
+- `Resposta ruim que parece boa`: "se falhou, tenta de novo mais vezes".
+- `Troque por isto`: primeiro descubra se a falha foi de execucao ou de confirmacao; so depois toque no retry.
+
 ## Por Que Nao Outra Abordagem
 
 ### "So usa retry no cliente"

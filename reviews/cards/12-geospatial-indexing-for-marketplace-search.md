@@ -19,6 +19,16 @@
 
 Indice espacial entra quando proximidade vira pergunta quente e repetida. Resolucao boa nasce do raio real do produto, nao da vontade de usar a malha mais fina.
 
+## Production Recall
+
+- `Pergunta`: qual sintoma aparece antes de voce culpar o algoritmo?
+- `Resposta curta`: ou candidatos demais derrubam latencia, ou candidatos bons somem por resolucao ou localizacao velha.
+
+## Wrong Production Move
+
+- `Resposta ruim`: "troca a resolucao global agora e ve no que da".
+- `Troque por isto`: senior compara shadow query e isola a coorte antes de mexer na cidade inteira.
+
 ## Transfer Check
 
 - se `ST_DWithin` ainda cabe no SLA e no volume, continue simples

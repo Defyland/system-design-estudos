@@ -121,6 +121,48 @@ O snippet e deliberadamente simples. `Rack::Attack` ajuda na borda logica da app
 - `Quando Elixir ensina mais`: quando admission control local e muitos reguladores concorrentes ficam mais interessantes do que o handler HTTP em si.
 - `Quando Go ensina mais`: quando proxy, limiter, gateway plugin ou servico de overload control passam a ser componentes de infra separados.
 
+## Production Mode
+
+### What Breaks First
+
+- regra nova de edge ou WAF bloqueando trafego legitimo no caminho critico
+- limiter por IP punindo o cliente errado e deixando o tenant barulhento escapar
+- shed load mal calibrado preservando export e derrubando login
+
+### Signals to Watch
+
+- 401, 403 e 429 por rota, tenant e regra
+- origem: CPU, conexao, fila e latencia antes e depois do bloqueio
+- false-positive rate em login, checkout e leitura interativa
+- saturacao por recurso caro, nao so por gateway global
+
+### Safe Rollout
+
+- regra nova primeiro em observe-only ou log-only
+- canary por rota critica, nao por API inteira
+- separe politicas de login, leitura interativa e workload pesado
+- mantenha um kill switch para desfazer a ultima regra sem redeploy geral
+
+### Rollback Trigger
+
+- auth ou login legitimo sofrendo bloqueio novo
+- 429 ou 403 subindo em caminho de receita ou sessao
+- origem ainda saturada apesar do limiter, sinal de politicas erradas
+
+### First 15 Minutes
+
+- desligue a regra nova que encostou no caminho critico
+- preserve login, leitura interativa e checkout antes de salvar endpoint pesado
+- segure export, scraping e burst caro mais perto da borda
+- compare saturacao da origem com classificacao do bloqueio, nao confie so no 429 count
+
+### Fixacao de Producao
+
+- `Pergunta`: qual erro operacional deixa edge "parecendo seguro" e ao mesmo tempo machuca o produto?
+- `Resposta com as suas palavras`: bloquear o trafego bom e descobrir tarde porque a origem melhorou um pouco.
+- `Resposta ruim que parece boa`: "mais bloqueio sempre significa mais controle".
+- `Troque por isto`: bloqueio bom mata abuso barato sem cegar login, leitura e receita legitima.
+
 ## Por Que Nao Outra Abordagem
 
 Nao "coloca tudo no gateway" porque gateway nao deveria decidir promocao, autorizacao fina de dominio ou semantica de transacao. Se ele fizer isso, voce move complexidade para um lugar pior de versionar e debugar.

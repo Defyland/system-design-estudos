@@ -19,6 +19,16 @@
 
 Evento com particao certa preserva ordem util dentro do agregado. Consumer lag, skew e replay passam a fazer parte do desenho, nao so da operacao.
 
+## Production Recall
+
+- `Pergunta`: qual leitura voce quer antes de olhar lag medio?
+- `Resposta curta`: a particao mais quente, a fila que nao drena e o schema que acabou de mudar.
+
+## Wrong Production Move
+
+- `Resposta ruim`: "se esta atrasado, aumenta replay e consumo para todos".
+- `Troque por isto`: senior primeiro isola particao ruim e protege downstream, depois acelera.
+
 ## Transfer Check
 
 - se voce ainda tem um unico consumidor e nunca reprocessa nada, provavelmente ainda esta no mundo da fila simples

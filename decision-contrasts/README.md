@@ -25,6 +25,9 @@ Treino de discriminacao entre opcoes que parecem primas, mas resolvem dores dife
 - [10 - H3 Buckets vs PostGIS Distance Only](./10-h3-buckets-vs-postgis-distance-only.md)
 - [11 - Fanout-on-Write vs Fanout-on-Read](./11-fanout-on-write-vs-fanout-on-read.md)
 - [12 - Snowflake vs UUID or Serial](./12-snowflake-vs-uuid-or-serial.md)
+- [13 - Rate Limit vs Load Shedding](./13-rate-limit-vs-load-shedding.md)
+- [14 - Canary vs Big-Bang Rollout](./14-canary-vs-big-bang-rollout.md)
+- [15 - Retry More vs Roll Back](./15-retry-more-vs-roll-back.md)
 
 ## Rotas Boas
 

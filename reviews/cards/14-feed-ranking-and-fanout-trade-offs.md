@@ -19,6 +19,16 @@
 
 Feed maduro separa inventario candidato, custo de fanout e ordenacao final. Ranking so vale o aluguel quando existe metrica real de produto para melhorar.
 
+## Production Recall
+
+- `Pergunta`: qual dado mostra feed ruim sem precisar de erro 500?
+- `Resposta curta`: latencia do feed junto com a metrica de qualidade que o produto realmente usa.
+
+## Wrong Production Move
+
+- `Resposta ruim`: "se a pagina abre, o rollout do ranker esta ok".
+- `Troque por isto`: em feed, regressao de qualidade e frescor tambem e incidente de producao.
+
 ## Transfer Check
 
 - se ninguem sabe qual metrica de relevancia quer mexer, talvez o problema ainda seja ordenacao temporal boa

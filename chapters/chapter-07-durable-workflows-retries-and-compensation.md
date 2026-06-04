@@ -139,6 +139,48 @@ Quando isso cresce para dezenas de tipos de workflow, waits de dias, versionamen
 - `Quando Elixir ensina mais`: quando timers, supervisao e estado resumivel por fluxo ensinam mais do que simplesmente encadear jobs.
 - `Quando Go ensina mais`: quando workers de atividade, pollers e runtime de workflow viram a fronteira operacional principal.
 
+## Production Mode
+
+### What Breaks First
+
+- workflows presos entre steps por timeout mal calibrado
+- storm de retry abrindo mais dano do que a falha original
+- compensation falhando e deixando estado externo torto
+
+### Signals to Watch
+
+- quantidade de workflows `running` ou `waiting` acima do normal
+- idade do step atual por tipo de atividade
+- timeout rate, retry rate e compensation failure rate
+- backlog por activity queue
+
+### Safe Rollout
+
+- publique versao nova do workflow com slice pequeno e observavel
+- separe starter, activity e compensation com pause control
+- mantenha timeouts conservadores no primeiro rollout
+- prefira adicionar visibilidade antes de adicionar mais automacao
+
+### Rollback Trigger
+
+- stuck workflows crescendo sem caminho claro de resume
+- compensation falhando num efeito externo caro
+- retry avalanche piorando a dependencia externa
+
+### First 15 Minutes
+
+- pause novos starters
+- segure a activity ou versao que comecou a falhar
+- reduza retry automatico antes de pressionar de novo a dependencia
+- liste quais execucoes precisam de intervencao humana e quais podem retomar sozinhas
+
+### Fixacao de Producao
+
+- `Pergunta`: qual reflexo piora um workflow quebrado?
+- `Resposta com as suas palavras`: deixar retry correr solto e transformar uma falha local em tempestade.
+- `Resposta ruim que parece boa`: "se travou, aumenta retry e timeout para passar".
+- `Troque por isto`: senior primeiro contem, isola a versao ruim e protege os efeitos externos antes de tentar otimizar o fluxo.
+
 ## Por Que Nao Outra Abordagem
 
 Nao "encadear jobs e pronto" porque cadeia de jobs nao te da, por si so, historico coerente, timers duraveis por etapa, reset de execucao nem visibilidade decente de onde o fluxo travou.

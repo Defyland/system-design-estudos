@@ -19,6 +19,16 @@
 
 Blob grande vira objeto imutavel em storage proprio; metadata fica pequena e relacional. Tier frio entra depois, quando o padrao real de leitura permite restore mais lento.
 
+## Production Recall
+
+- `Pergunta`: qual sintoma denuncia tier frio mal promovido?
+- `Resposta curta`: restore lento ou falho no momento em que o arquivo volta a ser pedido.
+
+## Wrong Production Move
+
+- `Resposta ruim`: "ja moveu e economizou disco, entao deixa assim".
+- `Troque por isto`: storage so fica bom quando restaurar ainda funciona dentro do tempo prometido.
+
 ## Transfer Check
 
 - em empresa menor, comece com object storage gerenciado e lifecycle simples; nao invente Magic Pocket cedo

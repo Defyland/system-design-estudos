@@ -106,6 +106,42 @@ O paralelo com Nautilus e direto. `visible_namespaces_for` faz o papel do scope 
 - `Quando Elixir ensina mais`: quando a pipeline de indexacao vira uma esteira concorrente com backpressure, retry e varias etapas independentes.
 - `Quando Go ensina mais`: quando ingestao, retrieval gateway ou servico de busca de baixa latencia passam a ser boundary proprio de infra.
 
+## Production Mode
+
+### What Breaks First
+
+- lag de index deixando o produto parecer quebrado
+- vazamento de ACL em resultado, snippet ou cache de busca
+
+### Signals to Watch
+
+- index lag
+- erro de ACL por resultado
+- latencia de busca e taxa de fallback
+
+### Safe Rollout
+
+- shadow query antes de trocar o backend principal
+- indexe um subconjunto antes de abrir a todos
+
+### Rollback Trigger
+
+- qualquer indicio de ACL leak
+- lag ou latencia fugindo do SLA visivel
+
+### First 15 Minutes
+
+- pare o rollout do indice novo
+- force fallback para retrieval antigo ou modo degradado
+- compare ACL scope e payload de resultados afetados
+
+### Fixacao de Producao
+
+- `Pergunta`: qual incidente acaba com a busca mais rapido que latencia?
+- `Resposta com as suas palavras`: mostrar coisa que o usuario nao podia ver.
+- `Resposta ruim que parece boa`: "staleness chata e sempre pior que tudo".
+- `Troque por isto`: latencia ruim irrita; ACL leak vira incidente de seguranca.
+
 ## Por Que Nao Outra Abordagem
 
 Nao "so usa SQL com indice" quando a pergunta do produto ja pede full-text, ranking, autocomplete, documentos heterogeneos ou frescor mais agressivo. O relacional continua excelente para metadata e ownership. Como motor principal de busca rica, ele costuma ficar caro demais cedo demais.

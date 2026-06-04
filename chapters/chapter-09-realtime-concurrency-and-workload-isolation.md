@@ -127,6 +127,48 @@ O ponto do codigo nao e "Action Cable resolve Discord". Ele nao resolve. O ponto
 - `Quando Elixir ensina mais`: quando sockets, presence e concorrencia supervisionada por room passam a ser o centro do problema.
 - `Quando Go ensina mais`: quando gateway websocket, fanout e entrega em massa viram hot path de infra, nao regra de produto.
 
+## Production Mode
+
+### What Breaks First
+
+- um room quente sequestrando broadcast e presence dos rooms normais
+- backlog de entrega crescendo mais rapido do que o sistema consegue drenar
+- degradacao silenciosa em presence ou ordering antes de erro 500 aparecer
+
+### Signals to Watch
+
+- p95 e p99 de broadcast
+- queue depth por fila realtime
+- skew de rooms por subscriber count
+- taxa de dropped presence, reconnect e backlog por room
+
+### Safe Rollout
+
+- canary de fila ou worker para rooms quentes
+- degrade presence e typing indicators antes de tocar mensagem duravel
+- mantenha separacao entre fila default e fila hot-room desde o inicio
+- adicione throttling por room antes de mudar runtime inteiro
+
+### Rollback Trigger
+
+- cross-room degradation: room normal ficando lento por causa do room quente
+- reconnect storm ou broadcast p99 explodindo
+- perda de entrega em fluxo que deveria ser duravel
+
+### First 15 Minutes
+
+- isole ou limite o room mais quente
+- desligue sinais nao criticos como presence refinada ou typing
+- proteja mensagem persistida antes de proteger perfume de UX
+- identifique se o gargalo esta em fanout, presence, Redis ou socket gateway
+
+### Fixacao de Producao
+
+- `Pergunta`: qual degradacao voce aceita primeiro em realtime pesado?
+- `Resposta com as suas palavras`: corto perfume antes de cortar mensagem importante.
+- `Resposta ruim que parece boa`: "segura tudo igualmente, para nao piorar a experiencia".
+- `Troque por isto`: senior escolhe o que morrer primeiro para manter vivo o que o produto realmente nao pode perder.
+
 ## Por Que Nao Outra Abordagem
 
 Nao "sobe mais threads no Puma" porque thread a mais ajuda request curta; nao define ownership de estado quente, reconexao, fanout e isolamento por room.

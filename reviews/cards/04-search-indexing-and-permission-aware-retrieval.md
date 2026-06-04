@@ -19,6 +19,16 @@
 
 Busca rica pede indexacao assincrona, scope de ACL antes da query e revalidacao final. Frescor do indice e requisito de produto, nao obsessao abstrata.
 
+## Production Recall
+
+- `Pergunta`: qual metrica voce abre antes de tunar latencia?
+- `Resposta curta`: index lag e qualquer sinal de ACL error ou resultado indevido.
+
+## Wrong Production Move
+
+- `Resposta ruim`: "reindexa tudo e depois ve a permissao".
+- `Troque por isto`: primeiro contenha vazamento ou fallback; depois voce arruma a esteira.
+
 ## Transfer Check
 
 - para produto menor, `tsvector` ou search gerenciado pode bastar desde que ACL e reindexacao tenham dono claro

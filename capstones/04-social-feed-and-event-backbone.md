@@ -30,6 +30,35 @@ Seu PO diz: "a timeline cronologica esta piorando, e agora notificacao, analytic
 - feed separa inventario candidato de ranking
 - ID ordenavel ajuda onde rough ordering importa; nao substitui desenho do feed
 
+## Production Twist
+
+### Page
+
+Um ranker novo entra em producao ao mesmo tempo em que o time aumenta o fanout. Logo depois, uma particao esquenta muito mais do que as outras e o feed fica mais lento e mais estranho. Esse e o classico caso em que qualidade e infraestrutura quebram juntas.
+
+### First Dashboard
+
+- lag por particao
+- quantidade de candidatos por request
+- p95 do feed
+- metrica de qualidade do feed ou CTR de guardrail
+
+### Immediate Mitigation
+
+- volte para o ranker anterior ou para um fallback cronologico aceitavel
+- corte a fonte de candidatos mais cara
+- pause replay ou fanout que esteja enchendo a particao quente
+
+### Rollback or Hold
+
+Rollback do ranker novo se a regressao bate usuario ou latencia. Hold em retuning global de particoes ate separar o que e defeito de ranking do que e defeito de throughput.
+
+### What Not to Change Mid-Incident
+
+- nao mude schema e algoritmo ao mesmo tempo
+- nao acelere replay so porque backlog assusta
+- nao avalie saude do feed apenas pela ausencia de 500
+
 ## Trap
 
 - "Kafka, Snowflake e ranking resolvem feed automaticamente"

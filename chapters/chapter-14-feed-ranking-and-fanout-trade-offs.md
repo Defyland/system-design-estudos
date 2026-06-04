@@ -144,6 +144,48 @@ O detalhe importante nao e a formula de score. E o recorte:
 - `Quando Elixir ensina mais`: quando fanout, coordenacao e fluxos vivos de feed passam a ter mais peso do que a request sincrona.
 - `Quando Go ensina mais`: quando agregador, feature fetcher ou infraestrutura quente de fanout e ranking viram a parte cara do sistema.
 
+## Production Mode
+
+### What Breaks First
+
+- rollout de ranking piorando qualidade do feed antes de dar erro tecnico
+- fanout ou candidate generation explodindo custo de escrita ou latencia de leitura
+- feed tentando ser inteligente demais e perdendo fallback simples
+
+### Signals to Watch
+
+- p95 e p99 do feed
+- candidate count por request
+- write amplification e queue depth de fanout
+- metrica de qualidade: click, dwell, hide, bounce ou equivalente
+
+### Safe Rollout
+
+- shadow ranker antes de ranker valendo resposta real
+- cohort pequeno e comparacao com baseline cronologico
+- mantenha fallback para feed cronologico ou ranker anterior
+- isole produtores de alto fanout antes de mexer no algoritmo inteiro
+
+### Rollback Trigger
+
+- queda rapida de metrica de qualidade do feed
+- latencia ou custo subindo alem do budget
+- candidate explosion ou backfill de fanout virando incidente
+
+### First 15 Minutes
+
+- volte para o ranker anterior ou para um fallback cronologico aceitavel
+- corte a fonte de candidatos mais cara antes de revisar o modelo inteiro
+- preserve frescor e latencia minima antes de tentar salvar sofisticacao
+- separe regressao de qualidade de regressao de infraestrutura
+
+### Fixacao de Producao
+
+- `Pergunta`: qual incidente mais trai esse chapter?
+- `Resposta com as suas palavras`: o feed continua servindo, mas piora a experiencia e ninguem percebe cedo porque so olhou erro tecnico.
+- `Resposta ruim que parece boa`: "se nao tem 500, o rollout esta bom".
+- `Troque por isto`: em feed, queda de qualidade e latencia ruim tambem sao incidente de producao.
+
 ## Por Que Nao Outra Abordagem
 
 Nao "cronologico puro" porque a propria Meta mostra que unseen posts, conversas que reacenderam e preferencias individuais precisam voltar para o inventario; caso contrario, o feed privilegia frequencia de postagem, nao valor para a pessoa ([News Feed ranking, powered by machine learning](https://engineering.fb.com/2021/01/26/ml-applications/news-feed-ranking/)).

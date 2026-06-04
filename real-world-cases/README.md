@@ -23,6 +23,7 @@ Mais alinhados a topicos classicos de entrevista:
 ## Roadmap
 
 - [Roadmap priorizado com "comece por estes 7"](./ROADMAP.md)
+- [Chapters por decisao arquitetural](../chapters/README.md)
 
 ## Estrutura
 

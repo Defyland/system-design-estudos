@@ -7,7 +7,9 @@
 - [Chapter 12 - Geospatial Indexing for Marketplace Search](../../chapters/chapter-12-geospatial-indexing-for-marketplace-search.md)
 - [Chapter 14 - Feed Ranking and Fanout Trade-offs](../../chapters/chapter-14-feed-ranking-and-fanout-trade-offs.md)
 - [Interview Walkthrough Example](./examples/interview-walkthrough-marketplace-search.md)
+- [Interview Walkthrough Checkout Incident](./examples/interview-walkthrough-checkout-incident.md)
 - [Interview Checklist Snippet](./snippets/system-design-interview-checklist.md)
+- [Senior Production Answer Template](./snippets/senior-production-answer-template.md)
 
 ## Requisitos
 

@@ -8,7 +8,11 @@
 - [Chapter 09 - Realtime Concurrency and Workload Isolation](../../chapters/chapter-09-realtime-concurrency-and-workload-isolation.md)
 - [Chapter 10 - Edge Rate Limiting, WAF and Gateway Boundaries](../../chapters/chapter-10-edge-rate-limiting-waf-and-gateway-boundaries.md)
 - [Example - Smaller SaaS Architecture Evolution](./examples/smaller-saas-architecture-evolution.md)
+- [Example - Incident Checkout Degradation](./examples/incident-checkout-degradation.md)
+- [Example - Slow Rollout Read Path Regression](./examples/slow-rollout-read-path-regression.md)
 - [Snippet - Boundary and Scaling Checklist](./snippets/architecture-boundary-and-scaling-checklist.md)
+- [Snippet - First 15 Minutes Incident Checklist](./snippets/first-15-minutes-incident-checklist.md)
+- [Snippet - Canary and Rollback Checklist](./snippets/canary-and-rollback-checklist.md)
 
 ## Estilo arquitetural
 

@@ -145,6 +145,48 @@ O detalhe que mais importa e o `partition_key`. Se a ordem relevante e por conta
 - `Quando Elixir ensina mais`: quando ordenacao por chave, coordinacao entre consumidores e backpressure ficam mais educativos do que o proprio CRUD.
 - `Quando Go ensina mais`: quando producer, consumer e ferramenta de stream precisam ser pequenos, rapidos e muito previsiveis em throughput.
 
+## Production Mode
+
+### What Breaks First
+
+- skew de particao fazendo uma unica chave sequestrar throughput
+- schema novo quebrando consumidores silenciosamente
+- replay bem-intencionado derrubando downstream que nao estava pronto
+
+### Signals to Watch
+
+- consumer lag por particao, nao so media global
+- rebalance churn e restart rate de consumer
+- erro por versao de schema
+- throughput de replay separado do throughput normal
+
+### Safe Rollout
+
+- versione schema antes de trocar payload
+- canary de consumidor por grupo, nao por cluster inteiro
+- replay com limite de taxa e janela curta
+- mantenha pause control por topico ou consumer group
+
+### Rollback Trigger
+
+- lag em runaway numa particao critica
+- consumer incompativel com schema novo
+- replay saturando dependencia e piorando o incidente
+
+### First 15 Minutes
+
+- pause o consumer ou replay que abriu o buraco
+- identifique a particao mais quente antes de redistribuir qualquer coisa
+- segure produtores se o schema novo corrompeu o contrato
+- proteja downstream lento antes de "consumir para por em dia"
+
+### Fixacao de Producao
+
+- `Pergunta`: qual numero voce quer ver antes da media de lag?
+- `Resposta com as suas palavras`: a particao ruim, porque uma media bonita esconde a fila que esta em incendio.
+- `Resposta ruim que parece boa`: "lag total caiu, entao o sistema esta se recuperando".
+- `Troque por isto`: backbone quebra primeiro por assimetria, compatibilidade e replay mal dosado.
+
 ## Por Que Nao Outra Abordagem
 
 Nao "uma fila por feature" porque isso faz o produtor conhecer demais o mundo ao redor. Quando analytics, notificacao e antifraude dependem do mesmo fato, o produtor deveria publicar uma vez, nao tres.

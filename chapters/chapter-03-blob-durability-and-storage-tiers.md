@@ -113,6 +113,42 @@ Esse desenho nao tenta imitar cells, OSDs ou repair protocols. So preserva o pri
 - `Quando Elixir ensina mais`: quando copia, verificacao e promocao de blobs viram muitos fluxos concorrentes que precisam de supervisao limpa.
 - `Quando Go ensina mais`: quando checksum, multipart upload, replicacao e movers de storage ficam throughput-heavy de verdade.
 
+## Production Mode
+
+### What Breaks First
+
+- lifecycle movendo arquivo quente cedo demais
+- checksum ou restore falhando so quando o arquivo e pedido de volta
+
+### Signals to Watch
+
+- restore latency p95
+- taxa de checksum mismatch
+- `not found` depois de tier move
+
+### Safe Rollout
+
+- mova primeiro uma coorte pequena
+- verifique restore e checksum antes de purgar a copia quente
+
+### Rollback Trigger
+
+- restore SLA quebrado
+- objeto frio indisponivel ou inconsistente
+
+### First 15 Minutes
+
+- pause lifecycle e purge
+- force restore de amostra
+- mantenha leitura no tier quente enquanto mede o dano
+
+### Fixacao de Producao
+
+- `Pergunta`: qual erro operacional mais trai o storage frio?
+- `Resposta com as suas palavras`: descobrir o problema so na hora de restaurar, quando o usuario ja esta esperando.
+- `Resposta ruim que parece boa`: "se moveu e ocupou menos disco, esta tudo certo".
+- `Troque por isto`: storage so prova durabilidade quando restaurar ainda funciona no tempo certo.
+
 ## Por Que Nao Outra Abordagem
 
 Nao "guarda tudo no banco principal" porque banco transacional foi feito para coordenar estado, nao para ser o lugar ideal de durabilidade barata para payloads enormes.

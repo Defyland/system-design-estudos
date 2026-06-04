@@ -19,6 +19,16 @@
 
 Workflow duravel aparece quando retry, timeout e compensation variam por etapa e precisam sobreviver a crash. O primeiro efeito externo serio ja merece compensation explicita.
 
+## Production Recall
+
+- `Pergunta`: qual tela ou metrica abre um workflow quebrado mais rapido?
+- `Resposta curta`: execucoes presas por step, timeout rate e compensation failure.
+
+## Wrong Production Move
+
+- `Resposta ruim`: "aumenta timeout e deixa rodar mais um pouco".
+- `Troque por isto`: quando o fluxo esta preso, senior primeiro pausa entrada e impede retry avalanche.
+
 ## Transfer Check
 
 - para produto menor, uma tabela de execucao e jobs retomaveis ensinam muito antes de instalar Temporal ou Cadence

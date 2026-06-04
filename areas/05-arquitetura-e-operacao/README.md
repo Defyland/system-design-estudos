@@ -25,6 +25,13 @@ Este bloco junta as decisoes que mudam o formato do sistema e o custo operaciona
 - [Cloudflare - Edge Platform](../../real-world-cases/04-edge-and-delivery/cloudflare-edge-platform/README.md)
 - [Uber - Cadence Workflows](../../real-world-cases/03-async-workflows-and-payments/uber-cadence-workflows/README.md)
 
+## Ordem sugerida
+
+1. Shopify
+2. Discord
+3. Cloudflare
+4. Uber Cadence
+
 ## Chapters que puxam esta area
 
 - [Chapter 01 - Pod Isolation and Tenant Routing](../../chapters/chapter-01-pod-isolation-and-tenant-routing.md)
@@ -37,7 +44,11 @@ Este bloco junta as decisoes que mudam o formato do sistema e o custo operaciona
 
 - [Notes](./notes.md)
 - [Example - Smaller SaaS Architecture Evolution](./examples/smaller-saas-architecture-evolution.md)
+- [Example - Incident Checkout Degradation](./examples/incident-checkout-degradation.md)
+- [Example - Slow Rollout Read Path Regression](./examples/slow-rollout-read-path-regression.md)
 - [Snippet - Boundary and Scaling Checklist](./snippets/architecture-boundary-and-scaling-checklist.md)
+- [Snippet - First 15 Minutes Incident Checklist](./snippets/first-15-minutes-incident-checklist.md)
+- [Snippet - Canary and Rollback Checklist](./snippets/canary-and-rollback-checklist.md)
 
 ## Regra de implementacao
 

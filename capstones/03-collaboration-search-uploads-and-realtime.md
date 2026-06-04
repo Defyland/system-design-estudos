@@ -31,6 +31,35 @@ Seu PO diz: "queremos documentos, busca rapida, comentarios ao vivo e boa experi
 - realtime precisa isolar fanout e presence quentes
 - CDN ajuda asset e leitura publica; busca autorizada continua no app e no backend de search
 
+## Production Twist
+
+### Page
+
+Voce recebe tres sintomas juntos: index lag disparou, backlog de websocket cresceu e restores de objetos frios ficaram lentos demais. O erro comum aqui e tratar tudo como um unico problema. Nao e. E um sistema com tres gargalos diferentes se contaminando.
+
+### First Dashboard
+
+- lag de indexacao e taxa de erro de ACL
+- profundidade da fila de broadcast e p99 de entrega
+- latencia de restore e falhas de checksum
+- hit ratio de CDN e pressao no origin
+
+### Immediate Mitigation
+
+- degrade presence e sinais nao criticos
+- force fallback de busca ou reduza a promessa de frescor
+- pause mudancas de lifecycle se cold restore estiver travando a experiencia
+
+### Rollback or Hold
+
+Rollback da mudanca que disparou backlog ou do novo caminho de indexacao. Hold em reindex global ou purge em massa ate o origin e as filas respirarem de novo.
+
+### What Not to Change Mid-Incident
+
+- nao rode reindex total por reflexo
+- nao faca purge global de cache
+- nao misture tuning de realtime com mudanca de ACL
+
 ## Trap
 
 - "Elastic, S3 e WebSocket juntos ja resolvem o produto"

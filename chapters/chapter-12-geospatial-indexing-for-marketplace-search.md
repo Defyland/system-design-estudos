@@ -123,6 +123,42 @@ Se voce pular a segunda fase, a celula vira aproximacao demais. Se voce pular a 
 - `Quando Elixir ensina mais`: quando localizacao muda o tempo todo e dispatch vira problema de muitos atores concorrentes em tempo real.
 - `Quando Go ensina mais`: quando API de proximidade, streams de localizacao e workers geoespaciais ficam pesados no throughput.
 
+## Production Mode
+
+### What Breaks First
+
+- resolucao errada explodindo candidatos ou escondendo bons matches
+- localizacao velha parecendo bug de produto e nao de dado
+
+### Signals to Watch
+
+- candidatos por query
+- empty result rate perto de borda
+- idade da localizacao usada no match
+
+### Safe Rollout
+
+- shadow query com resolucao nova
+- teste por cidade ou cohort pequena antes de trocar globalmente
+
+### Rollback Trigger
+
+- falso negativo subindo
+- candidate explosion derrubando latencia
+
+### First 15 Minutes
+
+- reverta a resolucao nova
+- compare resultado shadow contra o caminho anterior
+- reduza dependencia de bucket e force distancia exata em coorte pequena se precisar
+
+### Fixacao de Producao
+
+- `Pergunta`: qual metrica grita antes de voce ler o algoritmo?
+- `Resposta com as suas palavras`: ou aparece candidato demais, ou some candidato bom demais.
+- `Resposta ruim que parece boa`: "se o mapa abre, a busca geoespacial esta saudavel".
+- `Troque por isto`: geospatial quebra primeiro na qualidade operacional da busca, nao no desenho do hexagono.
+
 ## Por Que Nao Outra Abordagem
 
 Nao "lat/long puro para tudo" porque isso ate funciona em volume menor, mas degrada quando o mesmo produto precisa repetir busca por proximidade, heatmap de cobertura e raciocinio por area muitas vezes por minuto. A Uber descreve exatamente essa necessidade de analise e otimizacao em escala de cidade ([H3: Uber's Hexagonal Hierarchical Spatial Index](https://www.uber.com/us/en/blog/h3/)).

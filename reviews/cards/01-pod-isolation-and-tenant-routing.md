@@ -19,6 +19,16 @@
 
 Pods resolvem blast radius por tenant. O app continua monolito, mas request e job carregam `pod_key` desde a borda e tocam um unico datastore por unidade de trabalho.
 
+## Production Recall
+
+- `Pergunta`: qual painel voce abre primeiro?
+- `Resposta curta`: erro por `pod_key`, tenant mais afetado e qualquer sinal de cross-pod no caminho critico.
+
+## Wrong Production Move
+
+- `Resposta ruim`: "vamos mover mais tenants para balancear logo".
+- `Troque por isto`: primeiro congele movimento e descubra se o roteamento ja esta errado.
+
 ## Transfer Check
 
 - em empresa menor, o primeiro passo costuma ser diretorio simples de tenant e proibicao de fluxo cross-pod no caminho critico

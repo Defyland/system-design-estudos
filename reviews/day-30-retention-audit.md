@@ -18,6 +18,7 @@ Provar memoria de longo prazo e transferencia real.
 - qual resposta ruim ainda te seduz?
 - em quais temas Rails continua sendo a explicacao certa?
 - em quais temas Elixir ou Go finalmente ensinam algo que Rails sozinho nao ensina?
+- em quais cenarios voce faria rollback na hora, e em quais seguraria mitigacao antes de reverter?
 
 ## Done When
 

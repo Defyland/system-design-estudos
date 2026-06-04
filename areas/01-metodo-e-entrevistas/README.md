@@ -44,4 +44,6 @@ Aqui o foco e mais raciocinio do que codigo. Priorize:
 
 - [Notes](./notes.md)
 - [Example - Interview Walkthrough](./examples/interview-walkthrough-marketplace-search.md)
+- [Example - Interview Walkthrough Checkout Incident](./examples/interview-walkthrough-checkout-incident.md)
 - [Snippet - Interview Checklist](./snippets/system-design-interview-checklist.md)
+- [Snippet - Senior Production Answer Template](./snippets/senior-production-answer-template.md)
