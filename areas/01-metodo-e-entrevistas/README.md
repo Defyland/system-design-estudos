@@ -26,9 +26,22 @@ System design sem metodo vira opiniao solta. Esta area concentra o processo de r
 - [Dropbox - Nautilus Search](../../real-world-cases/02-data-storage-and-search/dropbox-nautilus-search/README.md)
 - [Uber - H3 Geospatial Marketplace](../../real-world-cases/02-data-storage-and-search/uber-h3-geospatial-marketplace/README.md)
 
+## Chapters que puxam esta area
+
+- [Chapter 04 - Search Indexing and Permission-Aware Retrieval](../../chapters/chapter-04-search-indexing-and-permission-aware-retrieval.md)
+- [Chapter 06 - Event Backbone, Partitions and Consumer Scale](../../chapters/chapter-06-event-backbone-partitions-and-consumer-scale.md)
+- [Chapter 12 - Geospatial Indexing for Marketplace Search](../../chapters/chapter-12-geospatial-indexing-for-marketplace-search.md)
+- [Chapter 14 - Feed Ranking and Fanout Trade-offs](../../chapters/chapter-14-feed-ranking-and-fanout-trade-offs.md)
+
 ## Regra de implementacao
 
 Aqui o foco e mais raciocinio do que codigo. Priorize:
 - respostas escritas
 - estimativas
 - diagramas
+
+## Apoios desta area
+
+- [Notes](./notes.md)
+- [Example - Interview Walkthrough](./examples/interview-walkthrough-marketplace-search.md)
+- [Snippet - Interview Checklist](./snippets/system-design-interview-checklist.md)

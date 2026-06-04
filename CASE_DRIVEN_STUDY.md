@@ -12,7 +12,7 @@ O fluxo nao e:
 
 O fluxo passa a ser:
 1. escolher uma area do curso
-2. selecionar um slice pequeno de um caso real
+2. selecionar um slice de 1 ou 2 casos reais
 3. extrair os conceitos daquela area
 4. registrar trade-offs e limites
 5. implementar algo pequeno se isso aumentar entendimento
@@ -26,45 +26,71 @@ Quando um conceito merecer experimento:
 
 Nao reimplemente por esporte. Reimplemente apenas quando a segunda linguagem trouxer um aprendizado novo.
 
-## Matriz de cobertura inicial
+## Matriz de cobertura
+
+### 01 - Metodo e Entrevistas
+
+- Casos principais:
+  - [Shopify - Pods and Modular Monolith](./real-world-cases/01-platforms-and-apps/shopify-pods-and-modular-monolith/README.md)
+  - [GitHub - Rails and MySQL at Scale](./real-world-cases/01-platforms-and-apps/github-rails-and-mysql-at-scale/README.md)
+  - [Meta - News Feed Ranking](./real-world-cases/05-product-scenarios/meta-news-feed-ranking/README.md)
+- O que extrair:
+  - clarifying questions
+  - requisitos, restricoes e SLOs
+  - bottlenecks e evolucao da arquitetura
 
 ### 02 - Dados e Armazenamento
 
 - Casos principais:
   - [GitHub - Rails and MySQL at Scale](./real-world-cases/01-platforms-and-apps/github-rails-and-mysql-at-scale/README.md)
   - [Shopify - Pods and Modular Monolith](./real-world-cases/01-platforms-and-apps/shopify-pods-and-modular-monolith/README.md)
+  - [Dropbox - Magic Pocket Blob Store](./real-world-cases/02-data-storage-and-search/dropbox-magic-pocket-blob-store/README.md)
+  - [Dropbox - Nautilus Search](./real-world-cases/02-data-storage-and-search/dropbox-nautilus-search/README.md)
 - O que extrair:
   - modelagem de dados
   - leitura vs escrita
-  - indexes, query plan e scaling
-- Quando implementar:
-  - Rails primeiro
-  - exemplos bons: read replica simulation e cache-aside
+  - indexes, query plan, particionamento e federacao
+  - blob/object storage
+  - busca, cache e IDs distribuidos
 
 ### 03 - Filas e Consistencia
 
 - Casos principais:
-  - [Stripe - Idempotent Payments](./real-world-cases/03-async-workflows-and-payments/stripe-idempotent-payments/README.md)
   - [LinkedIn - Kafka Backbone](./real-world-cases/03-async-workflows-and-payments/linkedin-kafka-backbone/README.md)
+  - [Uber - Cadence Workflows](./real-world-cases/03-async-workflows-and-payments/uber-cadence-workflows/README.md)
+  - [Stripe - Idempotent Payments](./real-world-cases/03-async-workflows-and-payments/stripe-idempotent-payments/README.md)
+  - [Twitter - Snowflake IDs](./real-world-cases/02-data-storage-and-search/twitter-snowflake-ids/README.md)
 - O que extrair:
-  - retries, DLQ, idempotencia
   - particionamento
   - semanticas de entrega
-- Quando implementar:
-  - Rails primeiro
-  - reimplemente em Elixir ou Go so se a comparacao ensinar algo novo
+  - retries, DLQ, idempotencia
+  - workflows duraveis
+  - CQRS, SAGA e event-driven thinking
 
 ### 04 - Edge, Rede e Acesso
 
 - Casos principais:
   - [Cloudflare - Edge Platform](./real-world-cases/04-edge-and-delivery/cloudflare-edge-platform/README.md)
-  - [Uber - Unified Checkout](./real-world-cases/05-product-scenarios/uber-unified-checkout/README.md)
+  - [Netflix - Open Connect CDN](./real-world-cases/04-edge-and-delivery/netflix-open-connect-cdn/README.md)
+  - [Uber - Intelligent Load Management](./real-world-cases/04-edge-and-delivery/uber-intelligent-load-management/README.md)
 - O que extrair:
   - load balancing
-  - auth e gateway boundaries
-  - rate limiting e protecao de borda
-- Quando implementar:
-  - Rails primeiro para auth, throttle e cache
+  - DNS e roteamento
+  - CDN e invalidacao
+  - API gateway, WAF, auth e rate limiting
+
+### 05 - Arquitetura e Operacao
+
+- Casos principais:
+  - [Shopify - Pods and Modular Monolith](./real-world-cases/01-platforms-and-apps/shopify-pods-and-modular-monolith/README.md)
+  - [Discord - Elixir Realtime Scale](./real-world-cases/01-platforms-and-apps/discord-elixir-realtime-scale/README.md)
+  - [Cloudflare - Edge Platform](./real-world-cases/04-edge-and-delivery/cloudflare-edge-platform/README.md)
+  - [Uber - Cadence Workflows](./real-world-cases/03-async-workflows-and-payments/uber-cadence-workflows/README.md)
+- O que extrair:
+  - monolito vs microservicos
+  - concorrencia e paralelismo
+  - service boundaries
+  - deployment, resilience e scaling
 
 ## Fluxo de sessao
 
@@ -72,7 +98,7 @@ Para cada sessao de estudo:
 1. escolha uma area
 2. escolha um caso base
 3. escolha um slice pequeno do caso
-4. registre:
+4. registre na area:
    - conceito
    - decisao arquitetural
    - trade-off
@@ -80,9 +106,25 @@ Para cada sessao de estudo:
    - como aplicaria no seu stack
 5. se restar ambiguidade tecnica, faca um experimento pequeno
 
+## Exemplo de uso
+
+Se quiser estudar [02 - Dados e Armazenamento](./areas/02-dados-e-armazenamento/README.md):
+- comece por GitHub para SQL em escala
+- use Shopify para shard, pod e isolation
+- use Magic Pocket para blob store
+- use Nautilus para busca
+- implemente primeiro em Rails algo como cache-aside ou read/write split
+
+Se quiser estudar [03 - Filas e Consistencia](./areas/03-filas-e-consistencia/README.md):
+- comece por Kafka para backbone de eventos
+- use Stripe para idempotencia
+- use Cadence para workflows longos
+- implemente primeiro em Rails com job queue e idempotency keys
+- compare depois com Elixir ou Go se houver ganho claro
+
 ## Navegacao pronta
 
-Se preferir uma sequencia guiada:
+Se preferir uma sequencia guiada em vez de escolher tudo manualmente:
 - abra [chapters/README.md](./chapters/README.md)
 - siga um chapter por decisao arquitetural
 - use os links do chapter para ir e voltar entre caso, area, notas e lab
