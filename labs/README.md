@@ -66,17 +66,19 @@ O experimento deve parar quando voce conseguir responder:
 
 ## Labs por chapter
 
-- [Chapter 01 - Relational Scaling and Operational Discipline](./chapters/chapter-01-relational-scaling-and-operational-discipline.md)
-- [Chapter 02 - Pod Isolation and Tenant Routing](./chapters/chapter-02-pod-isolation-and-tenant-routing.md)
-- [Chapter 03 - Idempotent Writes Under Ambiguous Failure](./chapters/chapter-03-idempotent-writes-under-ambiguous-failure.md)
-- [Chapter 04 - Event Backbone, Partitions and Consumer Scale](./chapters/chapter-04-event-backbone-partitions-and-consumer-scale.md)
-- [Chapter 05 - Durable Workflows, Retries and Compensation](./chapters/chapter-05-durable-workflows-retries-and-compensation.md)
-- [Chapter 06 - Edge Rate Limiting, WAF and Gateway Boundaries](./chapters/chapter-06-edge-rate-limiting-waf-and-gateway-boundaries.md)
-- [Chapter 07 - Critical Checkout Flows and Auth Boundaries](./chapters/chapter-07-critical-checkout-flows-and-auth-boundaries.md)
-- [Chapter 08 - Blob Durability and Storage Tiers](./chapters/chapter-08-blob-durability-and-storage-tiers.md)
-- [Chapter 09 - Search Indexing and Permission-Aware Retrieval](./chapters/chapter-09-search-indexing-and-permission-aware-retrieval.md)
-- [Chapter 10 - CDN Placement, DNS and Cache Invalidation](./chapters/chapter-10-cdn-placement-dns-and-cache-invalidation.md)
-- [Chapter 11 - Geospatial Indexing for Marketplace Search](./chapters/chapter-11-geospatial-indexing-for-marketplace-search.md)
-- [Chapter 12 - Distributed IDs and Ordering Guarantees](./chapters/chapter-12-distributed-ids-and-ordering-guarantees.md)
-- [Chapter 13 - Realtime Concurrency and Workload Isolation](./chapters/chapter-13-realtime-concurrency-and-workload-isolation.md)
-- [Chapter 14 - Feed Ranking and Fanout Trade-offs](./chapters/chapter-14-feed-ranking-and-fanout-trade-offs.md)
+<!-- curriculum:start:labs-by-chapter -->
+- [Chapter 01 - Relational Scaling and Operational Discipline](chapters/chapter-01-relational-scaling-and-operational-discipline.md)
+- [Chapter 02 - Pod Isolation and Tenant Routing](chapters/chapter-02-pod-isolation-and-tenant-routing.md)
+- [Chapter 03 - Idempotent Writes Under Ambiguous Failure](chapters/chapter-03-idempotent-writes-under-ambiguous-failure.md)
+- [Chapter 04 - Event Backbone, Partitions and Consumer Scale](chapters/chapter-04-event-backbone-partitions-and-consumer-scale.md)
+- [Chapter 05 - Durable Workflows, Retries and Compensation](chapters/chapter-05-durable-workflows-retries-and-compensation.md)
+- [Chapter 06 - Edge Rate Limiting, WAF and Gateway Boundaries](chapters/chapter-06-edge-rate-limiting-waf-and-gateway-boundaries.md)
+- [Chapter 07 - Critical Checkout Flows and Auth Boundaries](chapters/chapter-07-critical-checkout-flows-and-auth-boundaries.md)
+- [Chapter 08 - Blob Durability and Storage Tiers](chapters/chapter-08-blob-durability-and-storage-tiers.md)
+- [Chapter 09 - Search Indexing and Permission-Aware Retrieval](chapters/chapter-09-search-indexing-and-permission-aware-retrieval.md)
+- [Chapter 10 - CDN Placement, DNS and Cache Invalidation](chapters/chapter-10-cdn-placement-dns-and-cache-invalidation.md)
+- [Chapter 11 - Geospatial Indexing for Marketplace Search](chapters/chapter-11-geospatial-indexing-for-marketplace-search.md)
+- [Chapter 12 - Distributed IDs and Ordering Guarantees](chapters/chapter-12-distributed-ids-and-ordering-guarantees.md)
+- [Chapter 13 - Realtime Concurrency and Workload Isolation](chapters/chapter-13-realtime-concurrency-and-workload-isolation.md)
+- [Chapter 14 - Feed Ranking and Fanout Trade-offs](chapters/chapter-14-feed-ranking-and-fanout-trade-offs.md)
+<!-- curriculum:end:labs-by-chapter -->

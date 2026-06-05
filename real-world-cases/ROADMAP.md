@@ -2,7 +2,32 @@
 
 Guia de leitura priorizado para nao diluir o estudo.
 
-## Comece por estes 7
+## Como Usar Sem Quebrar a Trilha
+
+A trilha canonica do curso continua sendo `Chapter 01` ate `Chapter 14`, definida em [curriculum.yml](../curriculum.yml).
+
+Este roadmap e uma visao `case-first`: use quando quiser revisar por empresa/caso real, nao como uma segunda ordem oficial do curso. Se houver divergencia, `curriculum.yml` vence.
+
+## Ordem Canonica por Caso Real
+
+<!-- curriculum:start:canonical-case-order -->
+- Chapter 01 - Relational Scaling and Operational Discipline: [GitHub - Rails and MySQL at Scale](01-platforms-and-apps/github-rails-and-mysql-at-scale/README.md) + [Shopify - Pods and Modular Monolith](01-platforms-and-apps/shopify-pods-and-modular-monolith/README.md)
+- Chapter 02 - Pod Isolation and Tenant Routing: [Shopify - Pods and Modular Monolith](01-platforms-and-apps/shopify-pods-and-modular-monolith/README.md) + [GitHub - Rails and MySQL at Scale](01-platforms-and-apps/github-rails-and-mysql-at-scale/README.md)
+- Chapter 03 - Idempotent Writes Under Ambiguous Failure: [Stripe - Idempotent Payments](03-async-workflows-and-payments/stripe-idempotent-payments/README.md) + [Uber - Unified Checkout](05-product-scenarios/uber-unified-checkout/README.md)
+- Chapter 04 - Event Backbone, Partitions and Consumer Scale: [LinkedIn - Kafka Backbone](03-async-workflows-and-payments/linkedin-kafka-backbone/README.md)
+- Chapter 05 - Durable Workflows, Retries and Compensation: [Uber - Cadence Workflows](03-async-workflows-and-payments/uber-cadence-workflows/README.md)
+- Chapter 06 - Edge Rate Limiting, WAF and Gateway Boundaries: [Cloudflare - Edge Platform](04-edge-and-delivery/cloudflare-edge-platform/README.md) + [Uber - Intelligent Load Management](04-edge-and-delivery/uber-intelligent-load-management/README.md)
+- Chapter 07 - Critical Checkout Flows and Auth Boundaries: [Uber - Unified Checkout](05-product-scenarios/uber-unified-checkout/README.md) + [Stripe - Idempotent Payments](03-async-workflows-and-payments/stripe-idempotent-payments/README.md)
+- Chapter 08 - Blob Durability and Storage Tiers: [Dropbox - Magic Pocket Blob Store](02-data-storage-and-search/dropbox-magic-pocket-blob-store/README.md)
+- Chapter 09 - Search Indexing and Permission-Aware Retrieval: [Dropbox - Nautilus Search](02-data-storage-and-search/dropbox-nautilus-search/README.md)
+- Chapter 10 - CDN Placement, DNS and Cache Invalidation: [Netflix - Open Connect CDN](04-edge-and-delivery/netflix-open-connect-cdn/README.md) + [Cloudflare - Edge Platform](04-edge-and-delivery/cloudflare-edge-platform/README.md), [Meta - Video Delivery](04-edge-and-delivery/meta-video-delivery/README.md)
+- Chapter 11 - Geospatial Indexing for Marketplace Search: [Uber - H3 Geospatial Marketplace](02-data-storage-and-search/uber-h3-geospatial-marketplace/README.md)
+- Chapter 12 - Distributed IDs and Ordering Guarantees: [Twitter - Snowflake IDs](02-data-storage-and-search/twitter-snowflake-ids/README.md)
+- Chapter 13 - Realtime Concurrency and Workload Isolation: [Discord - Elixir Realtime Scale](01-platforms-and-apps/discord-elixir-realtime-scale/README.md)
+- Chapter 14 - Feed Ranking and Fanout Trade-offs: [Meta - News Feed Ranking](05-product-scenarios/meta-news-feed-ranking/README.md)
+<!-- curriculum:end:canonical-case-order -->
+
+## Trilha Alternativa Case-First: Primeiros 7
 
 ### 1. Shopify - Pods and Modular Monolith
 
@@ -120,7 +145,7 @@ Leia depois que os 7 acima estiverem bem entendidos:
 - [Meta - Video Delivery](./04-edge-and-delivery/meta-video-delivery/README.md)
 - [Uber - Intelligent Load Management](./04-edge-and-delivery/uber-intelligent-load-management/README.md)
 
-## Ordem pratica de estudo
+## Ordem Pratica Alternativa
 
 1. Shopify
 2. GitHub

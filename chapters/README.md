@@ -56,20 +56,22 @@ Quando terminar um chapter:
 
 ## Sequencia Principal
 
-- [Chapter 01 - Relational Scaling and Operational Discipline](./chapter-01-relational-scaling-and-operational-discipline.md)
-- [Chapter 02 - Pod Isolation and Tenant Routing](./chapter-02-pod-isolation-and-tenant-routing.md)
-- [Chapter 03 - Idempotent Writes Under Ambiguous Failure](./chapter-03-idempotent-writes-under-ambiguous-failure.md)
-- [Chapter 04 - Event Backbone, Partitions and Consumer Scale](./chapter-04-event-backbone-partitions-and-consumer-scale.md)
-- [Chapter 05 - Durable Workflows, Retries and Compensation](./chapter-05-durable-workflows-retries-and-compensation.md)
-- [Chapter 06 - Edge Rate Limiting, WAF and Gateway Boundaries](./chapter-06-edge-rate-limiting-waf-and-gateway-boundaries.md)
-- [Chapter 07 - Critical Checkout Flows and Auth Boundaries](./chapter-07-critical-checkout-flows-and-auth-boundaries.md)
-- [Chapter 08 - Blob Durability and Storage Tiers](./chapter-08-blob-durability-and-storage-tiers.md)
-- [Chapter 09 - Search Indexing and Permission-Aware Retrieval](./chapter-09-search-indexing-and-permission-aware-retrieval.md)
-- [Chapter 10 - CDN Placement, DNS and Cache Invalidation](./chapter-10-cdn-placement-dns-and-cache-invalidation.md)
-- [Chapter 11 - Geospatial Indexing for Marketplace Search](./chapter-11-geospatial-indexing-for-marketplace-search.md)
-- [Chapter 12 - Distributed IDs and Ordering Guarantees](./chapter-12-distributed-ids-and-ordering-guarantees.md)
-- [Chapter 13 - Realtime Concurrency and Workload Isolation](./chapter-13-realtime-concurrency-and-workload-isolation.md)
-- [Chapter 14 - Feed Ranking and Fanout Trade-offs](./chapter-14-feed-ranking-and-fanout-trade-offs.md)
+<!-- curriculum:start:chapter-sequence -->
+- [Chapter 01 - Relational Scaling and Operational Discipline](chapter-01-relational-scaling-and-operational-discipline.md) - Caso: [GitHub - Rails and MySQL at Scale](../real-world-cases/01-platforms-and-apps/github-rails-and-mysql-at-scale/README.md) - Area: [Dados e Armazenamento](../areas/02-dados-e-armazenamento/README.md)
+- [Chapter 02 - Pod Isolation and Tenant Routing](chapter-02-pod-isolation-and-tenant-routing.md) - Caso: [Shopify - Pods and Modular Monolith](../real-world-cases/01-platforms-and-apps/shopify-pods-and-modular-monolith/README.md) - Area: [Arquitetura e Operacao](../areas/05-arquitetura-e-operacao/README.md)
+- [Chapter 03 - Idempotent Writes Under Ambiguous Failure](chapter-03-idempotent-writes-under-ambiguous-failure.md) - Caso: [Stripe - Idempotent Payments](../real-world-cases/03-async-workflows-and-payments/stripe-idempotent-payments/README.md) - Area: [Filas e Consistencia](../areas/03-filas-e-consistencia/README.md)
+- [Chapter 04 - Event Backbone, Partitions and Consumer Scale](chapter-04-event-backbone-partitions-and-consumer-scale.md) - Caso: [LinkedIn - Kafka Backbone](../real-world-cases/03-async-workflows-and-payments/linkedin-kafka-backbone/README.md) - Area: [Filas e Consistencia](../areas/03-filas-e-consistencia/README.md)
+- [Chapter 05 - Durable Workflows, Retries and Compensation](chapter-05-durable-workflows-retries-and-compensation.md) - Caso: [Uber - Cadence Workflows](../real-world-cases/03-async-workflows-and-payments/uber-cadence-workflows/README.md) - Area: [Arquitetura e Operacao](../areas/05-arquitetura-e-operacao/README.md)
+- [Chapter 06 - Edge Rate Limiting, WAF and Gateway Boundaries](chapter-06-edge-rate-limiting-waf-and-gateway-boundaries.md) - Caso: [Cloudflare - Edge Platform](../real-world-cases/04-edge-and-delivery/cloudflare-edge-platform/README.md) - Area: [Edge, Rede e Acesso](../areas/04-edge-rede-e-acesso/README.md)
+- [Chapter 07 - Critical Checkout Flows and Auth Boundaries](chapter-07-critical-checkout-flows-and-auth-boundaries.md) - Caso: [Uber - Unified Checkout](../real-world-cases/05-product-scenarios/uber-unified-checkout/README.md) - Area: [Edge, Rede e Acesso](../areas/04-edge-rede-e-acesso/README.md)
+- [Chapter 08 - Blob Durability and Storage Tiers](chapter-08-blob-durability-and-storage-tiers.md) - Caso: [Dropbox - Magic Pocket Blob Store](../real-world-cases/02-data-storage-and-search/dropbox-magic-pocket-blob-store/README.md) - Area: [Dados e Armazenamento](../areas/02-dados-e-armazenamento/README.md)
+- [Chapter 09 - Search Indexing and Permission-Aware Retrieval](chapter-09-search-indexing-and-permission-aware-retrieval.md) - Caso: [Dropbox - Nautilus Search](../real-world-cases/02-data-storage-and-search/dropbox-nautilus-search/README.md) - Area: [Dados e Armazenamento](../areas/02-dados-e-armazenamento/README.md)
+- [Chapter 10 - CDN Placement, DNS and Cache Invalidation](chapter-10-cdn-placement-dns-and-cache-invalidation.md) - Caso: [Netflix - Open Connect CDN](../real-world-cases/04-edge-and-delivery/netflix-open-connect-cdn/README.md) - Area: [Edge, Rede e Acesso](../areas/04-edge-rede-e-acesso/README.md)
+- [Chapter 11 - Geospatial Indexing for Marketplace Search](chapter-11-geospatial-indexing-for-marketplace-search.md) - Caso: [Uber - H3 Geospatial Marketplace](../real-world-cases/02-data-storage-and-search/uber-h3-geospatial-marketplace/README.md) - Area: [Dados e Armazenamento](../areas/02-dados-e-armazenamento/README.md)
+- [Chapter 12 - Distributed IDs and Ordering Guarantees](chapter-12-distributed-ids-and-ordering-guarantees.md) - Caso: [Twitter - Snowflake IDs](../real-world-cases/02-data-storage-and-search/twitter-snowflake-ids/README.md) - Area: [Filas e Consistencia](../areas/03-filas-e-consistencia/README.md)
+- [Chapter 13 - Realtime Concurrency and Workload Isolation](chapter-13-realtime-concurrency-and-workload-isolation.md) - Caso: [Discord - Elixir Realtime Scale](../real-world-cases/01-platforms-and-apps/discord-elixir-realtime-scale/README.md) - Area: [Arquitetura e Operacao](../areas/05-arquitetura-e-operacao/README.md)
+- [Chapter 14 - Feed Ranking and Fanout Trade-offs](chapter-14-feed-ranking-and-fanout-trade-offs.md) - Caso: [Meta - News Feed Ranking](../real-world-cases/05-product-scenarios/meta-news-feed-ranking/README.md) - Area: [Metodo e Entrevistas](../areas/01-metodo-e-entrevistas/README.md)
+<!-- curriculum:end:chapter-sequence -->
 
 ## Coverage Map
 

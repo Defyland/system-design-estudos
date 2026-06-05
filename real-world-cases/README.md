@@ -4,7 +4,13 @@ Casos reais de system design selecionados por dois criterios:
 - cobrem temas da ementa
 - tem utilidade pratica para quem trabalha com Ruby on Rails, Elixir e Go
 
-## Comece por estes
+## Como Usar
+
+A ordem oficial do curso fica em [Chapter 01 ate Chapter 14](../chapters/README.md) e e definida por [curriculum.yml](../curriculum.yml).
+
+Esta pasta e uma biblioteca `case-first`: use para revisar por empresa, comparar stacks ou aprofundar um caso depois de encontrar o link dentro de um chapter.
+
+## Casos Uteis Por Stack
 
 Mais alinhados ao seu stack:
 - [Shopify - Pods and Modular Monolith](./01-platforms-and-apps/shopify-pods-and-modular-monolith/README.md)
@@ -22,7 +28,7 @@ Mais alinhados a topicos classicos de entrevista:
 
 ## Roadmap
 
-- [Roadmap priorizado com "comece por estes 7"](./ROADMAP.md)
+- [Roadmap case-first alternativo](./ROADMAP.md)
 - [Chapters por decisao arquitetural](../chapters/README.md)
 
 ## Estrutura

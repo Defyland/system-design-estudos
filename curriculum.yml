@@ -1,156 +1,501 @@
-version: 1
+version: 2
 title: System Design Estudos
 default_order: chapter
+canonical_source: curriculum.yml
 phases:
   - id: fase-1
     title: Fase 1 - Base forte
-    chapters: [1, 2, 3, 4, 5, 6]
+    chapters:
+      - relational-scaling-and-operational-discipline
+      - pod-isolation-and-tenant-routing
+      - idempotent-writes-under-ambiguous-failure
+      - event-backbone-partitions-and-consumer-scale
+      - durable-workflows-retries-and-compensation
+      - edge-rate-limiting-waf-and-gateway-boundaries
   - id: fase-2
     title: Fase 2 - Caminhos criticos e dados especializados
-    chapters: [7, 8, 9, 10, 11]
+    chapters:
+      - critical-checkout-flows-and-auth-boundaries
+      - blob-durability-and-storage-tiers
+      - search-indexing-and-permission-aware-retrieval
+      - cdn-placement-dns-and-cache-invalidation
+      - geospatial-indexing-for-marketplace-search
   - id: fase-3
     title: Fase 3 - Runtime e produto em escala
-    chapters: [12, 13, 14]
+    chapters:
+      - distributed-ids-and-ordering-guarantees
+      - realtime-concurrency-and-workload-isolation
+      - feed-ranking-and-fanout-trade-offs
 areas:
   - id: 01-metodo-e-entrevistas
     title: Metodo e Entrevistas
+    kind: practice_area
+    content_dirs:
+      readme: areas/01-metodo-e-entrevistas/README.md
+      notes: areas/01-metodo-e-entrevistas/notes.md
+      examples: areas/01-metodo-e-entrevistas/examples
+      snippets: areas/01-metodo-e-entrevistas/snippets
   - id: 02-dados-e-armazenamento
     title: Dados e Armazenamento
+    kind: practice_area
+    content_dirs:
+      readme: areas/02-dados-e-armazenamento/README.md
+      notes: areas/02-dados-e-armazenamento/notes.md
+      examples: areas/02-dados-e-armazenamento/examples
+      snippets: areas/02-dados-e-armazenamento/snippets
   - id: 03-filas-e-consistencia
     title: Filas e Consistencia
+    kind: practice_area
+    content_dirs:
+      readme: areas/03-filas-e-consistencia/README.md
+      notes: areas/03-filas-e-consistencia/notes.md
+      examples: areas/03-filas-e-consistencia/examples
+      snippets: areas/03-filas-e-consistencia/snippets
   - id: 04-edge-rede-e-acesso
     title: Edge, Rede e Acesso
+    kind: practice_area
+    content_dirs:
+      readme: areas/04-edge-rede-e-acesso/README.md
+      notes: areas/04-edge-rede-e-acesso/notes.md
+      examples: areas/04-edge-rede-e-acesso/examples
+      snippets: areas/04-edge-rede-e-acesso/snippets
   - id: 05-arquitetura-e-operacao
     title: Arquitetura e Operacao
+    kind: practice_area
+    content_dirs:
+      readme: areas/05-arquitetura-e-operacao/README.md
+      notes: areas/05-arquitetura-e-operacao/notes.md
+      examples: areas/05-arquitetura-e-operacao/examples
+      snippets: areas/05-arquitetura-e-operacao/snippets
   - id: 06-foundations-distribuidas
     title: Foundations Distribuidas
+    kind: topic_catalog
+    content_dirs:
+      readme: areas/06-foundations-distribuidas/README.md
+      notes: areas/06-foundations-distribuidas/notes.md
+      topics: areas/06-foundations-distribuidas/topics
   - id: 07-componentes-de-sistemas
     title: Componentes de Sistemas
+    kind: component_catalog
+    content_dirs:
+      readme: areas/07-componentes-de-sistemas/README.md
+      notes: areas/07-componentes-de-sistemas/notes.md
+      cards: areas/07-componentes-de-sistemas/cards
   - id: 08-sistemas-ia
     title: Sistemas de IA
+    kind: topic_catalog
+    content_dirs:
+      readme: areas/08-sistemas-ia/README.md
+      notes: areas/08-sistemas-ia/notes.md
+      topics: areas/08-sistemas-ia/topics
 chapters:
-  - number: 1
+  - id: relational-scaling-and-operational-discipline
+    number: 1
+    title: Relational Scaling and Operational Discipline
     slug: chapter-01-relational-scaling-and-operational-discipline
+    path: chapters/chapter-01-relational-scaling-and-operational-discipline.md
     phase: fase-1
-    areas: [02-dados-e-armazenamento, 05-arquitetura-e-operacao]
-    cases: [github-rails-and-mysql-at-scale, shopify-pods-and-modular-monolith]
+    primary_area: 02-dados-e-armazenamento
+    secondary_areas: [05-arquitetura-e-operacao]
+    notes:
+      - areas/02-dados-e-armazenamento/notes.md
+      - areas/05-arquitetura-e-operacao/notes.md
+    primary_case:
+      id: github-rails-and-mysql-at-scale
+      title: GitHub - Rails and MySQL at Scale
+      path: real-world-cases/01-platforms-and-apps/github-rails-and-mysql-at-scale/README.md
+    complementary_cases:
+      - id: shopify-pods-and-modular-monolith
+        title: Shopify - Pods and Modular Monolith
+        path: real-world-cases/01-platforms-and-apps/shopify-pods-and-modular-monolith/README.md
+    lab:
+      path: labs/chapters/chapter-01-relational-scaling-and-operational-discipline.md
+    review_card:
+      path: reviews/cards/01-relational-scaling-and-operational-discipline.md
+    suggested_contrast:
+      id: read-replica-vs-cache-aside
+      title: Read Replica vs Cache-Aside
+      path: decision-contrasts/01-read-replica-vs-cache-aside.md
     simulations: [cache, sharding-pod-isolation]
     estimated_minutes: 10
     mastery_objectives: [read/write split, cache-aside, replica lag, migration safety]
     interview_objectives: [defender SQL com disciplina operacional, evitar NoSQL prematuro]
-  - number: 2
+  - id: pod-isolation-and-tenant-routing
+    number: 2
+    title: Pod Isolation and Tenant Routing
     slug: chapter-02-pod-isolation-and-tenant-routing
+    path: chapters/chapter-02-pod-isolation-and-tenant-routing.md
     phase: fase-1
-    areas: [05-arquitetura-e-operacao, 02-dados-e-armazenamento]
-    cases: [shopify-pods-and-modular-monolith]
+    primary_area: 05-arquitetura-e-operacao
+    secondary_areas: [02-dados-e-armazenamento]
+    notes:
+      - areas/05-arquitetura-e-operacao/notes.md
+      - areas/02-dados-e-armazenamento/notes.md
+    primary_case:
+      id: shopify-pods-and-modular-monolith
+      title: Shopify - Pods and Modular Monolith
+      path: real-world-cases/01-platforms-and-apps/shopify-pods-and-modular-monolith/README.md
+    complementary_cases:
+      - id: github-rails-and-mysql-at-scale
+        title: GitHub - Rails and MySQL at Scale
+        path: real-world-cases/01-platforms-and-apps/github-rails-and-mysql-at-scale/README.md
+    lab:
+      path: labs/chapters/chapter-02-pod-isolation-and-tenant-routing.md
+    review_card:
+      path: reviews/cards/02-pod-isolation-and-tenant-routing.md
+    suggested_contrast:
+      id: pod-isolation-vs-microservices
+      title: Pod Isolation vs Microservices
+      path: decision-contrasts/02-pod-isolation-vs-microservices.md
     simulations: [sharding-pod-isolation]
     estimated_minutes: 10
     mastery_objectives: [tenant routing, blast radius, noisy tenant]
     interview_objectives: [explicar isolamento antes de microservicos]
-  - number: 3
+  - id: idempotent-writes-under-ambiguous-failure
+    number: 3
+    title: Idempotent Writes Under Ambiguous Failure
     slug: chapter-03-idempotent-writes-under-ambiguous-failure
+    path: chapters/chapter-03-idempotent-writes-under-ambiguous-failure.md
     phase: fase-1
-    areas: [03-filas-e-consistencia]
-    cases: [stripe-idempotent-payments]
+    primary_area: 03-filas-e-consistencia
+    secondary_areas: [04-edge-rede-e-acesso]
+    notes:
+      - areas/03-filas-e-consistencia/notes.md
+      - areas/04-edge-rede-e-acesso/notes.md
+    primary_case:
+      id: stripe-idempotent-payments
+      title: Stripe - Idempotent Payments
+      path: real-world-cases/03-async-workflows-and-payments/stripe-idempotent-payments/README.md
+    complementary_cases:
+      - id: uber-unified-checkout
+        title: Uber - Unified Checkout
+        path: real-world-cases/05-product-scenarios/uber-unified-checkout/README.md
+    lab:
+      path: labs/chapters/chapter-03-idempotent-writes-under-ambiguous-failure.md
+    review_card:
+      path: reviews/cards/03-idempotent-writes-under-ambiguous-failure.md
+    suggested_contrast:
+      id: idempotency-key-vs-unique-index
+      title: Idempotency Key vs Unique Index
+      path: decision-contrasts/05-idempotency-key-vs-unique-index.md
     simulations: [rate-limit-vs-load-shedding]
     estimated_minutes: 10
     mastery_objectives: [idempotency key, retry ambiguity, effect-once]
     interview_objectives: [proteger efeito antes de repetir request]
-  - number: 4
+  - id: event-backbone-partitions-and-consumer-scale
+    number: 4
+    title: Event Backbone, Partitions and Consumer Scale
     slug: chapter-04-event-backbone-partitions-and-consumer-scale
+    path: chapters/chapter-04-event-backbone-partitions-and-consumer-scale.md
     phase: fase-1
-    areas: [03-filas-e-consistencia, 07-componentes-de-sistemas]
-    cases: [linkedin-kafka-backbone]
+    primary_area: 03-filas-e-consistencia
+    secondary_areas: [01-metodo-e-entrevistas]
+    notes:
+      - areas/03-filas-e-consistencia/notes.md
+      - areas/01-metodo-e-entrevistas/notes.md
+    primary_case:
+      id: linkedin-kafka-backbone
+      title: LinkedIn - Kafka Backbone
+      path: real-world-cases/03-async-workflows-and-payments/linkedin-kafka-backbone/README.md
+    complementary_cases: []
+    lab:
+      path: labs/chapters/chapter-04-event-backbone-partitions-and-consumer-scale.md
+    review_card:
+      path: reviews/cards/04-event-backbone-partitions-and-consumer-scale.md
+    suggested_contrast:
+      id: queue-vs-event-backbone
+      title: Queue vs Event Backbone
+      path: decision-contrasts/06-queue-vs-event-backbone.md
     simulations: [event-backbone-consumer-lag]
     estimated_minutes: 10
     mastery_objectives: [partition key, consumer lag, replay blast radius]
     interview_objectives: [diferenciar fila simples de backbone de eventos]
-  - number: 5
+  - id: durable-workflows-retries-and-compensation
+    number: 5
+    title: Durable Workflows, Retries and Compensation
     slug: chapter-05-durable-workflows-retries-and-compensation
+    path: chapters/chapter-05-durable-workflows-retries-and-compensation.md
     phase: fase-1
-    areas: [03-filas-e-consistencia, 05-arquitetura-e-operacao]
-    cases: [uber-cadence-workflows]
+    primary_area: 05-arquitetura-e-operacao
+    secondary_areas: [03-filas-e-consistencia]
+    notes:
+      - areas/05-arquitetura-e-operacao/notes.md
+      - areas/03-filas-e-consistencia/notes.md
+    primary_case:
+      id: uber-cadence-workflows
+      title: Uber - Cadence Workflows
+      path: real-world-cases/03-async-workflows-and-payments/uber-cadence-workflows/README.md
+    complementary_cases: []
+    lab:
+      path: labs/chapters/chapter-05-durable-workflows-retries-and-compensation.md
+    review_card:
+      path: reviews/cards/05-durable-workflows-retries-and-compensation.md
+    suggested_contrast:
+      id: durable-workflow-vs-chained-jobs
+      title: Durable Workflow vs Chained Jobs
+      path: decision-contrasts/07-durable-workflow-vs-chained-jobs.md
     simulations: [saga-compensation]
     estimated_minutes: 10
     mastery_objectives: [state machine, compensation, timeout]
     interview_objectives: [saber quando workflow paga o custo]
-  - number: 6
+  - id: edge-rate-limiting-waf-and-gateway-boundaries
+    number: 6
+    title: Edge Rate Limiting, WAF and Gateway Boundaries
     slug: chapter-06-edge-rate-limiting-waf-and-gateway-boundaries
+    path: chapters/chapter-06-edge-rate-limiting-waf-and-gateway-boundaries.md
     phase: fase-1
-    areas: [04-edge-rede-e-acesso, 07-componentes-de-sistemas]
-    cases: [cloudflare-edge-platform]
+    primary_area: 04-edge-rede-e-acesso
+    secondary_areas: [05-arquitetura-e-operacao]
+    notes:
+      - areas/04-edge-rede-e-acesso/notes.md
+      - areas/05-arquitetura-e-operacao/notes.md
+    primary_case:
+      id: cloudflare-edge-platform
+      title: Cloudflare - Edge Platform
+      path: real-world-cases/04-edge-and-delivery/cloudflare-edge-platform/README.md
+    complementary_cases:
+      - id: uber-intelligent-load-management
+        title: Uber - Intelligent Load Management
+        path: real-world-cases/04-edge-and-delivery/uber-intelligent-load-management/README.md
+    lab:
+      path: labs/chapters/chapter-06-edge-rate-limiting-waf-and-gateway-boundaries.md
+    review_card:
+      path: reviews/cards/06-edge-rate-limiting-waf-and-gateway-boundaries.md
+    suggested_contrast:
+      id: edge-rate-limit-vs-app-authorization
+      title: Edge Rate Limit vs App Authorization
+      path: decision-contrasts/08-edge-rate-limit-vs-app-authorization.md
     simulations: [rate-limit-vs-load-shedding]
     estimated_minutes: 10
     mastery_objectives: [edge protection, WAF, fairness]
     interview_objectives: [separar rate limit de autorizacao]
-  - number: 7
+  - id: critical-checkout-flows-and-auth-boundaries
+    number: 7
+    title: Critical Checkout Flows and Auth Boundaries
     slug: chapter-07-critical-checkout-flows-and-auth-boundaries
+    path: chapters/chapter-07-critical-checkout-flows-and-auth-boundaries.md
     phase: fase-2
-    areas: [04-edge-rede-e-acesso, 03-filas-e-consistencia]
-    cases: [uber-unified-checkout]
+    primary_area: 04-edge-rede-e-acesso
+    secondary_areas: [03-filas-e-consistencia]
+    notes:
+      - areas/04-edge-rede-e-acesso/notes.md
+      - areas/03-filas-e-consistencia/notes.md
+    primary_case:
+      id: uber-unified-checkout
+      title: Uber - Unified Checkout
+      path: real-world-cases/05-product-scenarios/uber-unified-checkout/README.md
+    complementary_cases:
+      - id: stripe-idempotent-payments
+        title: Stripe - Idempotent Payments
+        path: real-world-cases/03-async-workflows-and-payments/stripe-idempotent-payments/README.md
+    lab:
+      path: labs/chapters/chapter-07-critical-checkout-flows-and-auth-boundaries.md
+    review_card:
+      path: reviews/cards/07-critical-checkout-flows-and-auth-boundaries.md
+    suggested_contrast:
+      id: idempotency-key-vs-unique-index
+      title: Idempotency Key vs Unique Index
+      path: decision-contrasts/05-idempotency-key-vs-unique-index.md
     simulations: [saga-compensation, circuit-breaker]
     estimated_minutes: 10
     mastery_objectives: [checkout boundary, auth friction, PSP timeout]
     interview_objectives: [proteger receita sem duplicar cobranca]
-  - number: 8
+  - id: blob-durability-and-storage-tiers
+    number: 8
+    title: Blob Durability and Storage Tiers
     slug: chapter-08-blob-durability-and-storage-tiers
+    path: chapters/chapter-08-blob-durability-and-storage-tiers.md
     phase: fase-2
-    areas: [02-dados-e-armazenamento]
-    cases: [dropbox-magic-pocket-blob-store]
+    primary_area: 02-dados-e-armazenamento
+    secondary_areas: []
+    notes:
+      - areas/02-dados-e-armazenamento/notes.md
+    primary_case:
+      id: dropbox-magic-pocket-blob-store
+      title: Dropbox - Magic Pocket Blob Store
+      path: real-world-cases/02-data-storage-and-search/dropbox-magic-pocket-blob-store/README.md
+    complementary_cases: []
+    lab:
+      path: labs/chapters/chapter-08-blob-durability-and-storage-tiers.md
+    review_card:
+      path: reviews/cards/08-blob-durability-and-storage-tiers.md
+    suggested_contrast:
+      id: blob-store-vs-relational-binary-storage
+      title: Blob Store vs Relational Binary Storage
+      path: decision-contrasts/03-blob-store-vs-relational-binary-storage.md
     simulations: [cache]
     estimated_minutes: 10
     mastery_objectives: [metadata vs blob, lifecycle, cold tier]
     interview_objectives: [explicar storage por durabilidade e custo]
-  - number: 9
+  - id: search-indexing-and-permission-aware-retrieval
+    number: 9
+    title: Search Indexing and Permission-Aware Retrieval
     slug: chapter-09-search-indexing-and-permission-aware-retrieval
+    path: chapters/chapter-09-search-indexing-and-permission-aware-retrieval.md
     phase: fase-2
-    areas: [02-dados-e-armazenamento, 08-sistemas-ia]
-    cases: [dropbox-nautilus-search]
+    primary_area: 02-dados-e-armazenamento
+    secondary_areas: [01-metodo-e-entrevistas]
+    notes:
+      - areas/02-dados-e-armazenamento/notes.md
+      - areas/01-metodo-e-entrevistas/notes.md
+    primary_case:
+      id: dropbox-nautilus-search
+      title: Dropbox - Nautilus Search
+      path: real-world-cases/02-data-storage-and-search/dropbox-nautilus-search/README.md
+    complementary_cases: []
+    lab:
+      path: labs/chapters/chapter-09-search-indexing-and-permission-aware-retrieval.md
+    review_card:
+      path: reviews/cards/09-search-indexing-and-permission-aware-retrieval.md
+    suggested_contrast:
+      id: search-index-vs-relational-querying
+      title: Search Index vs Relational Querying
+      path: decision-contrasts/04-search-index-vs-relational-querying.md
     simulations: [search-freshness-reindex, rag-vector-search]
     estimated_minutes: 10
     mastery_objectives: [index lag, ACL-aware search, reindex]
     interview_objectives: [nao tratar ACL como filtro decorativo]
-  - number: 10
+  - id: cdn-placement-dns-and-cache-invalidation
+    number: 10
+    title: CDN Placement, DNS and Cache Invalidation
     slug: chapter-10-cdn-placement-dns-and-cache-invalidation
+    path: chapters/chapter-10-cdn-placement-dns-and-cache-invalidation.md
     phase: fase-2
-    areas: [04-edge-rede-e-acesso, 07-componentes-de-sistemas]
-    cases: [netflix-open-connect-cdn, youtube-video-delivery]
+    primary_area: 04-edge-rede-e-acesso
+    secondary_areas: []
+    notes:
+      - areas/04-edge-rede-e-acesso/notes.md
+    primary_case:
+      id: netflix-open-connect-cdn
+      title: Netflix - Open Connect CDN
+      path: real-world-cases/04-edge-and-delivery/netflix-open-connect-cdn/README.md
+    complementary_cases:
+      - id: cloudflare-edge-platform
+        title: Cloudflare - Edge Platform
+        path: real-world-cases/04-edge-and-delivery/cloudflare-edge-platform/README.md
+      - id: meta-video-delivery
+        title: Meta - Video Delivery
+        path: real-world-cases/04-edge-and-delivery/meta-video-delivery/README.md
+    lab:
+      path: labs/chapters/chapter-10-cdn-placement-dns-and-cache-invalidation.md
+    review_card:
+      path: reviews/cards/10-cdn-placement-dns-and-cache-invalidation.md
+    suggested_contrast:
+      id: cdn-cache-vs-app-cache
+      title: CDN Cache vs App Cache
+      path: decision-contrasts/09-cdn-cache-vs-app-cache.md
     simulations: [cache, circuit-breaker]
     estimated_minutes: 10
     mastery_objectives: [TTL, purge, origin protection, georouting]
     interview_objectives: [separar CDN cache de app cache]
-  - number: 11
+  - id: geospatial-indexing-for-marketplace-search
+    number: 11
+    title: Geospatial Indexing for Marketplace Search
     slug: chapter-11-geospatial-indexing-for-marketplace-search
+    path: chapters/chapter-11-geospatial-indexing-for-marketplace-search.md
     phase: fase-2
-    areas: [02-dados-e-armazenamento]
-    cases: [uber-h3-geospatial-marketplace]
+    primary_area: 02-dados-e-armazenamento
+    secondary_areas: [01-metodo-e-entrevistas]
+    notes:
+      - areas/02-dados-e-armazenamento/notes.md
+      - areas/01-metodo-e-entrevistas/notes.md
+    primary_case:
+      id: uber-h3-geospatial-marketplace
+      title: Uber - H3 Geospatial Marketplace
+      path: real-world-cases/02-data-storage-and-search/uber-h3-geospatial-marketplace/README.md
+    complementary_cases: []
+    lab:
+      path: labs/chapters/chapter-11-geospatial-indexing-for-marketplace-search.md
+    review_card:
+      path: reviews/cards/11-geospatial-indexing-for-marketplace-search.md
+    suggested_contrast:
+      id: h3-buckets-vs-postgis-distance-only
+      title: H3 Buckets vs PostGIS Distance Only
+      path: decision-contrasts/10-h3-buckets-vs-postgis-distance-only.md
     simulations: [search-freshness-reindex]
     estimated_minutes: 10
     mastery_objectives: [candidate generation, H3, exact distance]
     interview_objectives: [reduzir custo sem destruir precisao]
-  - number: 12
+  - id: distributed-ids-and-ordering-guarantees
+    number: 12
+    title: Distributed IDs and Ordering Guarantees
     slug: chapter-12-distributed-ids-and-ordering-guarantees
+    path: chapters/chapter-12-distributed-ids-and-ordering-guarantees.md
     phase: fase-3
-    areas: [03-filas-e-consistencia, 06-foundations-distribuidas]
-    cases: [twitter-snowflake-ids, bitly-url-shortener]
+    primary_area: 03-filas-e-consistencia
+    secondary_areas: [02-dados-e-armazenamento]
+    notes:
+      - areas/03-filas-e-consistencia/notes.md
+      - areas/02-dados-e-armazenamento/notes.md
+    primary_case:
+      id: twitter-snowflake-ids
+      title: Twitter - Snowflake IDs
+      path: real-world-cases/02-data-storage-and-search/twitter-snowflake-ids/README.md
+    complementary_cases: []
+    lab:
+      path: labs/chapters/chapter-12-distributed-ids-and-ordering-guarantees.md
+    review_card:
+      path: reviews/cards/12-distributed-ids-and-ordering-guarantees.md
+    suggested_contrast:
+      id: snowflake-vs-uuid-or-serial
+      title: Snowflake vs UUID or Serial
+      path: decision-contrasts/12-snowflake-vs-uuid-or-serial.md
     simulations: [sharding-pod-isolation]
     estimated_minutes: 10
     mastery_objectives: [worker id, clock rollback, ordering]
     interview_objectives: [saber quando ID coordenado vale o custo]
-  - number: 13
+  - id: realtime-concurrency-and-workload-isolation
+    number: 13
+    title: Realtime Concurrency and Workload Isolation
     slug: chapter-13-realtime-concurrency-and-workload-isolation
+    path: chapters/chapter-13-realtime-concurrency-and-workload-isolation.md
     phase: fase-3
-    areas: [05-arquitetura-e-operacao, 03-filas-e-consistencia]
-    cases: [discord-elixir-realtime-scale, whatsapp-realtime-messaging]
+    primary_area: 05-arquitetura-e-operacao
+    secondary_areas: [03-filas-e-consistencia]
+    notes:
+      - areas/05-arquitetura-e-operacao/notes.md
+      - areas/03-filas-e-consistencia/notes.md
+    primary_case:
+      id: discord-elixir-realtime-scale
+      title: Discord - Elixir Realtime Scale
+      path: real-world-cases/01-platforms-and-apps/discord-elixir-realtime-scale/README.md
+    complementary_cases: []
+    lab:
+      path: labs/chapters/chapter-13-realtime-concurrency-and-workload-isolation.md
+    review_card:
+      path: reviews/cards/13-realtime-concurrency-and-workload-isolation.md
+    suggested_contrast:
+      id: rate-limit-vs-load-shedding
+      title: Rate Limit vs Load Shedding
+      path: decision-contrasts/13-rate-limit-vs-load-shedding.md
     simulations: [event-backbone-consumer-lag, circuit-breaker]
     estimated_minutes: 10
     mastery_objectives: [presence, hot room, backpressure]
     interview_objectives: [separar mensagem duravel de presence efemera]
-  - number: 14
+  - id: feed-ranking-and-fanout-trade-offs
+    number: 14
+    title: Feed Ranking and Fanout Trade-offs
     slug: chapter-14-feed-ranking-and-fanout-trade-offs
+    path: chapters/chapter-14-feed-ranking-and-fanout-trade-offs.md
     phase: fase-3
-    areas: [01-metodo-e-entrevistas, 08-sistemas-ia]
-    cases: [meta-news-feed-ranking, spotify-personalization]
+    primary_area: 01-metodo-e-entrevistas
+    secondary_areas: [02-dados-e-armazenamento]
+    notes:
+      - areas/01-metodo-e-entrevistas/notes.md
+      - areas/02-dados-e-armazenamento/notes.md
+    primary_case:
+      id: meta-news-feed-ranking
+      title: Meta - News Feed Ranking
+      path: real-world-cases/05-product-scenarios/meta-news-feed-ranking/README.md
+    complementary_cases: []
+    lab:
+      path: labs/chapters/chapter-14-feed-ranking-and-fanout-trade-offs.md
+    review_card:
+      path: reviews/cards/14-feed-ranking-and-fanout-trade-offs.md
+    suggested_contrast:
+      id: fanout-on-write-vs-fanout-on-read
+      title: Fanout-on-Write vs Fanout-on-Read
+      path: decision-contrasts/11-fanout-on-write-vs-fanout-on-read.md
     simulations: [fanout-feed-ranking-cost, llm-gateway-token-cost]
     estimated_minutes: 10
     mastery_objectives: [candidate inventory, fanout cost, ranking latency]
