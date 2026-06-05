@@ -1,0 +1,40 @@
+# Review Card 06 - Edge Rate Limiting, WAF and Gateway Boundaries
+
+## Linked Material
+
+- [Chapter 06](../../chapters/chapter-06-edge-rate-limiting-waf-and-gateway-boundaries.md)
+- [Lab 06](../../labs/chapters/chapter-06-edge-rate-limiting-waf-and-gateway-boundaries.md)
+
+## 15-Second Recall
+
+- `Pergunta`: o que deve morrer antes da app?
+- `Resposta curta`: trafego obviamente abusivo, invalido ou caro demais para ganhar CPU da origem.
+
+## Design Pass Recall
+
+- `Requirement`: o que deve morrer cedo na borda e o que ainda depende do dominio?
+- `Delete`: qual regra duplicada entre edge, gateway e app voce removeria primeiro?
+- `Forma mais simples`: edge bloqueia abuso obvio, gateway governa entrada, app decide semantica.
+
+## Wrong Turn
+
+- `Resposta ruim`: "o gateway decide toda a autorizacao do sistema".
+- `Troque por isto`: edge e gateway governam a entrada; a app ainda decide semantica e permissao fina.
+
+## 1-Minute Answer
+
+O desenho bom divide responsabilidade: edge bloqueia barato, gateway governa auth tecnica e roteamento, app protege regra de negocio e recursos caros recebem fairness mais perto do dano.
+
+## Production Recall
+
+- `Pergunta`: qual combinacao de numeros voce abre antes de mexer na regra?
+- `Resposta curta`: 429 ou 403 por rota e tenant, junto com CPU ou fila da origem.
+
+## Wrong Production Move
+
+- `Resposta ruim`: "se a origem melhorou, sobe o bloqueio mais ainda".
+- `Troque por isto`: edge bom mata abuso sem matar login, leitura ou receita legitima.
+
+## Transfer Check
+
+- limite por IP quase nunca conta a historia inteira em produto B2B ou multi-tenant

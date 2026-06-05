@@ -14,6 +14,8 @@ Provar memoria de longo prazo e transferencia real.
 
 ## Audit Questions
 
+- qual requisito voce aprendeu a questionar antes de falar de ferramenta?
+- qual componente ou processo voce hoje tentaria remover antes de escalar?
 - qual decisao voce ainda lembra pelo problema, e nao pelo nome?
 - qual resposta ruim ainda te seduz?
 - em quais temas Rails continua sendo a explicacao certa?

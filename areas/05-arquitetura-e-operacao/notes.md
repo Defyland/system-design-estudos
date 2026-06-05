@@ -2,11 +2,11 @@
 
 ## Ida e Volta
 
-- [Chapter 01 - Pod Isolation and Tenant Routing](../../chapters/chapter-01-pod-isolation-and-tenant-routing.md)
-- [Chapter 02 - Relational Scaling and Operational Discipline](../../chapters/chapter-02-relational-scaling-and-operational-discipline.md)
-- [Chapter 07 - Durable Workflows, Retries and Compensation](../../chapters/chapter-07-durable-workflows-retries-and-compensation.md)
-- [Chapter 09 - Realtime Concurrency and Workload Isolation](../../chapters/chapter-09-realtime-concurrency-and-workload-isolation.md)
-- [Chapter 10 - Edge Rate Limiting, WAF and Gateway Boundaries](../../chapters/chapter-10-edge-rate-limiting-waf-and-gateway-boundaries.md)
+- [Chapter 02 - Pod Isolation and Tenant Routing](../../chapters/chapter-02-pod-isolation-and-tenant-routing.md)
+- [Chapter 01 - Relational Scaling and Operational Discipline](../../chapters/chapter-01-relational-scaling-and-operational-discipline.md)
+- [Chapter 05 - Durable Workflows, Retries and Compensation](../../chapters/chapter-05-durable-workflows-retries-and-compensation.md)
+- [Chapter 13 - Realtime Concurrency and Workload Isolation](../../chapters/chapter-13-realtime-concurrency-and-workload-isolation.md)
+- [Chapter 06 - Edge Rate Limiting, WAF and Gateway Boundaries](../../chapters/chapter-06-edge-rate-limiting-waf-and-gateway-boundaries.md)
 - [Example - Smaller SaaS Architecture Evolution](./examples/smaller-saas-architecture-evolution.md)
 - [Example - Incident Checkout Degradation](./examples/incident-checkout-degradation.md)
 - [Example - Slow Rollout Read Path Regression](./examples/slow-rollout-read-path-regression.md)

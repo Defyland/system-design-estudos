@@ -1,6 +1,6 @@
 # Smaller B2B - Idempotent Order Submission
 
-- [Chapter 05](../../../chapters/chapter-05-idempotent-writes-under-ambiguous-failure.md)
+- [Chapter 03](../../../chapters/chapter-03-idempotent-writes-under-ambiguous-failure.md)
 - [Rails Idempotency Snippet](../snippets/rails-idempotency-key-for-mutating-endpoints.md)
 
 ## Cenario

@@ -2,9 +2,19 @@
 
 ## Pull Chapters
 
-- [Chapter 06 - Event Backbone, Partitions and Consumer Scale](../chapters/chapter-06-event-backbone-partitions-and-consumer-scale.md)
-- [Chapter 08 - Distributed IDs and Ordering Guarantees](../chapters/chapter-08-distributed-ids-and-ordering-guarantees.md)
+- [Chapter 04 - Event Backbone, Partitions and Consumer Scale](../chapters/chapter-04-event-backbone-partitions-and-consumer-scale.md)
+- [Chapter 12 - Distributed IDs and Ordering Guarantees](../chapters/chapter-12-distributed-ids-and-ordering-guarantees.md)
 - [Chapter 14 - Feed Ranking and Fanout Trade-offs](../chapters/chapter-14-feed-ranking-and-fanout-trade-offs.md)
+
+## First Principles Pass Before Drawing
+
+Responda em voz alta antes de desenhar qualquer caixa:
+
+- `Requirement Less Dumb`: o feed ja precisa de ranking caro e backbone forte, ou parte do problema ainda e so cronologia e async simples?
+- `Delete`: qual fonte de evento, consumidor ou sinal de feed voce cortaria primeiro?
+- `Simplify`: qual combinacao minima de fila, fanout e ranking entrega valor agora?
+- `Accelerate`: como voce mediria qualidade de feed, lag de consumo e latencia de montagem cedo?
+- `Automate Last`: o que ainda nao merece pipeline pesado de ML ou governanca completa de eventos?
 
 ## Interview Mode
 

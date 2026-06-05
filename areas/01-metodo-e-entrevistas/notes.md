@@ -2,14 +2,15 @@
 
 ## Ida e Volta
 
-- [Chapter 04 - Search Indexing and Permission-Aware Retrieval](../../chapters/chapter-04-search-indexing-and-permission-aware-retrieval.md)
-- [Chapter 06 - Event Backbone, Partitions and Consumer Scale](../../chapters/chapter-06-event-backbone-partitions-and-consumer-scale.md)
-- [Chapter 12 - Geospatial Indexing for Marketplace Search](../../chapters/chapter-12-geospatial-indexing-for-marketplace-search.md)
+- [Chapter 09 - Search Indexing and Permission-Aware Retrieval](../../chapters/chapter-09-search-indexing-and-permission-aware-retrieval.md)
+- [Chapter 04 - Event Backbone, Partitions and Consumer Scale](../../chapters/chapter-04-event-backbone-partitions-and-consumer-scale.md)
+- [Chapter 11 - Geospatial Indexing for Marketplace Search](../../chapters/chapter-11-geospatial-indexing-for-marketplace-search.md)
 - [Chapter 14 - Feed Ranking and Fanout Trade-offs](../../chapters/chapter-14-feed-ranking-and-fanout-trade-offs.md)
 - [Interview Walkthrough Example](./examples/interview-walkthrough-marketplace-search.md)
 - [Interview Walkthrough Checkout Incident](./examples/interview-walkthrough-checkout-incident.md)
 - [Interview Checklist Snippet](./snippets/system-design-interview-checklist.md)
 - [Senior Production Answer Template](./snippets/senior-production-answer-template.md)
+- [First Principles Design Pass](./snippets/first-principles-design-pass.md)
 
 ## Requisitos
 
@@ -59,6 +60,28 @@ Framework enxuto que combina com este repo:
    - explique o que ganhou e o que piorou
 
 Este e o ponto em comum entre os chapters: eles ensinam decisoes, nao so componentes.
+
+## First Principles Design Pass
+
+Antes de escolher componente, rode este pass. Ele existe para te impedir de vender tecnologia cedo demais.
+
+1. `Requirement Less Dumb`
+   Pergunte qual requisito e real e qual e heranca, medo ou exagero. Isso evita overengineering porque corta exigencia artificial antes que ela vire arquitetura. Em entrevista, melhora a resposta porque mostra que voce sabe separar necessidade de slogan.
+2. `Delete`
+   Tente remover passo, componente, fluxo ou feature antes de adicionar outro. Isso evita complexidade acumulada em cima de coisa inutil. Em sistema real, costuma ser a forma mais barata de ganhar desempenho ou resiliencia.
+3. `Simplify`
+   Se algo ainda precisa existir, reduza para a menor forma que entrega a funcao. Isso evita otimizar topologia complexa demais cedo demais. Em entrevista, mostra julgamento porque voce comeca pelo desenho pequeno que ainda funciona.
+4. `Accelerate`
+   Encurte o ciclo de aprendizado. Pergunte como medir, testar, reverter e comparar a mudanca rapido. Isso evita ficar preso a arquitetura bonita que demora semanas para provar valor. Em producao e em entrevista, mostra que voce pensa em iteracao, nao so em estado final.
+5. `Automate Last`
+   Automatize depois que a versao simples ja esta certa e observavel. Isso evita automatizar desperdicio, esconder requisito ruim ou travar um processo que ainda muda. Em resposta senior, isso mostra disciplina operacional.
+
+Formula curta para usar em qualquer problema:
+- qual requisito eu questiono primeiro?
+- o que eu tentaria remover antes de adicionar?
+- qual e a forma mais simples que ainda funciona?
+- como eu aprendo rapido se isso esta certo?
+- o que eu so automatizo depois?
 
 ## Erros recorrentes
 

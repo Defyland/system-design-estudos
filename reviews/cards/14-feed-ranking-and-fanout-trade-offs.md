@@ -10,6 +10,12 @@
 - `Pergunta`: quando cronologia pura deixa de bastar?
 - `Resposta curta`: quando o produto precisa gastar melhor a atencao do usuario, nao so mostrar o mais novo.
 
+## Design Pass Recall
+
+- `Requirement`: a cronologia ja falhou ou o ranking ainda e precoce?
+- `Delete`: qual fonte de candidato ou sinal caro voce eliminaria primeiro?
+- `Forma mais simples`: inventario candidato enxuto com ranking leve antes de pipeline pesado.
+
 ## Wrong Turn
 
 - `Resposta ruim`: "fanout-on-write para todo mundo resolve feed".

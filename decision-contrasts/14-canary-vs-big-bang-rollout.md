@@ -27,6 +27,6 @@ Canary compra aprendizado gradual. Big-bang compra simplicidade e risco concentr
 
 ## Pull Chapters
 
-- [Chapter 02](../chapters/chapter-02-relational-scaling-and-operational-discipline.md)
-- [Chapter 10](../chapters/chapter-10-edge-rate-limiting-waf-and-gateway-boundaries.md)
+- [Chapter 01](../chapters/chapter-01-relational-scaling-and-operational-discipline.md)
+- [Chapter 06](../chapters/chapter-06-edge-rate-limiting-waf-and-gateway-boundaries.md)
 - [Chapter 14](../chapters/chapter-14-feed-ranking-and-fanout-trade-offs.md)

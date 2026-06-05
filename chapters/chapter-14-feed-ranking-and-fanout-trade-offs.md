@@ -4,6 +4,18 @@
 
 Como um feed deixa de ser lista cronologica e vira uma decisao de produto sobre inventario, ranking, frescor e custo.
 
+
+## Study Context
+
+- `Study Order`: `14/14` - `Fase 3 - Runtime e produto em escala`
+- `Caso real principal`: [Meta - News Feed Ranking](../real-world-cases/05-product-scenarios/meta-news-feed-ranking/README.md)
+- `Area principal`: [01 - Metodo e Entrevistas](../areas/01-metodo-e-entrevistas/README.md)
+- `Area secundaria`: [02 - Dados e Armazenamento](../areas/02-dados-e-armazenamento/README.md)
+- `Notes principais`: [Metodo e Entrevistas](../areas/01-metodo-e-entrevistas/notes.md), [Dados e Armazenamento](../areas/02-dados-e-armazenamento/notes.md)
+- `Lab`: [Lab - Chapter 14](../labs/chapters/chapter-14-feed-ranking-and-fanout-trade-offs.md)
+- `Review card`: [Card 14](../reviews/cards/14-feed-ranking-and-fanout-trade-offs.md)
+- `Contraste sugerido`: [Contrast 11 - Fanout-on-Write vs Fanout-on-Read](../decision-contrasts/11-fanout-on-write-vs-fanout-on-read.md)
+
 ## Historia de Produto
 
 Seu PO nao quer "mostrar posts". Ele quer gente abrindo o app e encontrando algo que valha o tempo dela. A partir daqui, o feed deixa de ser storage com `ORDER BY created_at` e vira uma fronteira onde produto e infraestrutura discutem o tempo inteiro.
@@ -14,9 +26,21 @@ Seu PO nao quer "mostrar posts". Ele quer gente abrindo o app e encontrando algo
 - produtos em que relevancia ja pesa mais do que ordem temporal pura
 - sistemas com muitos produtores, muitos consumidores e custo real para montar a lista final
 
-## Case Anchors
 
-- [Meta - News Feed Ranking](../real-world-cases/05-product-scenarios/meta-news-feed-ranking/README.md)
+## First Principles Design Pass
+
+- `Requirement Less Dumb`: o produto ja sofre com cronologia pura, ou estamos querendo ranking caro antes de provar que ele melhora a experiencia?
+- `Delete`: corte fontes de candidato, features e fanout ornamental que nao movem relevancia nem retencao.
+- `Simplify`: comece com um inventario candidato enxuto e ranking leve antes de convocar pipeline pesado de ML.
+- `Accelerate`: rode experimento curto de qualidade, frescor e latencia para aprender rapido se o ranking ganhou o direito de existir.
+- `Automate Last`: treinamento sofisticado, feature pipeline e ajuste automatico entram depois que a heuristica basica ja gera ganho real.
+
+### Fixacao Relampago: Design Pass
+
+- `Pergunta`: qual pergunta vem antes de falar em ranker e feed inteligente?
+- `Resposta com as suas palavras`: eu preciso provar que mostrar o mais novo primeiro ja nao entrega bem o objetivo do produto.
+- `Resposta ruim que parece boa`: "feed grande sempre termina em ML".
+- `Troque por isto`: primeiro eu provo a falha da cronologia e o ganho de relevancia; so depois eu pago o custo do ranking.
 
 ## Foco em Entrevistas
 
@@ -24,15 +48,6 @@ Seu PO nao quer "mostrar posts". Ele quer gente abrindo o app e encontrando algo
 - quando ranking e parte do produto, nao perfumaria de ML
 - como falar de frescor, inventario candidato, diversidade e custo com julgamento
 
-## Study Links
-
-- [Area - Metodo e Entrevistas](../areas/01-metodo-e-entrevistas/README.md)
-- [Notes - Metodo e Entrevistas](../areas/01-metodo-e-entrevistas/notes.md)
-- [Example - Interview Walkthrough](../areas/01-metodo-e-entrevistas/examples/interview-walkthrough-marketplace-search.md)
-- [Snippet - Interview Checklist](../areas/01-metodo-e-entrevistas/snippets/system-design-interview-checklist.md)
-- [Area - Dados e Armazenamento](../areas/02-dados-e-armazenamento/README.md)
-- [Notes - Dados e Armazenamento](../areas/02-dados-e-armazenamento/notes.md)
-- [Lab](../labs/chapters/chapter-14-feed-ranking-and-fanout-trade-offs.md)
 
 ## A Tensao Real
 
@@ -274,5 +289,5 @@ Feed nao e um problema de lista. E um problema de escolha sob restricao. A Meta 
 
 ## Navigation
 
-- [Prev](./chapter-13-critical-checkout-flows-and-auth-boundaries.md)
+- [Prev](./chapter-13-realtime-concurrency-and-workload-isolation.md)
 - [Index](./README.md)

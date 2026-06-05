@@ -2,10 +2,20 @@
 
 ## Pull Chapters
 
-- [Chapter 05 - Idempotent Writes Under Ambiguous Failure](../chapters/chapter-05-idempotent-writes-under-ambiguous-failure.md)
-- [Chapter 10 - Edge Rate Limiting, WAF and Gateway Boundaries](../chapters/chapter-10-edge-rate-limiting-waf-and-gateway-boundaries.md)
-- [Chapter 12 - Geospatial Indexing for Marketplace Search](../chapters/chapter-12-geospatial-indexing-for-marketplace-search.md)
-- [Chapter 13 - Critical Checkout Flows and Auth Boundaries](../chapters/chapter-13-critical-checkout-flows-and-auth-boundaries.md)
+- [Chapter 03 - Idempotent Writes Under Ambiguous Failure](../chapters/chapter-03-idempotent-writes-under-ambiguous-failure.md)
+- [Chapter 06 - Edge Rate Limiting, WAF and Gateway Boundaries](../chapters/chapter-06-edge-rate-limiting-waf-and-gateway-boundaries.md)
+- [Chapter 11 - Geospatial Indexing for Marketplace Search](../chapters/chapter-11-geospatial-indexing-for-marketplace-search.md)
+- [Chapter 07 - Critical Checkout Flows and Auth Boundaries](../chapters/chapter-07-critical-checkout-flows-and-auth-boundaries.md)
+
+## First Principles Pass Before Drawing
+
+Responda em voz alta antes de desenhar qualquer caixa:
+
+- `Requirement Less Dumb`: o produto precisa mesmo de busca super precisa, checkout super centralizado e protecao dura ao mesmo tempo, ou algumas partes ainda aceitam forma menor?
+- `Delete`: qual duplicacao de pagamento, busca ou protecao de borda voce cortaria primeiro?
+- `Simplify`: qual e o menor desenho que separa descoberta, checkout critico e protecao de entrada sem overengineering?
+- `Accelerate`: quais metricas de conversao, timeout, conflito e backlog voce abriria primeiro?
+- `Automate Last`: o que ainda nao merece roteamento inteligente, retry adaptativo ou automacao espacial pesada?
 
 ## Interview Mode
 

@@ -27,4 +27,4 @@ Banco coordena estado. Blob store aguenta peso e lifecycle.
 
 ## Pull Chapters
 
-- [Chapter 03](../chapters/chapter-03-blob-durability-and-storage-tiers.md)
+- [Chapter 08](../chapters/chapter-08-blob-durability-and-storage-tiers.md)

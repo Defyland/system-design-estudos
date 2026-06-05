@@ -1,0 +1,170 @@
+version: 1
+title: System Design Estudos
+default_order: chapter
+phases:
+  - id: fase-1
+    title: Fase 1 - Base forte
+    chapters: [1, 2, 3, 4, 5, 6]
+  - id: fase-2
+    title: Fase 2 - Caminhos criticos e dados especializados
+    chapters: [7, 8, 9, 10, 11]
+  - id: fase-3
+    title: Fase 3 - Runtime e produto em escala
+    chapters: [12, 13, 14]
+areas:
+  - id: 01-metodo-e-entrevistas
+    title: Metodo e Entrevistas
+  - id: 02-dados-e-armazenamento
+    title: Dados e Armazenamento
+  - id: 03-filas-e-consistencia
+    title: Filas e Consistencia
+  - id: 04-edge-rede-e-acesso
+    title: Edge, Rede e Acesso
+  - id: 05-arquitetura-e-operacao
+    title: Arquitetura e Operacao
+  - id: 06-foundations-distribuidas
+    title: Foundations Distribuidas
+  - id: 07-componentes-de-sistemas
+    title: Componentes de Sistemas
+  - id: 08-sistemas-ia
+    title: Sistemas de IA
+chapters:
+  - number: 1
+    slug: chapter-01-relational-scaling-and-operational-discipline
+    phase: fase-1
+    areas: [02-dados-e-armazenamento, 05-arquitetura-e-operacao]
+    cases: [github-rails-and-mysql-at-scale, shopify-pods-and-modular-monolith]
+    simulations: [cache, sharding-pod-isolation]
+    estimated_minutes: 10
+    mastery_objectives: [read/write split, cache-aside, replica lag, migration safety]
+    interview_objectives: [defender SQL com disciplina operacional, evitar NoSQL prematuro]
+  - number: 2
+    slug: chapter-02-pod-isolation-and-tenant-routing
+    phase: fase-1
+    areas: [05-arquitetura-e-operacao, 02-dados-e-armazenamento]
+    cases: [shopify-pods-and-modular-monolith]
+    simulations: [sharding-pod-isolation]
+    estimated_minutes: 10
+    mastery_objectives: [tenant routing, blast radius, noisy tenant]
+    interview_objectives: [explicar isolamento antes de microservicos]
+  - number: 3
+    slug: chapter-03-idempotent-writes-under-ambiguous-failure
+    phase: fase-1
+    areas: [03-filas-e-consistencia]
+    cases: [stripe-idempotent-payments]
+    simulations: [rate-limit-vs-load-shedding]
+    estimated_minutes: 10
+    mastery_objectives: [idempotency key, retry ambiguity, effect-once]
+    interview_objectives: [proteger efeito antes de repetir request]
+  - number: 4
+    slug: chapter-04-event-backbone-partitions-and-consumer-scale
+    phase: fase-1
+    areas: [03-filas-e-consistencia, 07-componentes-de-sistemas]
+    cases: [linkedin-kafka-backbone]
+    simulations: [event-backbone-consumer-lag]
+    estimated_minutes: 10
+    mastery_objectives: [partition key, consumer lag, replay blast radius]
+    interview_objectives: [diferenciar fila simples de backbone de eventos]
+  - number: 5
+    slug: chapter-05-durable-workflows-retries-and-compensation
+    phase: fase-1
+    areas: [03-filas-e-consistencia, 05-arquitetura-e-operacao]
+    cases: [uber-cadence-workflows]
+    simulations: [saga-compensation]
+    estimated_minutes: 10
+    mastery_objectives: [state machine, compensation, timeout]
+    interview_objectives: [saber quando workflow paga o custo]
+  - number: 6
+    slug: chapter-06-edge-rate-limiting-waf-and-gateway-boundaries
+    phase: fase-1
+    areas: [04-edge-rede-e-acesso, 07-componentes-de-sistemas]
+    cases: [cloudflare-edge-platform]
+    simulations: [rate-limit-vs-load-shedding]
+    estimated_minutes: 10
+    mastery_objectives: [edge protection, WAF, fairness]
+    interview_objectives: [separar rate limit de autorizacao]
+  - number: 7
+    slug: chapter-07-critical-checkout-flows-and-auth-boundaries
+    phase: fase-2
+    areas: [04-edge-rede-e-acesso, 03-filas-e-consistencia]
+    cases: [uber-unified-checkout]
+    simulations: [saga-compensation, circuit-breaker]
+    estimated_minutes: 10
+    mastery_objectives: [checkout boundary, auth friction, PSP timeout]
+    interview_objectives: [proteger receita sem duplicar cobranca]
+  - number: 8
+    slug: chapter-08-blob-durability-and-storage-tiers
+    phase: fase-2
+    areas: [02-dados-e-armazenamento]
+    cases: [dropbox-magic-pocket-blob-store]
+    simulations: [cache]
+    estimated_minutes: 10
+    mastery_objectives: [metadata vs blob, lifecycle, cold tier]
+    interview_objectives: [explicar storage por durabilidade e custo]
+  - number: 9
+    slug: chapter-09-search-indexing-and-permission-aware-retrieval
+    phase: fase-2
+    areas: [02-dados-e-armazenamento, 08-sistemas-ia]
+    cases: [dropbox-nautilus-search]
+    simulations: [search-freshness-reindex, rag-vector-search]
+    estimated_minutes: 10
+    mastery_objectives: [index lag, ACL-aware search, reindex]
+    interview_objectives: [nao tratar ACL como filtro decorativo]
+  - number: 10
+    slug: chapter-10-cdn-placement-dns-and-cache-invalidation
+    phase: fase-2
+    areas: [04-edge-rede-e-acesso, 07-componentes-de-sistemas]
+    cases: [netflix-open-connect-cdn, youtube-video-delivery]
+    simulations: [cache, circuit-breaker]
+    estimated_minutes: 10
+    mastery_objectives: [TTL, purge, origin protection, georouting]
+    interview_objectives: [separar CDN cache de app cache]
+  - number: 11
+    slug: chapter-11-geospatial-indexing-for-marketplace-search
+    phase: fase-2
+    areas: [02-dados-e-armazenamento]
+    cases: [uber-h3-geospatial-marketplace]
+    simulations: [search-freshness-reindex]
+    estimated_minutes: 10
+    mastery_objectives: [candidate generation, H3, exact distance]
+    interview_objectives: [reduzir custo sem destruir precisao]
+  - number: 12
+    slug: chapter-12-distributed-ids-and-ordering-guarantees
+    phase: fase-3
+    areas: [03-filas-e-consistencia, 06-foundations-distribuidas]
+    cases: [twitter-snowflake-ids, bitly-url-shortener]
+    simulations: [sharding-pod-isolation]
+    estimated_minutes: 10
+    mastery_objectives: [worker id, clock rollback, ordering]
+    interview_objectives: [saber quando ID coordenado vale o custo]
+  - number: 13
+    slug: chapter-13-realtime-concurrency-and-workload-isolation
+    phase: fase-3
+    areas: [05-arquitetura-e-operacao, 03-filas-e-consistencia]
+    cases: [discord-elixir-realtime-scale, whatsapp-realtime-messaging]
+    simulations: [event-backbone-consumer-lag, circuit-breaker]
+    estimated_minutes: 10
+    mastery_objectives: [presence, hot room, backpressure]
+    interview_objectives: [separar mensagem duravel de presence efemera]
+  - number: 14
+    slug: chapter-14-feed-ranking-and-fanout-trade-offs
+    phase: fase-3
+    areas: [01-metodo-e-entrevistas, 08-sistemas-ia]
+    cases: [meta-news-feed-ranking, spotify-personalization]
+    simulations: [fanout-feed-ranking-cost, llm-gateway-token-cost]
+    estimated_minutes: 10
+    mastery_objectives: [candidate inventory, fanout cost, ranking latency]
+    interview_objectives: [explicar ranking sem vender ML prematuro]
+simulation_labs:
+  - load-balancer
+  - cache
+  - rate-limit-vs-load-shedding
+  - circuit-breaker
+  - canary-rollout
+  - sharding-pod-isolation
+  - saga-compensation
+  - event-backbone-consumer-lag
+  - search-freshness-reindex
+  - fanout-feed-ranking-cost
+  - rag-vector-search
+  - llm-gateway-token-cost

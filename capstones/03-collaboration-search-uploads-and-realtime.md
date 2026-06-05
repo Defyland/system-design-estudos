@@ -2,10 +2,20 @@
 
 ## Pull Chapters
 
-- [Chapter 03 - Blob Durability and Storage Tiers](../chapters/chapter-03-blob-durability-and-storage-tiers.md)
-- [Chapter 04 - Search Indexing and Permission-Aware Retrieval](../chapters/chapter-04-search-indexing-and-permission-aware-retrieval.md)
-- [Chapter 09 - Realtime Concurrency and Workload Isolation](../chapters/chapter-09-realtime-concurrency-and-workload-isolation.md)
-- [Chapter 11 - CDN Placement, DNS and Cache Invalidation](../chapters/chapter-11-cdn-placement-dns-and-cache-invalidation.md)
+- [Chapter 08 - Blob Durability and Storage Tiers](../chapters/chapter-08-blob-durability-and-storage-tiers.md)
+- [Chapter 09 - Search Indexing and Permission-Aware Retrieval](../chapters/chapter-09-search-indexing-and-permission-aware-retrieval.md)
+- [Chapter 13 - Realtime Concurrency and Workload Isolation](../chapters/chapter-13-realtime-concurrency-and-workload-isolation.md)
+- [Chapter 10 - CDN Placement, DNS and Cache Invalidation](../chapters/chapter-10-cdn-placement-dns-and-cache-invalidation.md)
+
+## First Principles Pass Before Drawing
+
+Responda em voz alta antes de desenhar qualquer caixa:
+
+- `Requirement Less Dumb`: o que precisa ser realtime, buscavel e duravel agora, e o que ainda pode ser eventual?
+- `Delete`: qual copia de blob, indexacao redundante ou evento ao vivo voce removeria primeiro?
+- `Simplify`: qual desenho minimo separa upload, indexacao e colaboracao sem criar tres plataformas novas?
+- `Accelerate`: que dashboards de index lag, backlog realtime e restore voce abriria cedo?
+- `Automate Last`: o que ainda nao merece pipeline sofisticado ou autoscale agressivo?
 
 ## Interview Mode
 

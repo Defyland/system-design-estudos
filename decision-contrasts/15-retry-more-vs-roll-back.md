@@ -27,6 +27,6 @@ Retry ajuda quando o contrato continua seguro. Rollback ajuda quando a mudanca n
 
 ## Pull Chapters
 
-- [Chapter 05](../chapters/chapter-05-idempotent-writes-under-ambiguous-failure.md)
-- [Chapter 07](../chapters/chapter-07-durable-workflows-retries-and-compensation.md)
-- [Chapter 13](../chapters/chapter-13-critical-checkout-flows-and-auth-boundaries.md)
+- [Chapter 03](../chapters/chapter-03-idempotent-writes-under-ambiguous-failure.md)
+- [Chapter 05](../chapters/chapter-05-durable-workflows-retries-and-compensation.md)
+- [Chapter 07](../chapters/chapter-07-critical-checkout-flows-and-auth-boundaries.md)

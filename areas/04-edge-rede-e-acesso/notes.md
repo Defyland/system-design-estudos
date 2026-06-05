@@ -2,12 +2,12 @@
 
 ## Ida e Volta
 
-- [Chapter 10 - Edge Rate Limiting, WAF and Gateway Boundaries](../../chapters/chapter-10-edge-rate-limiting-waf-and-gateway-boundaries.md)
-- [Chapter 11 - CDN Placement, DNS and Cache Invalidation](../../chapters/chapter-11-cdn-placement-dns-and-cache-invalidation.md)
-- [Chapter 13 - Critical Checkout Flows and Auth Boundaries](../../chapters/chapter-13-critical-checkout-flows-and-auth-boundaries.md)
+- [Chapter 06 - Edge Rate Limiting, WAF and Gateway Boundaries](../../chapters/chapter-06-edge-rate-limiting-waf-and-gateway-boundaries.md)
+- [Chapter 10 - CDN Placement, DNS and Cache Invalidation](../../chapters/chapter-10-cdn-placement-dns-and-cache-invalidation.md)
+- [Chapter 07 - Critical Checkout Flows and Auth Boundaries](../../chapters/chapter-07-critical-checkout-flows-and-auth-boundaries.md)
 - [Example - Smaller Marketplace Checkout Boundary](./examples/smaller-marketplace-checkout-boundary.md)
 - [Snippet - Rails Checkout Boundary and Auth Guard](./snippets/rails-checkout-boundary-and-auth-guard.md)
-- [Lab - Chapter 13](../../labs/chapters/chapter-13-critical-checkout-flows-and-auth-boundaries.md)
+- [Lab - Chapter 07](../../labs/chapters/chapter-07-critical-checkout-flows-and-auth-boundaries.md)
 
 ## Modelos Mentais
 
@@ -84,4 +84,4 @@ Isso ja entrega quase todo o aprendizado importante do chapter sem introduzir mi
 
 ## Voltar para o chapter
 
-- [Releia o julgamento arquitetural completo no Chapter 13](../../chapters/chapter-13-critical-checkout-flows-and-auth-boundaries.md)
+- [Releia o julgamento arquitetural completo no Chapter 07](../../chapters/chapter-07-critical-checkout-flows-and-auth-boundaries.md)

@@ -2,15 +2,15 @@
 
 ## Ida e Volta
 
-- [Chapter 01 - Pod Isolation and Tenant Routing](../../chapters/chapter-01-pod-isolation-and-tenant-routing.md)
-- [Chapter 02 - Relational Scaling and Operational Discipline](../../chapters/chapter-02-relational-scaling-and-operational-discipline.md)
-- [Chapter 03 - Blob Durability and Storage Tiers](../../chapters/chapter-03-blob-durability-and-storage-tiers.md)
-- [Chapter 04 - Search Indexing and Permission-Aware Retrieval](../../chapters/chapter-04-search-indexing-and-permission-aware-retrieval.md)
-- [Chapter 08 - Distributed IDs and Ordering Guarantees](../../chapters/chapter-08-distributed-ids-and-ordering-guarantees.md)
-- [Chapter 12 - Geospatial Indexing for Marketplace Search](../../chapters/chapter-12-geospatial-indexing-for-marketplace-search.md)
+- [Chapter 02 - Pod Isolation and Tenant Routing](../../chapters/chapter-02-pod-isolation-and-tenant-routing.md)
+- [Chapter 01 - Relational Scaling and Operational Discipline](../../chapters/chapter-01-relational-scaling-and-operational-discipline.md)
+- [Chapter 08 - Blob Durability and Storage Tiers](../../chapters/chapter-08-blob-durability-and-storage-tiers.md)
+- [Chapter 09 - Search Indexing and Permission-Aware Retrieval](../../chapters/chapter-09-search-indexing-and-permission-aware-retrieval.md)
+- [Chapter 12 - Distributed IDs and Ordering Guarantees](../../chapters/chapter-12-distributed-ids-and-ordering-guarantees.md)
+- [Chapter 11 - Geospatial Indexing for Marketplace Search](../../chapters/chapter-11-geospatial-indexing-for-marketplace-search.md)
 - [Example - Smaller SaaS Read/Write and Cache](./examples/smaller-saas-read-write-and-cache.md)
 - [Snippet - Rails Read/Write Split and Cache Aside](./snippets/rails-read-write-split-and-cache-aside.md)
-- [Lab - Chapter 02](../../labs/chapters/chapter-02-relational-scaling-and-operational-discipline.md)
+- [Lab - Chapter 01](../../labs/chapters/chapter-01-relational-scaling-and-operational-discipline.md)
 
 ## Modelos Mentais
 
@@ -64,4 +64,4 @@ Empresa menor quase nunca precisa copiar a topologia de GitHub ou Shopify. Preci
 
 ## Voltar ao Chapter
 
-- [Back to Chapter 02](../../chapters/chapter-02-relational-scaling-and-operational-discipline.md)
+- [Back to Chapter 01](../../chapters/chapter-01-relational-scaling-and-operational-discipline.md)

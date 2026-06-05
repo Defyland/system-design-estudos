@@ -44,5 +44,5 @@ Se dois controllers diferentes conseguem cobrar o cliente ou concluir o pedido, 
 
 ## Proximo passo
 
-- [Voltar ao Chapter 13](../../../chapters/chapter-13-critical-checkout-flows-and-auth-boundaries.md)
+- [Voltar ao Chapter 07](../../../chapters/chapter-07-critical-checkout-flows-and-auth-boundaries.md)
 - [Abrir o snippet Rails-first](../snippets/rails-checkout-boundary-and-auth-guard.md)

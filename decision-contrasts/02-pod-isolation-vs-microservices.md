@@ -27,5 +27,5 @@ Pod isola por tenant. Microservice separa por capacidade ou dominio.
 
 ## Pull Chapters
 
-- [Chapter 01](../chapters/chapter-01-pod-isolation-and-tenant-routing.md)
-- [Chapter 02](../chapters/chapter-02-relational-scaling-and-operational-discipline.md)
+- [Chapter 02](../chapters/chapter-02-pod-isolation-and-tenant-routing.md)
+- [Chapter 01](../chapters/chapter-01-relational-scaling-and-operational-discipline.md)

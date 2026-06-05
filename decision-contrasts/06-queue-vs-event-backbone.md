@@ -27,4 +27,4 @@ Fila entrega trabalho. Backbone compartilha fatos.
 
 ## Pull Chapters
 
-- [Chapter 06](../chapters/chapter-06-event-backbone-partitions-and-consumer-scale.md)
+- [Chapter 04](../chapters/chapter-04-event-backbone-partitions-and-consumer-scale.md)

@@ -27,5 +27,5 @@ Edge bloqueia barato. App decide sentido de negocio.
 
 ## Pull Chapters
 
-- [Chapter 10](../chapters/chapter-10-edge-rate-limiting-waf-and-gateway-boundaries.md)
-- [Chapter 13](../chapters/chapter-13-critical-checkout-flows-and-auth-boundaries.md)
+- [Chapter 06](../chapters/chapter-06-edge-rate-limiting-waf-and-gateway-boundaries.md)
+- [Chapter 07](../chapters/chapter-07-critical-checkout-flows-and-auth-boundaries.md)

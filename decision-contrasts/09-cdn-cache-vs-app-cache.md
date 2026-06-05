@@ -27,5 +27,5 @@ CDN protege origem publica. App cache corta repeticao interna.
 
 ## Pull Chapters
 
-- [Chapter 02](../chapters/chapter-02-relational-scaling-and-operational-discipline.md)
-- [Chapter 11](../chapters/chapter-11-cdn-placement-dns-and-cache-invalidation.md)
+- [Chapter 01](../chapters/chapter-01-relational-scaling-and-operational-discipline.md)
+- [Chapter 10](../chapters/chapter-10-cdn-placement-dns-and-cache-invalidation.md)

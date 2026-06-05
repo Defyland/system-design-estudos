@@ -27,4 +27,4 @@ Snowflake compra unicidade distribuida com ordem util. UUID e serial compram sim
 
 ## Pull Chapters
 
-- [Chapter 08](../chapters/chapter-08-distributed-ids-and-ordering-guarantees.md)
+- [Chapter 12](../chapters/chapter-12-distributed-ids-and-ordering-guarantees.md)

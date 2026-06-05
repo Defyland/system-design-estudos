@@ -4,6 +4,16 @@
 
 - [Back to Chapter 14](../../chapters/chapter-14-feed-ranking-and-fanout-trade-offs.md)
 
+## First Pass
+
+Responda em voz alta antes de desenhar:
+
+- `Requirement Less Dumb`: a cronologia ja falhou para o produto ou voce esta pulando para ranking cedo demais?
+- `Delete`: qual fonte de candidato ou sinal caro voce removeria primeiro?
+- `Simplify`: qual e a menor forma de misturar fanout e ordenacao com valor real?
+- `Accelerate`: como voce mediria qualidade, frescor e latencia cedo?
+- `Automate Last`: o que ainda nao merece pipeline pesado de ML?
+
 ## Drill de 3 Minutos
 
 Responda em voz alta. Nao escreva; use o gabarito logo abaixo para corrigir na hora.

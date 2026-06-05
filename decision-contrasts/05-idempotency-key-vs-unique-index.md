@@ -27,4 +27,4 @@ Indice unico protege a linha. Idempotency key protege a mutacao sob retry ambigu
 
 ## Pull Chapters
 
-- [Chapter 05](../chapters/chapter-05-idempotent-writes-under-ambiguous-failure.md)
+- [Chapter 03](../chapters/chapter-03-idempotent-writes-under-ambiguous-failure.md)

@@ -1,6 +1,6 @@
 # Rails Idempotency Key For Mutating Endpoints
 
-- [Chapter 05](../../../chapters/chapter-05-idempotent-writes-under-ambiguous-failure.md)
+- [Chapter 03](../../../chapters/chapter-03-idempotent-writes-under-ambiguous-failure.md)
 - [Related Example](../examples/smaller-b2b-idempotent-order-submission.md)
 
 ## When to Use

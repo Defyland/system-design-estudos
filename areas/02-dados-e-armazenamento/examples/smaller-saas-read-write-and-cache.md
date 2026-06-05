@@ -43,4 +43,4 @@ Empresa menor nao precisa copiar GitHub ou Shopify em topologia. Precisa copiar 
 
 ## Proximo Passo
 
-Implemente o padrao com o snippet [Rails Read/Write Split and Cache Aside](../snippets/rails-read-write-split-and-cache-aside.md) e use o [Lab - Chapter 02](../../../labs/chapters/chapter-02-relational-scaling-and-operational-discipline.md) como experimento curto.
+Implemente o padrao com o snippet [Rails Read/Write Split and Cache Aside](../snippets/rails-read-write-split-and-cache-aside.md) e use o [Lab - Chapter 01](../../../labs/chapters/chapter-01-relational-scaling-and-operational-discipline.md) como experimento curto.

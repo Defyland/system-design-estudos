@@ -27,4 +27,4 @@ SQL filtra estado estruturado. Search index recupera texto com recall e ranking.
 
 ## Pull Chapters
 
-- [Chapter 04](../chapters/chapter-04-search-indexing-and-permission-aware-retrieval.md)
+- [Chapter 09](../chapters/chapter-09-search-indexing-and-permission-aware-retrieval.md)

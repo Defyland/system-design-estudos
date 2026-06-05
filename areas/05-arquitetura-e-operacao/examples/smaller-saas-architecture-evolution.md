@@ -31,7 +31,7 @@ No inicio, um monolito Rails resolve tudo. Depois surgem tres dores:
 
 ## Chapters ligados
 
-- [Chapter 01 - Pod Isolation and Tenant Routing](../../../chapters/chapter-01-pod-isolation-and-tenant-routing.md)
-- [Chapter 07 - Durable Workflows, Retries and Compensation](../../../chapters/chapter-07-durable-workflows-retries-and-compensation.md)
-- [Chapter 09 - Realtime Concurrency and Workload Isolation](../../../chapters/chapter-09-realtime-concurrency-and-workload-isolation.md)
-- [Chapter 10 - Edge Rate Limiting, WAF and Gateway Boundaries](../../../chapters/chapter-10-edge-rate-limiting-waf-and-gateway-boundaries.md)
+- [Chapter 02 - Pod Isolation and Tenant Routing](../../../chapters/chapter-02-pod-isolation-and-tenant-routing.md)
+- [Chapter 05 - Durable Workflows, Retries and Compensation](../../../chapters/chapter-05-durable-workflows-retries-and-compensation.md)
+- [Chapter 13 - Realtime Concurrency and Workload Isolation](../../../chapters/chapter-13-realtime-concurrency-and-workload-isolation.md)
+- [Chapter 06 - Edge Rate Limiting, WAF and Gateway Boundaries](../../../chapters/chapter-06-edge-rate-limiting-waf-and-gateway-boundaries.md)

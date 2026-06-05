@@ -2,10 +2,10 @@
 
 ## Ida e Volta
 
-- [Chapter 05 - Idempotent Writes Under Ambiguous Failure](../../chapters/chapter-05-idempotent-writes-under-ambiguous-failure.md)
-- [Chapter 06 - Event Backbone, Partitions and Consumer Scale](../../chapters/chapter-06-event-backbone-partitions-and-consumer-scale.md)
-- [Chapter 07 - Durable Workflows, Retries and Compensation](../../chapters/chapter-07-durable-workflows-retries-and-compensation.md)
-- [Chapter 08 - Distributed IDs and Ordering Guarantees](../../chapters/chapter-08-distributed-ids-and-ordering-guarantees.md)
+- [Chapter 03 - Idempotent Writes Under Ambiguous Failure](../../chapters/chapter-03-idempotent-writes-under-ambiguous-failure.md)
+- [Chapter 04 - Event Backbone, Partitions and Consumer Scale](../../chapters/chapter-04-event-backbone-partitions-and-consumer-scale.md)
+- [Chapter 05 - Durable Workflows, Retries and Compensation](../../chapters/chapter-05-durable-workflows-retries-and-compensation.md)
+- [Chapter 12 - Distributed IDs and Ordering Guarantees](../../chapters/chapter-12-distributed-ids-and-ordering-guarantees.md)
 - [Smaller B2B - Idempotent Order Submission](./examples/smaller-b2b-idempotent-order-submission.md)
 - [Rails Idempotency Key Snippet](./snippets/rails-idempotency-key-for-mutating-endpoints.md)
 
@@ -22,12 +22,12 @@
 
 | Situacao | Escolha padrao | Por que | Ver o chapter |
 | --- | --- | --- | --- |
-| `PUT` ou `DELETE` de um recurso totalmente identificado | Sem chave extra, mas com semantica realmente idempotente | O proprio contrato do recurso ja descreve substituicao ou remocao | [Chapter 05](../../chapters/chapter-05-idempotent-writes-under-ambiguous-failure.md) |
-| `POST` que cria pagamento, pedido ou reserva | `Idempotency-Key` + resposta persistida | O cliente pode perder a confirmacao e repetir a write | [Chapter 05](../../chapters/chapter-05-idempotent-writes-under-ambiguous-failure.md) |
-| Duplicacao local e o unico risco | Unique index de negocio | Mais simples e barato quando nao ha replay nem efeito externo relevante | [Chapter 05](../../chapters/chapter-05-idempotent-writes-under-ambiguous-failure.md) |
-| Fluxo vai para fila e pode ser reentregue | Chave na borda + consumer idempotente | A fila nao elimina a ambiguidade do primeiro `POST` | [Chapter 05](../../chapters/chapter-05-idempotent-writes-under-ambiguous-failure.md) |
-| Varios passos com confirmacao externa assincrona | Estado de negocio + correlacao de eventos | Nao basta deduplicar request; e preciso saber se o efeito final confirmou | [Chapter 05](../../chapters/chapter-05-idempotent-writes-under-ambiguous-failure.md) |
-| Muitos times e checkouts diferentes disputam a mesma infraestrutura de pagamento | Camada de checkout/orquestracao unica | Centraliza integracao, metodos de pagamento e recovery | [Chapter 05](../../chapters/chapter-05-idempotent-writes-under-ambiguous-failure.md) |
+| `PUT` ou `DELETE` de um recurso totalmente identificado | Sem chave extra, mas com semantica realmente idempotente | O proprio contrato do recurso ja descreve substituicao ou remocao | [Chapter 03](../../chapters/chapter-03-idempotent-writes-under-ambiguous-failure.md) |
+| `POST` que cria pagamento, pedido ou reserva | `Idempotency-Key` + resposta persistida | O cliente pode perder a confirmacao e repetir a write | [Chapter 03](../../chapters/chapter-03-idempotent-writes-under-ambiguous-failure.md) |
+| Duplicacao local e o unico risco | Unique index de negocio | Mais simples e barato quando nao ha replay nem efeito externo relevante | [Chapter 03](../../chapters/chapter-03-idempotent-writes-under-ambiguous-failure.md) |
+| Fluxo vai para fila e pode ser reentregue | Chave na borda + consumer idempotente | A fila nao elimina a ambiguidade do primeiro `POST` | [Chapter 03](../../chapters/chapter-03-idempotent-writes-under-ambiguous-failure.md) |
+| Varios passos com confirmacao externa assincrona | Estado de negocio + correlacao de eventos | Nao basta deduplicar request; e preciso saber se o efeito final confirmou | [Chapter 03](../../chapters/chapter-03-idempotent-writes-under-ambiguous-failure.md) |
+| Muitos times e checkouts diferentes disputam a mesma infraestrutura de pagamento | Camada de checkout/orquestracao unica | Centraliza integracao, metodos de pagamento e recovery | [Chapter 03](../../chapters/chapter-03-idempotent-writes-under-ambiguous-failure.md) |
 
 ## Empresa Menor Vs Empresa Maior
 
@@ -68,4 +68,4 @@ Veja o codigo base em [Rails Idempotency Key For Mutating Endpoints](./snippets/
 
 ## Volta Ao Chapter
 
-- [Voltar para o Chapter 05](../../chapters/chapter-05-idempotent-writes-under-ambiguous-failure.md)
+- [Voltar para o Chapter 03](../../chapters/chapter-03-idempotent-writes-under-ambiguous-failure.md)

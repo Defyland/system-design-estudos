@@ -30,5 +30,5 @@ Seu entrevistador pede: "desenhe uma busca de prestadores proximos". Nao comece 
 
 ## Chapters ligados
 
-- [Chapter 04 - Search Indexing and Permission-Aware Retrieval](../../../chapters/chapter-04-search-indexing-and-permission-aware-retrieval.md)
-- [Chapter 12 - Geospatial Indexing for Marketplace Search](../../../chapters/chapter-12-geospatial-indexing-for-marketplace-search.md)
+- [Chapter 09 - Search Indexing and Permission-Aware Retrieval](../../../chapters/chapter-09-search-indexing-and-permission-aware-retrieval.md)
+- [Chapter 11 - Geospatial Indexing for Marketplace Search](../../../chapters/chapter-11-geospatial-indexing-for-marketplace-search.md)

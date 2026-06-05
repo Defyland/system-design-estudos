@@ -27,4 +27,4 @@ Replica tira peso da primary. Cache tira repeticao da leitura.
 
 ## Pull Chapters
 
-- [Chapter 02](../chapters/chapter-02-relational-scaling-and-operational-discipline.md)
+- [Chapter 01](../chapters/chapter-01-relational-scaling-and-operational-discipline.md)

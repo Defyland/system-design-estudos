@@ -4,15 +4,19 @@ Repositorio de apoio para estudar system design sem inflar a estrutura com pasta
 
 ## Comece Por Aqui
 
-Se voce quer uma sequencia objetiva, abra isto primeiro:
+Comece em [Chapter 01 - Relational Scaling and Operational Discipline](./chapters/chapter-01-relational-scaling-and-operational-discipline.md).
+
+Se quiser o mapa pedagogico da trilha canonica, abra:
 - [Ordem de Estudo](./STUDY_ORDER.md)
+- [Curriculum manifest](./curriculum.yml)
 
 O caminho padrao do repo agora e:
-1. ler [STUDY_ORDER.md](./STUDY_ORDER.md)
-2. seguir os chapters na ordem definida
-3. fazer o lab e o review card do mesmo chapter
-4. a cada 2 chapters, fazer 1 contraste
-5. a cada 4 chapters, fazer 1 capstone
+1. comecar em `Chapter 01`
+2. rodar o `First Principles Design Pass` dentro do chapter antes da arquitetura final
+3. seguir os chapters em ordem numerica
+4. fazer o lab e o review card do mesmo chapter
+5. a cada 2 chapters, fazer 1 contraste
+6. a cada 4 chapters, fazer 1 capstone
 
 ## O que ficou
 
@@ -22,6 +26,9 @@ Mantive pasta apenas para blocos que de fato acumulam material:
 - [03 - Filas e Consistencia](./areas/03-filas-e-consistencia/README.md)
 - [04 - Edge, Rede e Acesso](./areas/04-edge-rede-e-acesso/README.md)
 - [05 - Arquitetura e Operacao](./areas/05-arquitetura-e-operacao/README.md)
+- [06 - Foundations Distribuidas](./areas/06-foundations-distribuidas/README.md)
+- [07 - Componentes de Sistemas](./areas/07-componentes-de-sistemas/README.md)
+- [08 - Sistemas de IA](./areas/08-sistemas-ia/README.md)
 
 ## O que nao virou pasta
 
@@ -36,6 +43,8 @@ Esses itens foram absorvidos nos READMEs das areas, porque nao justificam uma ar
 
 - `areas/`: blocos principais de estudo
 - cada area tem `README.md`, `notes.md`, `examples/` e `snippets/`
+- `simulation-labs/`: simulacoes guiadas para carga, custo, falha e trade-off
+- `curriculum.yml`: fonte canonica para o cockpit navegar a trilha
 - `assets/ementa/`: imagens da ementa original
 
 ## Regra pratica
@@ -50,7 +59,7 @@ entao ele nao merece uma pasta propria.
 
 ## Materiais de origem
 
-- [Ordem de estudo recomendada](./STUDY_ORDER.md)
+- [Ordem de estudo canonica](./STUDY_ORDER.md)
 - [Ementa consolidada](./COURSE_OUTLINE.md)
 - [Plano de estudo](./STUDY_PLAN.md)
 - [Metodo de estudo orientado por casos reais](./CASE_DRIVEN_STUDY.md)
@@ -59,6 +68,7 @@ entao ele nao merece uma pasta propria.
 - [Revisoes espacadas](./reviews/README.md)
 - [Contrastes de decisao](./decision-contrasts/README.md)
 - [Capstones cumulativos](./capstones/README.md)
+- [Simulation labs](./simulation-labs/README.md)
 - [Imagem da ementa - pagina 1](./assets/ementa/page-1.png)
 - [Imagem da ementa - pagina 2](./assets/ementa/page-2.png)
 

@@ -27,4 +27,4 @@ Job encadeado move etapas. Workflow duravel lembra onde o processo esta.
 
 ## Pull Chapters
 
-- [Chapter 07](../chapters/chapter-07-durable-workflows-retries-and-compensation.md)
+- [Chapter 05](../chapters/chapter-05-durable-workflows-retries-and-compensation.md)

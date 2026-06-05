@@ -2,9 +2,19 @@
 
 ## Pull Chapters
 
-- [Chapter 01 - Pod Isolation and Tenant Routing](../chapters/chapter-01-pod-isolation-and-tenant-routing.md)
-- [Chapter 02 - Relational Scaling and Operational Discipline](../chapters/chapter-02-relational-scaling-and-operational-discipline.md)
-- [Chapter 10 - Edge Rate Limiting, WAF and Gateway Boundaries](../chapters/chapter-10-edge-rate-limiting-waf-and-gateway-boundaries.md)
+- [Chapter 02 - Pod Isolation and Tenant Routing](../chapters/chapter-02-pod-isolation-and-tenant-routing.md)
+- [Chapter 01 - Relational Scaling and Operational Discipline](../chapters/chapter-01-relational-scaling-and-operational-discipline.md)
+- [Chapter 06 - Edge Rate Limiting, WAF and Gateway Boundaries](../chapters/chapter-06-edge-rate-limiting-waf-and-gateway-boundaries.md)
+
+## First Principles Pass Before Drawing
+
+Responda em voz alta antes de desenhar qualquer caixa:
+
+- `Requirement Less Dumb`: o problema real e escala geral ou poucos tenants e leituras quentes puxando a plataforma?
+- `Delete`: qual customizacao, query ou fluxo cross-tenant voce cortaria primeiro?
+- `Simplify`: qual desenho minimo com banco relacional, replica e isolamento parcial resolve a dor atual?
+- `Accelerate`: como voce mediria tenant quente, replica lag e sucesso de tenant move cedo?
+- `Automate Last`: o que ainda nao merece rebalanceamento automatico ou separacao de servicos?
 
 ## Interview Mode
 

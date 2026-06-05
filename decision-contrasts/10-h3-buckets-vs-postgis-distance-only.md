@@ -27,4 +27,4 @@ H3 corta universo por area. PostGIS mede distancia direto.
 
 ## Pull Chapters
 
-- [Chapter 12](../chapters/chapter-12-geospatial-indexing-for-marketplace-search.md)
+- [Chapter 11](../chapters/chapter-11-geospatial-indexing-for-marketplace-search.md)

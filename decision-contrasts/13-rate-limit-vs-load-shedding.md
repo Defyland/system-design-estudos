@@ -27,4 +27,4 @@ Rate limit governa entrada. Load shedding salva recurso ja sufocado.
 
 ## Pull Chapters
 
-- [Chapter 10](../chapters/chapter-10-edge-rate-limiting-waf-and-gateway-boundaries.md)
+- [Chapter 06](../chapters/chapter-06-edge-rate-limiting-waf-and-gateway-boundaries.md)

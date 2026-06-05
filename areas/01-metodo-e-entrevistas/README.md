@@ -28,9 +28,9 @@ System design sem metodo vira opiniao solta. Esta area concentra o processo de r
 
 ## Chapters que puxam esta area
 
-- [Chapter 04 - Search Indexing and Permission-Aware Retrieval](../../chapters/chapter-04-search-indexing-and-permission-aware-retrieval.md)
-- [Chapter 06 - Event Backbone, Partitions and Consumer Scale](../../chapters/chapter-06-event-backbone-partitions-and-consumer-scale.md)
-- [Chapter 12 - Geospatial Indexing for Marketplace Search](../../chapters/chapter-12-geospatial-indexing-for-marketplace-search.md)
+- [Chapter 09 - Search Indexing and Permission-Aware Retrieval](../../chapters/chapter-09-search-indexing-and-permission-aware-retrieval.md)
+- [Chapter 04 - Event Backbone, Partitions and Consumer Scale](../../chapters/chapter-04-event-backbone-partitions-and-consumer-scale.md)
+- [Chapter 11 - Geospatial Indexing for Marketplace Search](../../chapters/chapter-11-geospatial-indexing-for-marketplace-search.md)
 - [Chapter 14 - Feed Ranking and Fanout Trade-offs](../../chapters/chapter-14-feed-ranking-and-fanout-trade-offs.md)
 
 ## Regra de implementacao
