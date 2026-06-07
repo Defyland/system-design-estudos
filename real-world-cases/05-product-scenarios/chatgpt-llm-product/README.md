@@ -31,3 +31,8 @@ Caso para estudar gateway de modelo, streaming, RAG, safety, custo por token e o
 - tratar prompt injection como problema de boundary
 - traduzir para copiloto interno de SaaS menor
 
+## Foundation Bridge
+
+- [Chapter 03 - GPT Blocks, Residual Paths and Generation Flow](../../../areas/08-sistemas-ia/llm-foundations/chapters/03-gpt-blocks-residual-paths-and-generation-flow.md)
+- [Chapter 05 - Finetuning, Instruction Following and LoRA Boundaries](../../../areas/08-sistemas-ia/llm-foundations/chapters/05-finetuning-instruction-following-and-lora-boundaries.md)
+- [Chapter 06 - From Model Internals to LLM System Design](../../../areas/08-sistemas-ia/llm-foundations/chapters/06-from-model-internals-to-llm-system-design.md)

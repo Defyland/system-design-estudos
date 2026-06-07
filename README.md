@@ -21,6 +21,8 @@ Se quiser o mapa pedagogico da mesma trilha:
 - [Curriculum manifest](curriculum.yml)
 <!-- curriculum:end:readme-start -->
 
+Se quiser IA com fundamento de modelo, nao so API, use a trilha paralela [LLM Foundations](areas/08-sistemas-ia/llm-foundations/README.md). Ela nao altera a ordem dos `14 chapters` nem o `curriculum.yml`.
+
 O caminho padrao do repo agora e:
 1. comecar em `Chapter 01`
 2. rodar o `First Principles Design Pass` dentro do chapter antes da arquitetura final
@@ -89,6 +91,7 @@ entao ele nao merece uma pasta propria.
 - [Contrastes de decisao](./decision-contrasts/README.md)
 - [Capstones cumulativos](./capstones/README.md)
 - [Simulation labs](./simulation-labs/README.md)
+- [LLM Foundations](./areas/08-sistemas-ia/llm-foundations/README.md)
 - [Imagem da ementa - pagina 1](./assets/ementa/page-1.png)
 - [Imagem da ementa - pagina 2](./assets/ementa/page-2.png)
 

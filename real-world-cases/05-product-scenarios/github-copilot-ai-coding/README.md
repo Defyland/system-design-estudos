@@ -30,3 +30,8 @@ Caso para estudar AI coding, contexto de repositorio, multi-model routing, agent
 - modelo certo depende de tarefa, latencia e custo
 - traduzir para assistente interno de desenvolvimento
 
+## Foundation Bridge
+
+- [Chapter 02 - Self-Attention, Causal Masking and Multi-Head Structure](../../../areas/08-sistemas-ia/llm-foundations/chapters/02-self-attention-causal-masking-and-multi-head-structure.md)
+- [Chapter 05 - Finetuning, Instruction Following and LoRA Boundaries](../../../areas/08-sistemas-ia/llm-foundations/chapters/05-finetuning-instruction-following-and-lora-boundaries.md)
+- [Chapter 06 - From Model Internals to LLM System Design](../../../areas/08-sistemas-ia/llm-foundations/chapters/06-from-model-internals-to-llm-system-design.md)

@@ -4,7 +4,11 @@
 
 Produtos com IA mudam system design: custo por token, streaming, retrieval, guardrails, observabilidade e abuso entram no caminho critico.
 
-## Topicos
+## Dois eixos
+
+### LLM Systems
+
+Camada de produto e arquitetura em volta do modelo:
 
 - [LLM Gateway](./topics/llm-gateway.md)
 - [RAG](./topics/rag.md)
@@ -17,9 +21,16 @@ Produtos com IA mudam system design: custo por token, streaming, retrieval, guar
 - [GPU Autoscaling](./topics/gpu-autoscaling.md)
 - [Agentic Systems](./topics/agentic-systems.md)
 
+### LLM Foundations
+
+Trilha paralela para entender internals do modelo e pipeline de treino sem mudar a ordem canonica do repo:
+
+- [LLM Foundations](./llm-foundations/README.md)
+- [Source Map](./llm-foundations/source-map.md)
+- [Reviews - LLM Foundations](./llm-foundations/reviews/README.md)
+
 ## Chapters conectados
 
 - [Chapter 06 - Edge Rate Limiting](../../chapters/chapter-06-edge-rate-limiting-waf-and-gateway-boundaries.md)
 - [Chapter 09 - Search Indexing](../../chapters/chapter-09-search-indexing-and-permission-aware-retrieval.md)
 - [Chapter 14 - Feed Ranking](../../chapters/chapter-14-feed-ranking-and-fanout-trade-offs.md)
-
