@@ -16,6 +16,7 @@ Provar memoria de longo prazo e transferencia real.
 
 - qual requisito voce aprendeu a questionar antes de falar de ferramenta?
 - qual componente ou processo voce hoje tentaria remover antes de escalar?
+- qual `Cue Signal` ainda te faz reconhecer o chapter certo sem ler o titulo?
 - qual decisao voce ainda lembra pelo problema, e nao pelo nome?
 - qual trade-off voce ainda lembra sem reler o chapter?
 - qual resposta ruim ainda te seduz?

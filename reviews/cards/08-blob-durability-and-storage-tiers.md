@@ -10,6 +10,10 @@
 - `Problema`: o sistema quer guardar bytes pesados como se fossem mais uma linha relacional.
 - `Decisao`: separar metadata relacional de blob imutavel em object storage, e deixar tiering entrar so depois.
 
+## Cue Signal
+
+- `Sinal`: payload binario, durabilidade e custo por byte viraram o centro da decisao, enquanto metadata e lookup continuam estruturados.
+
 ## Case Anchor
 
 - `Caso real`: [Dropbox - Magic Pocket Blob Store](../../real-world-cases/02-data-storage-and-search/dropbox-magic-pocket-blob-store/README.md)

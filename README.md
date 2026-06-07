@@ -26,8 +26,9 @@ O caminho padrao do repo agora e:
 2. rodar o `First Principles Design Pass` dentro do chapter antes da arquitetura final
 3. seguir os chapters em ordem numerica
 4. fazer o lab e o review card do mesmo chapter
-5. a cada 2 chapters, fazer 1 contraste
-6. a cada 4 chapters, fazer 1 capstone
+5. antes de dormir, rodar o `pre-sleep flashcard` do chapter do dia
+6. a cada 2 chapters, fazer 1 contraste
+7. a cada 4 chapters, fazer 1 capstone
 
 ## O que ficou
 
@@ -93,9 +94,10 @@ entao ele nao merece uma pasta propria.
 
 ## Motor de Retencao
 
-O repositorio agora tem tres camadas para nao depender so de leitura:
+O repositorio agora tem quatro camadas para nao depender so de leitura:
+- [reviews/day-00-pre-sleep-flashcards.md](./reviews/day-00-pre-sleep-flashcards.md): compressao curta em `cue -> decisao -> trade-off` no mesmo dia
 - [reviews/](./reviews/README.md): revisao espacada em `1, 3, 7, 14, 30` dias
-- [decision-contrasts/](./decision-contrasts/README.md): treino para nao confundir opcoes parecidas
+- [decision-contrasts/](./decision-contrasts/README.md): treino para nao confundir opcoes parecidas, sempre contra `1` alternativa vizinha
 - [capstones/](./capstones/README.md): drills orais cumulativos misturando varios chapters
 
 ## Casos reais

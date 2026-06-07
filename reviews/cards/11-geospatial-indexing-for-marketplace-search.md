@@ -10,6 +10,10 @@
 - `Problema`: proximidade virou pergunta quente e repetida; lat/long bruto esta caro demais no caminho principal.
 - `Decisao`: transformar coordenada em bucket espacial para gerar candidatos baratos e validar com distancia exata depois.
 
+## Cue Signal
+
+- `Sinal`: a pergunta real e "como reduzir o universo geografico primeiro?" antes de calcular distancia exata em tudo.
+
 ## Case Anchor
 
 - `Caso real`: [Uber - H3 Geospatial Marketplace](../../real-world-cases/02-data-storage-and-search/uber-h3-geospatial-marketplace/README.md)

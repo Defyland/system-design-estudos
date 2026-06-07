@@ -10,6 +10,7 @@ Para cada passo abaixo:
 3. releia a `area` correspondente para consolidar a teoria
 4. rode o `lab` em voz alta
 5. no mesmo dia, rode o `review card` correspondente
+6. antes de dormir, rode o [Dia 00 - Pre-Sleep Flashcards](./reviews/day-00-pre-sleep-flashcards.md) so com os cards estudados no dia
 
 A cada `2 chapters`:
 - faca `1` contraste em [decision-contrasts/README.md](./decision-contrasts/README.md)
@@ -100,6 +101,7 @@ Depois pare de abrir mapa demais. Va para a sequencia abaixo.
 
 - [reviews/README.md](./reviews/README.md): use no mesmo dia do chapter e nos ciclos `1, 3, 7, 14, 30`
 - [decision-contrasts/README.md](./decision-contrasts/README.md): use depois de cada `2 chapters`
+  Limite: compare com `1` alternativa vizinha e pare quando souber por que nao a outra.
 - [capstones/README.md](./capstones/README.md): use depois de cada `4 chapters`
 - [simulation-labs/README.md](./simulation-labs/README.md): use para transformar conceito em decisao com carga, custo e falha
 - [areas/06-foundations-distribuidas](./areas/06-foundations-distribuidas/README.md): use quando precisar explicar garantias formais

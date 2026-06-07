@@ -10,6 +10,10 @@
 - `Problema`: trafego abusivo, caro ou invalido esta gastando CPU da origem e confundindo fronteiras.
 - `Decisao`: matar barato na borda, governar entrada no gateway e deixar semantica e permissao fina na app.
 
+## Cue Signal
+
+- `Sinal`: a borda consegue contar, bloquear e absorver, mas ainda nao entende a regra de negocio daquela acao.
+
 ## Case Anchor
 
 - `Caso real`: [Cloudflare - Edge Platform](../../real-world-cases/04-edge-and-delivery/cloudflare-edge-platform/README.md)

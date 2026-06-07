@@ -10,6 +10,10 @@
 - `Problema`: o banco esta doendo e o time quer culpar o modelo cedo demais.
 - `Decisao`: manter o core relacional e escalar na ordem certa: query path, replica honesta, cache-aside e isolamento mais caro so quando blast radius justificar.
 
+## Cue Signal
+
+- `Sinal`: leitura quente, primary saturada e pressao por throughput, mas integridade transacional ainda continua no centro do produto.
+
 ## Case Anchor
 
 - `Caso real`: [GitHub - Rails and MySQL at Scale](../../real-world-cases/01-platforms-and-apps/github-rails-and-mysql-at-scale/README.md)

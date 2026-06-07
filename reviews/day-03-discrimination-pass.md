@@ -3,6 +3,7 @@
 ## Objetivo
 
 Parar de lembrar so o nome da solucao e comecar a separar opcoes parecidas.
+Faca isso com `1` alternativa vizinha por vez.
 
 ## Ordem
 
@@ -23,6 +24,7 @@ Parar de lembrar so o nome da solucao e comecar a separar opcoes parecidas.
 - se eu quero retry seguro, por que isso nao implica workflow engine automaticamente?
 - se eu tenho edge e gateway, por que isso nao elimina autorizacao semantica no app?
 - se eu tenho blob store, por que isso nao elimina metadata relacional?
+- qual `Cue Signal` puxaria a opcao A e qual puxaria a opcao B em cada contraste?
 
 ## Done When
 

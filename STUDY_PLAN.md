@@ -25,7 +25,9 @@
 
 ## Cadencia
 
-- D+1: revisar notas
+- D0: rodar [Dia 00 - Pre-Sleep Flashcards](./reviews/day-00-pre-sleep-flashcards.md) com o chapter do dia
+- D+1: repetir `cue signal -> decisao` sem olhar e so depois revisar notas
+- D+3: contrastar com `1` alternativa vizinha em [decision-contrasts/README.md](./decision-contrasts/README.md)
 - D+7: explicar sem consultar
+- D+14: comprimir resposta em modo entrevista
 - D+30: resolver um problema pratico ou uma questao de entrevista
-

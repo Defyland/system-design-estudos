@@ -10,6 +10,10 @@
 - `Problema`: um workload vivo, como room quente, presence ou fanout, esta roubando ar do resto do sistema.
 - `Decisao`: isolar a unidade de concorrencia e o hotspot antes de reescrever o core inteiro.
 
+## Cue Signal
+
+- `Sinal`: conexoes longas, latencia sensivel e trabalho pesado estao compartilhando CPU, memoria ou mailbox demais.
+
 ## Case Anchor
 
 - `Caso real`: [Discord - Elixir Realtime Scale](../../real-world-cases/01-platforms-and-apps/discord-elixir-realtime-scale/README.md)

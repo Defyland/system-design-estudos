@@ -10,6 +10,10 @@
 - `Problema`: cronologia pura parou de gastar bem a atencao do usuario.
 - `Decisao`: separar inventario candidato, custo de fanout e ordenacao final, em vez de fingir que tudo e uma lista.
 
+## Cue Signal
+
+- `Sinal`: ou o fanout de celebridade explode, ou o ranking precisa decidir tarde demais para caber no modelo atual.
+
 ## Case Anchor
 
 - `Caso real`: [Meta - News Feed Ranking](../../real-world-cases/05-product-scenarios/meta-news-feed-ranking/README.md)

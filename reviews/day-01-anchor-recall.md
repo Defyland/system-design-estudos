@@ -5,6 +5,7 @@
 Fixar o par mais importante de cada chapter:
 - qual problema apareceu
 - qual decisao respondeu a esse problema
+- qual `Cue Signal` deveria acender mais cedo na proxima vez
 
 ## Ordem
 
@@ -37,5 +38,6 @@ Depois rode o resto:
 ## Done When
 
 - voce lembra o problema central de pelo menos `10/14` cards sem olhar
+- voce consegue nomear o `Cue Signal` de pelo menos `10/14` cards sem trocar um tema pelo outro
 - as respostas ruins ja comecam a soar obviamente erradas
 - voce consegue explicar os 4 cards prioritarios em `15 segundos` cada

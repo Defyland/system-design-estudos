@@ -10,6 +10,10 @@
 - `Problema`: latencia global e freshness estao sendo tratadas como se fossem so "mais cache".
 - `Decisao`: pensar CDN como placement, roteamento e envelhecimento por camada, nao so como TTL.
 
+## Cue Signal
+
+- `Sinal`: o gargalo ficou geografico e de invalidacao, nao de CPU da app ou SQL da origem.
+
 ## Case Anchor
 
 - `Caso real`: [Netflix - Open Connect CDN](../../real-world-cases/04-edge-and-delivery/netflix-open-connect-cdn/README.md)

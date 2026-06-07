@@ -10,6 +10,10 @@
 - `Problema`: o mesmo fato de negocio precisa servir varios consumidores, replay e historico.
 - `Decisao`: sair da fila ponto a ponto e assumir um backbone de eventos com particao, schema e consumo independente.
 
+## Cue Signal
+
+- `Sinal`: o mesmo fato precisa alimentar varios consumidores, cada um com escala, atraso, replay e ownership proprios.
+
 ## Case Anchor
 
 - `Caso real`: [LinkedIn - Kafka Backbone](../../real-world-cases/03-async-workflows-and-payments/linkedin-kafka-backbone/README.md)

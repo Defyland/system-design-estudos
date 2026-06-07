@@ -10,6 +10,10 @@
 - `Problema`: um gerador central de IDs esta cobrando throughput ou topologia demais.
 - `Decisao`: usar ID distribuido ordenavel para ganhar unicidade sem round-trip central e ainda carregar rough ordering util.
 
+## Cue Signal
+
+- `Sinal`: serial central virou gargalo e UUID puro removeu ordenacao, debuggability ou locality demais.
+
 ## Case Anchor
 
 - `Caso real`: [Twitter - Snowflake IDs](../../real-world-cases/02-data-storage-and-search/twitter-snowflake-ids/README.md)

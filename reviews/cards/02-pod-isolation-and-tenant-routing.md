@@ -10,6 +10,10 @@
 - `Problema`: alguns tenants estao machucando os outros, mas o dominio ainda nao pede microservicos.
 - `Decisao`: comprar pod isolation e roteamento deterministico antes de desmontar o sistema em varios servicos.
 
+## Cue Signal
+
+- `Sinal`: um tenant ou regiao comeca a impor blast radius, residencia de dados ou ruina operacional para todos os outros.
+
 ## Case Anchor
 
 - `Caso real`: [Shopify - Pods and Modular Monolith](../../real-world-cases/01-platforms-and-apps/shopify-pods-and-modular-monolith/README.md)

@@ -10,6 +10,10 @@
 - `Problema`: busca rica quer texto, recall, latencia e ACL; a tabela transacional quer write correto.
 - `Decisao`: criar indice derivado, aplicar scope de permissao antes da query e revalidar ACL na saida.
 
+## Cue Signal
+
+- `Sinal`: retrieval, relevancia e ACL agora importam mais do que consulta transacional exata linha a linha.
+
 ## Case Anchor
 
 - `Caso real`: [Dropbox - Nautilus Search](../../real-world-cases/02-data-storage-and-search/dropbox-nautilus-search/README.md)

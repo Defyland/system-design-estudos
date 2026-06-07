@@ -14,6 +14,7 @@ Revisao espacada para consolidar os chapters sem depender de exercicio escrito.
 
 Os cards agora priorizam memoria do chapter:
 - `Anchor`
+- `Cue Signal`
 - `Case Anchor`
 - `QDSAA Recall`
 - `Trade-off to Remember`
@@ -24,6 +25,7 @@ Se voce quer primeira acao operacional, use [Operational Playbooks](../areas/11-
 
 ## Cadencia
 
+- [Dia 00 - Pre-Sleep Flashcards](./day-00-pre-sleep-flashcards.md)
 - [Dia 01 - Anchor Recall](./day-01-anchor-recall.md)
 - [Dia 03 - Discrimination Pass](./day-03-discrimination-pass.md)
 - [Dia 07 - Transfer Pass](./day-07-transfer-pass.md)
@@ -54,6 +56,8 @@ Se voce quer primeira acao operacional, use [Operational Playbooks](../areas/11-
 O chapter ensina.
 
 O review faz voce lembrar sem ajuda o que foi estudado.
+
+O `Dia 00` comprime o chapter em um cue curto antes de dormir.
 
 O contraste faz voce nao confundir decisoes parecidas.
 

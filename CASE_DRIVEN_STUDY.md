@@ -132,6 +132,7 @@ Para cada sessao de estudo:
 3. escolha um slice pequeno do caso
 4. registre na area:
    - conceito
+   - cue signal
    - decisao arquitetural
    - trade-off
    - risco
@@ -142,8 +143,9 @@ Para cada sessao de estudo:
 
 Depois de terminar um chapter ou slice, nao pare no entendimento imediato:
 1. rode um card em [reviews/](./reviews/README.md)
-2. compare a decisao com uma vizinha em [decision-contrasts/](./decision-contrasts/README.md)
-3. toda semana, prove transferencia com um [capstone](./capstones/README.md)
+2. antes de dormir, rode o [Dia 00 - Pre-Sleep Flashcards](./reviews/day-00-pre-sleep-flashcards.md) so com os cards do dia
+3. compare a decisao com `1` vizinha em [decision-contrasts/](./decision-contrasts/README.md) e pare quando a diferenca ficar clara
+4. toda semana, prove transferencia com um [capstone](./capstones/README.md)
 
 ## Exemplo de uso
 

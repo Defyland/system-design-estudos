@@ -10,6 +10,10 @@
 - `Problema`: falha ambigua faz o cliente ou worker repetir uma mutacao que nao pode duplicar efeito.
 - `Decisao`: tratar `Idempotency-Key` como identidade de uma intencao de negocio e fazer replay da primeira resposta canonica.
 
+## Cue Signal
+
+- `Sinal`: o retry e inevitavel, mas repetir a mutacao pode cobrar, reservar, enviar ou gravar duas vezes.
+
 ## Case Anchor
 
 - `Caso real`: [Stripe - Idempotent Payments](../../real-world-cases/03-async-workflows-and-payments/stripe-idempotent-payments/README.md)

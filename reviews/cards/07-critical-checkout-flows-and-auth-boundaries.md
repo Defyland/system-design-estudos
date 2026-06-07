@@ -10,6 +10,10 @@
 - `Problema`: sessao, risco e pagamento se encostam no mesmo ponto onde dinheiro entra.
 - `Decisao`: criar um boundary de checkout que decide a mutacao critica, protege idempotencia e devolve a proxima acao do fluxo.
 
+## Cue Signal
+
+- `Sinal`: uma mutacao critica depende de identidade, risco, pagamento e confirmacao consistente no mesmo caminho.
+
 ## Case Anchor
 
 - `Caso real`: [Uber - Unified Checkout](../../real-world-cases/05-product-scenarios/uber-unified-checkout/README.md)

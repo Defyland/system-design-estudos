@@ -11,6 +11,14 @@ Treino de discriminacao entre opcoes que parecem primas, mas resolvem dores dife
    - qual erro comum faz a equipe confundir as duas?
 3. so depois abra o gabarito
 
+## Regra de exploracao
+
+- compare `1` alternativa vizinha por vez
+- fale qual `cue signal` puxa a opcao A e qual puxa a opcao B
+- pare quando conseguir responder `por que nao a outra?`
+
+Se voce continuar abrindo terceira e quarta alternativa, isso ja virou deriva e piora retencao.
+
 ## Contrastes Principais
 
 - [01 - Read Replica vs Cache-Aside](./01-read-replica-vs-cache-aside.md)

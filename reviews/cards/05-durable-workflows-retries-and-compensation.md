@@ -10,6 +10,10 @@
 - `Problema`: fluxo longo atravessa varios passos, espera, retry e compensation que nao cabem em job encadeado ingenuo.
 - `Decisao`: explicitar estado duravel do processo para retomar do ponto certo, em vez de recomecar tudo no escuro.
 
+## Cue Signal
+
+- `Sinal`: a operacao de negocio atravessa tempo e servicos demais para depender de retry cego ou cadeia fragil de jobs.
+
 ## Case Anchor
 
 - `Caso real`: [Uber - Cadence Workflows](../../real-world-cases/03-async-workflows-and-payments/uber-cadence-workflows/README.md)
