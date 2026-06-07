@@ -2,11 +2,29 @@
 # frozen_string_literal: true
 
 require "pathname"
+require "rbconfig"
 require "set"
 require "yaml"
 
 ROOT = Pathname(__dir__).join("..").expand_path
 CURRICULUM = YAML.safe_load(ROOT.join("curriculum.yml").read, aliases: true)
+CARD_SECTION_CONTRACTS = {
+  "backend_principle_catalog" => [
+    "When to Use",
+    "What Breaks First",
+    "Interview Trap",
+    "Practice Drill",
+    "Source Anchor"
+  ],
+  "engineering_case_study_catalog" => [
+    "Case Pattern",
+    "When to Use",
+    "What Breaks First",
+    "Interview Trap",
+    "Practice Drill",
+    "Source Anchor"
+  ]
+}.freeze
 
 @errors = []
 
@@ -26,12 +44,62 @@ def relative_link(from_file, target_path)
   ROOT.join(target_path).relative_path_from(ROOT.join(from_file).dirname).to_s
 end
 
+def markdown_cards(path)
+  ROOT.join(path).children.select { |card| card.file? && card.extname == ".md" }.sort
+end
+
+def source_anchor_body(body)
+  body[/^## Source Anchor\s*$(.*?)(?=^## |\z)/m, 1]
+end
+
+def validate_card_contract(area)
+  required_sections = CARD_SECTION_CONTRACTS[area.fetch("kind")]
+  return unless required_sections
+
+  cards_dir = area.fetch("content_dirs").fetch("cards", nil)
+  unless cards_dir
+    error("area #{area.fetch("id")} missing cards content dir")
+    return
+  end
+
+  cards_path = ROOT.join(cards_dir)
+  assert(cards_path.directory?, "area #{area.fetch("id")} cards path is not a directory: #{cards_dir}")
+  return unless cards_path.directory?
+
+  cards = markdown_cards(cards_dir)
+  assert(cards.any?, "area #{area.fetch("id")} has no markdown cards: #{cards_dir}")
+
+  cards.each do |card|
+    body = card.read
+    relative_path = card.relative_path_from(ROOT)
+    h1_count = body.scan(/^# [^\n]+$/).size
+
+    assert(h1_count == 1, "card #{relative_path} must have exactly one H1")
+
+    required_sections.each do |section|
+      assert(body.match?(/^## #{Regexp.escape(section)}\s*$/), "card #{relative_path} missing section: #{section}")
+    end
+
+    anchor_body = source_anchor_body(body)
+    next unless anchor_body
+
+    assert(
+      anchor_body.match?(/\[[^\]]+\]\(https?:\/\/[^)]+\)/),
+      "card #{relative_path} Source Anchor must include at least one http link"
+    )
+  end
+end
+
 chapters = CURRICULUM.fetch("chapters").sort_by { |chapter| chapter.fetch("number") }
 areas = CURRICULUM.fetch("areas")
 area_ids = areas.map { |area| area.fetch("id") }.to_set
 area_by_id = areas.to_h { |area| [ area.fetch("id"), area ] }
 phase_ids = CURRICULUM.fetch("phases").map { |phase| phase.fetch("id") }.to_set
 phase_chapter_ids = CURRICULUM.fetch("phases").flat_map { |phase| phase.fetch("chapters") }
+
+unless system(RbConfig.ruby, ROOT.join("scripts/render_curriculum_indexes.rb").to_s, "--check")
+  error("generated curriculum indexes are stale; run ruby scripts/render_curriculum_indexes.rb")
+end
 
 assert(CURRICULUM.fetch("version") >= 2, "curriculum.yml must be version 2 or newer")
 assert(chapters.map { |chapter| chapter.fetch("id") }.uniq.size == chapters.size, "chapter ids must be unique")
@@ -43,6 +111,8 @@ areas.each do |area|
   area.fetch("content_dirs").each_value do |path|
     assert(exists?(path), "area path missing: #{path}")
   end
+
+  validate_card_contract(area)
 end
 
 chapters.each do |chapter|

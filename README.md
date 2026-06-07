@@ -14,6 +14,8 @@ ruby scripts/render_curriculum_indexes.rb
 ruby scripts/validate_curriculum.rb
 ```
 
+O validador tambem falha se algum bloco gerado ficar fora de sincronia com o manifest.
+
 Se quiser o mapa pedagogico da mesma trilha:
 - [Ordem de Estudo](STUDY_ORDER.md)
 - [Curriculum manifest](curriculum.yml)
@@ -39,6 +41,8 @@ Mantive pasta apenas para blocos que de fato acumulam material:
 - [06 - Foundations Distribuidas](areas/06-foundations-distribuidas/README.md) (`topic_catalog`)
 - [07 - Componentes de Sistemas](areas/07-componentes-de-sistemas/README.md) (`component_catalog`)
 - [08 - Sistemas de IA](areas/08-sistemas-ia/README.md) (`topic_catalog`)
+- [09 - Backend Principles](areas/09-backend-principles/README.md) (`backend_principle_catalog`)
+- [10 - Engineering Case Studies](areas/10-engineering-case-studies/README.md) (`engineering_case_study_catalog`)
 <!-- curriculum:end:area-list -->
 
 ## O que nao virou pasta

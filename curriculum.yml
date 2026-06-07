@@ -88,6 +88,21 @@ areas:
       readme: areas/08-sistemas-ia/README.md
       notes: areas/08-sistemas-ia/notes.md
       topics: areas/08-sistemas-ia/topics
+  - id: 09-backend-principles
+    title: Backend Principles
+    kind: backend_principle_catalog
+    content_dirs:
+      readme: areas/09-backend-principles/README.md
+      notes: areas/09-backend-principles/notes.md
+      cards: areas/09-backend-principles/cards
+  - id: 10-engineering-case-studies
+    title: Engineering Case Studies
+    kind: engineering_case_study_catalog
+    content_dirs:
+      readme: areas/10-engineering-case-studies/README.md
+      notes: areas/10-engineering-case-studies/notes.md
+      cards: areas/10-engineering-case-studies/cards
+      loop: areas/10-engineering-case-studies/learning-loop.md
 chapters:
   - id: relational-scaling-and-operational-discipline
     number: 1

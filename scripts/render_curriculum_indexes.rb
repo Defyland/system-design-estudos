@@ -6,6 +6,8 @@ require "yaml"
 
 ROOT = Pathname(__dir__).join("..").expand_path
 CURRICULUM = YAML.safe_load(ROOT.join("curriculum.yml").read, aliases: true)
+CHECK = ARGV.include?("--check")
+@stale_blocks = []
 
 def chapters
   CURRICULUM.fetch("chapters").sort_by { |chapter| chapter.fetch("number") }
@@ -40,10 +42,15 @@ def replace_block(file, key, content)
   end_marker = "<!-- curriculum:end:#{key} -->"
   replacement = "#{start_marker}\n#{content.rstrip}\n#{end_marker}"
 
-  updated = markdown.sub(/#{Regexp.escape(start_marker)}.*?#{Regexp.escape(end_marker)}/m, replacement)
-  raise "Missing curriculum marker #{key} in #{file}" if updated == markdown && !markdown.include?(content.rstrip)
+  raise "Missing curriculum marker #{key} in #{file}" unless markdown.include?(start_marker) && markdown.include?(end_marker)
 
-  path.write(updated)
+  updated = markdown.sub(/#{Regexp.escape(start_marker)}.*?#{Regexp.escape(end_marker)}/m, replacement)
+
+  if CHECK
+    @stale_blocks << "#{file}:#{key}" if updated != markdown
+  else
+    path.write(updated) if updated != markdown
+  end
 end
 
 def render_readme_start
@@ -58,6 +65,8 @@ def render_readme_start
     "ruby scripts/render_curriculum_indexes.rb",
     "ruby scripts/validate_curriculum.rb",
     "```",
+    "",
+    "O validador tambem falha se algum bloco gerado ficar fora de sincronia com o manifest.",
     "",
     "Se quiser o mapa pedagogico da mesma trilha:",
     "- #{link("README.md", "Ordem de Estudo", "STUDY_ORDER.md")}",
@@ -137,4 +146,14 @@ replace_block("labs/README.md", "labs-by-chapter", render_labs)
 replace_block("reviews/README.md", "review-cards", render_reviews)
 replace_block("real-world-cases/ROADMAP.md", "canonical-case-order", render_case_order)
 
-puts "curriculum indexes rendered"
+if CHECK
+  if @stale_blocks.any?
+    puts "stale curriculum indexes:"
+    puts @stale_blocks.map { |block| "- #{block}" }
+    exit 1
+  end
+
+  puts "curriculum indexes OK"
+else
+  puts "curriculum indexes rendered"
+end
