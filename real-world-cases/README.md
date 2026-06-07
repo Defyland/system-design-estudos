@@ -10,6 +10,13 @@ A ordem oficial do curso fica em [Chapter 01 ate Chapter 14](../chapters/README.
 
 Esta pasta e uma biblioteca `case-first`: use para revisar por empresa, comparar stacks ou aprofundar um caso depois de encontrar o link dentro de um chapter.
 
+Nos casos que receberam `depth pass`, procure por estas secoes:
+- `Strong Anchor`: a frase que fixa o por que arquitetural do caso
+- `Architecture Spine`: os blocos que realmente carregam a decisao
+- `Failure Mode to Remember`: o jeito mais caro de errar naquele design
+- `3-Minute Drill`: o treino curto para testar transferencia
+- `Linked Chapters`: onde aquele caso reaparece na trilha canonica
+
 ## Casos Uteis Por Stack
 
 Mais alinhados ao seu stack:
@@ -46,3 +53,4 @@ Para cada caso:
 2. mapeie o caso para os topicos da ementa
 3. anote o que voce reimplementaria em Rails, Elixir ou Go
 4. registre os trade-offs, gargalos e limites
+5. rode o `3-Minute Drill` antes de voltar ao chapter correspondente
