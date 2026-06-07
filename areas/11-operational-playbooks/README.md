@@ -13,6 +13,8 @@ Para cada playbook:
 3. separe estabilizacao de diagnostico profundo;
 4. transforme o caso em checklist executavel para um sistema seu.
 
+Se voce veio de um chapter, comece pelo playbook apontado no `Study Context`. Ele e a ponte entre a decisao arquitetural e a primeira resposta operacional.
+
 ## Playbooks
 
 - [Incident Severity and Triage](./playbooks/incident-severity-and-triage.md)

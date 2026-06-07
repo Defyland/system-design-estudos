@@ -16,6 +16,9 @@ Como desenhar a fronteira entre sessao, autorizacao, risco e pagamento sem trans
 - `Lab`: [Lab - Chapter 07](../labs/chapters/chapter-07-critical-checkout-flows-and-auth-boundaries.md)
 - `Review card`: [Card 07](../reviews/cards/07-critical-checkout-flows-and-auth-boundaries.md)
 - `Contraste sugerido`: [Contrast 05 - Idempotency Key vs Unique Index](../decision-contrasts/05-idempotency-key-vs-unique-index.md)
+- `Simulation labs`: [Saga / Compensation](../simulation-labs/saga-compensation.md), [Queue Replay / Idempotency](../simulation-labs/queue-replay-idempotency.md)
+- `Operational playbook`: [Deploy Rollback and Kill Switch](../areas/11-operational-playbooks/playbooks/deploy-rollback-and-kill-switch.md)
+- `Bridge lab`: [Enforce Authz, Validation and Context](../areas/13-backend-principle-labs/labs/enforce-authz-validation-and-context.md)
 
 ## Historia de Produto
 

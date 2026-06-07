@@ -16,6 +16,9 @@ Como uma API mutante evita efeitos duplicados quando a rede falha no pior moment
 - `Lab`: [Lab - Chapter 03](../labs/chapters/chapter-03-idempotent-writes-under-ambiguous-failure.md)
 - `Review card`: [Card 03](../reviews/cards/03-idempotent-writes-under-ambiguous-failure.md)
 - `Contraste sugerido`: [Contrast 05 - Idempotency Key vs Unique Index](../decision-contrasts/05-idempotency-key-vs-unique-index.md)
+- `Simulation labs`: [Queue Replay / Idempotency](../simulation-labs/queue-replay-idempotency.md)
+- `Operational playbook`: [Queue Lag, DLQ and Replay](../areas/11-operational-playbooks/playbooks/queue-lag-dlq-and-replay.md)
+- `Bridge lab`: [Build an Idempotent Write API](../areas/13-backend-principle-labs/labs/build-an-idempotent-write-api.md)
 
 ## Historia de Produto
 

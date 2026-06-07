@@ -161,6 +161,10 @@ chapters:
       title: Read Replica vs Cache-Aside
       path: decision-contrasts/01-read-replica-vs-cache-aside.md
     simulations: [cache, sharding-pod-isolation]
+    playbooks:
+      - areas/11-operational-playbooks/playbooks/database-migration-and-backfill.md
+    bridge_labs:
+      - areas/13-backend-principle-labs/labs/tune-postgres-indexes-and-transactions.md
     estimated_minutes: 10
     mastery_objectives: [read/write split, cache-aside, replica lag, migration safety]
     interview_objectives: [defender SQL com disciplina operacional, evitar NoSQL prematuro]
@@ -191,7 +195,11 @@ chapters:
       id: pod-isolation-vs-microservices
       title: Pod Isolation vs Microservices
       path: decision-contrasts/02-pod-isolation-vs-microservices.md
-    simulations: [sharding-pod-isolation]
+    simulations: [sharding-pod-isolation, noisy-neighbor-workload-isolation]
+    playbooks:
+      - areas/11-operational-playbooks/playbooks/incident-severity-and-triage.md
+    bridge_labs:
+      - areas/14-engineering-case-study-labs/labs/write-a-multi-tenant-adr.md
     estimated_minutes: 10
     mastery_objectives: [tenant routing, blast radius, noisy tenant]
     interview_objectives: [explicar isolamento antes de microservicos]
@@ -222,7 +230,11 @@ chapters:
       id: idempotency-key-vs-unique-index
       title: Idempotency Key vs Unique Index
       path: decision-contrasts/05-idempotency-key-vs-unique-index.md
-    simulations: [rate-limit-vs-load-shedding]
+    simulations: [queue-replay-idempotency]
+    playbooks:
+      - areas/11-operational-playbooks/playbooks/queue-lag-dlq-and-replay.md
+    bridge_labs:
+      - areas/13-backend-principle-labs/labs/build-an-idempotent-write-api.md
     estimated_minutes: 10
     mastery_objectives: [idempotency key, retry ambiguity, effect-once]
     interview_objectives: [proteger efeito antes de repetir request]
@@ -250,7 +262,11 @@ chapters:
       id: queue-vs-event-backbone
       title: Queue vs Event Backbone
       path: decision-contrasts/06-queue-vs-event-backbone.md
-    simulations: [event-backbone-consumer-lag]
+    simulations: [event-backbone-consumer-lag, queue-replay-idempotency]
+    playbooks:
+      - areas/11-operational-playbooks/playbooks/queue-lag-dlq-and-replay.md
+    bridge_labs:
+      - areas/14-engineering-case-study-labs/labs/build-a-data-contract-replay-and-freshness-plan.md
     estimated_minutes: 10
     mastery_objectives: [partition key, consumer lag, replay blast radius]
     interview_objectives: [diferenciar fila simples de backbone de eventos]
@@ -278,7 +294,11 @@ chapters:
       id: durable-workflow-vs-chained-jobs
       title: Durable Workflow vs Chained Jobs
       path: decision-contrasts/07-durable-workflow-vs-chained-jobs.md
-    simulations: [saga-compensation]
+    simulations: [saga-compensation, disaster-recovery-failover-drill]
+    playbooks:
+      - areas/11-operational-playbooks/playbooks/disaster-recovery-and-failover-drill.md
+    bridge_labs:
+      - areas/14-engineering-case-study-labs/labs/execute-a-multi-region-dr-drill.md
     estimated_minutes: 10
     mastery_objectives: [state machine, compensation, timeout]
     interview_objectives: [saber quando workflow paga o custo]
@@ -309,7 +329,11 @@ chapters:
       id: edge-rate-limit-vs-app-authorization
       title: Edge Rate Limit vs App Authorization
       path: decision-contrasts/08-edge-rate-limit-vs-app-authorization.md
-    simulations: [rate-limit-vs-load-shedding]
+    simulations: [rate-limit-vs-load-shedding, noisy-neighbor-workload-isolation]
+    playbooks:
+      - areas/11-operational-playbooks/playbooks/incident-severity-and-triage.md
+    bridge_labs:
+      - areas/14-engineering-case-study-labs/labs/run-a-progressive-rollout-with-guardrails.md
     estimated_minutes: 10
     mastery_objectives: [edge protection, WAF, fairness]
     interview_objectives: [separar rate limit de autorizacao]
@@ -340,7 +364,11 @@ chapters:
       id: idempotency-key-vs-unique-index
       title: Idempotency Key vs Unique Index
       path: decision-contrasts/05-idempotency-key-vs-unique-index.md
-    simulations: [saga-compensation, circuit-breaker]
+    simulations: [saga-compensation, queue-replay-idempotency]
+    playbooks:
+      - areas/11-operational-playbooks/playbooks/deploy-rollback-and-kill-switch.md
+    bridge_labs:
+      - areas/13-backend-principle-labs/labs/enforce-authz-validation-and-context.md
     estimated_minutes: 10
     mastery_objectives: [checkout boundary, auth friction, PSP timeout]
     interview_objectives: [proteger receita sem duplicar cobranca]
@@ -367,7 +395,11 @@ chapters:
       id: blob-store-vs-relational-binary-storage
       title: Blob Store vs Relational Binary Storage
       path: decision-contrasts/03-blob-store-vs-relational-binary-storage.md
-    simulations: [cache]
+    simulations: [disaster-recovery-failover-drill]
+    playbooks:
+      - areas/11-operational-playbooks/playbooks/disaster-recovery-and-failover-drill.md
+    bridge_labs:
+      - areas/13-backend-principle-labs/labs/secure-file-uploads-and-storage-events.md
     estimated_minutes: 10
     mastery_objectives: [metadata vs blob, lifecycle, cold tier]
     interview_objectives: [explicar storage por durabilidade e custo]
@@ -395,7 +427,11 @@ chapters:
       id: search-index-vs-relational-querying
       title: Search Index vs Relational Querying
       path: decision-contrasts/04-search-index-vs-relational-querying.md
-    simulations: [search-freshness-reindex, rag-vector-search]
+    simulations: [search-freshness-reindex, search-cutover-acl-freshness]
+    playbooks:
+      - areas/11-operational-playbooks/playbooks/search-reindex-and-freshness.md
+    bridge_labs:
+      - areas/14-engineering-case-study-labs/labs/build-a-data-contract-replay-and-freshness-plan.md
     estimated_minutes: 10
     mastery_objectives: [index lag, ACL-aware search, reindex]
     interview_objectives: [nao tratar ACL como filtro decorativo]
@@ -428,7 +464,11 @@ chapters:
       id: cdn-cache-vs-app-cache
       title: CDN Cache vs App Cache
       path: decision-contrasts/09-cdn-cache-vs-app-cache.md
-    simulations: [cache, circuit-breaker]
+    simulations: [cache, disaster-recovery-failover-drill]
+    playbooks:
+      - areas/11-operational-playbooks/playbooks/cache-hot-key-and-origin-protection.md
+    bridge_labs:
+      - areas/14-engineering-case-study-labs/labs/run-a-progressive-rollout-with-guardrails.md
     estimated_minutes: 10
     mastery_objectives: [TTL, purge, origin protection, georouting]
     interview_objectives: [separar CDN cache de app cache]
@@ -457,6 +497,10 @@ chapters:
       title: H3 Buckets vs PostGIS Distance Only
       path: decision-contrasts/10-h3-buckets-vs-postgis-distance-only.md
     simulations: [search-freshness-reindex]
+    playbooks:
+      - areas/11-operational-playbooks/playbooks/deploy-rollback-and-kill-switch.md
+    bridge_labs:
+      - areas/14-engineering-case-study-labs/labs/run-a-progressive-rollout-with-guardrails.md
     estimated_minutes: 10
     mastery_objectives: [candidate generation, H3, exact distance]
     interview_objectives: [reduzir custo sem destruir precisao]
@@ -484,7 +528,11 @@ chapters:
       id: snowflake-vs-uuid-or-serial
       title: Snowflake vs UUID or Serial
       path: decision-contrasts/12-snowflake-vs-uuid-or-serial.md
-    simulations: [sharding-pod-isolation]
+    simulations: [canary-rollout]
+    playbooks:
+      - areas/11-operational-playbooks/playbooks/deploy-rollback-and-kill-switch.md
+    bridge_labs:
+      - areas/14-engineering-case-study-labs/labs/plan-a-zero-downtime-migration.md
     estimated_minutes: 10
     mastery_objectives: [worker id, clock rollback, ordering]
     interview_objectives: [saber quando ID coordenado vale o custo]
@@ -512,7 +560,11 @@ chapters:
       id: rate-limit-vs-load-shedding
       title: Rate Limit vs Load Shedding
       path: decision-contrasts/13-rate-limit-vs-load-shedding.md
-    simulations: [event-backbone-consumer-lag, circuit-breaker]
+    simulations: [event-backbone-consumer-lag, noisy-neighbor-workload-isolation]
+    playbooks:
+      - areas/11-operational-playbooks/playbooks/incident-severity-and-triage.md
+    bridge_labs:
+      - areas/14-engineering-case-study-labs/labs/write-an-slo-runbook-and-postmortem.md
     estimated_minutes: 10
     mastery_objectives: [presence, hot room, backpressure]
     interview_objectives: [separar mensagem duravel de presence efemera]
@@ -540,7 +592,11 @@ chapters:
       id: fanout-on-write-vs-fanout-on-read
       title: Fanout-on-Write vs Fanout-on-Read
       path: decision-contrasts/11-fanout-on-write-vs-fanout-on-read.md
-    simulations: [fanout-feed-ranking-cost, llm-gateway-token-cost]
+    simulations: [fanout-feed-ranking-cost, feed-ranking-guardrails]
+    playbooks:
+      - areas/11-operational-playbooks/playbooks/deploy-rollback-and-kill-switch.md
+    bridge_labs:
+      - areas/14-engineering-case-study-labs/labs/design-a-feed-ranking-experiment-loop.md
     estimated_minutes: 10
     mastery_objectives: [candidate inventory, fanout cost, ranking latency]
     interview_objectives: [explicar ranking sem vender ML prematuro]
@@ -553,7 +609,12 @@ simulation_labs:
   - sharding-pod-isolation
   - saga-compensation
   - event-backbone-consumer-lag
+  - queue-replay-idempotency
   - search-freshness-reindex
+  - search-cutover-acl-freshness
   - fanout-feed-ranking-cost
+  - feed-ranking-guardrails
+  - noisy-neighbor-workload-isolation
+  - disaster-recovery-failover-drill
   - rag-vector-search
   - llm-gateway-token-cost

@@ -11,6 +11,8 @@ Engineering Case Study Labs pega os patterns de producao e obriga traducao para 
 3. responda com ownership, rollout, sinais e rollback;
 4. produza um artefato claro: plano, ADR, runbook ou scorecard.
 
+Se o chapter ja sugeriu um lab no `Study Context`, comece por ele. Esses labs sao o passo de transferencia entre leitura do caso real e julgamento operacional.
+
 ## Labs
 
 - [Plan a Zero-Downtime Migration](./labs/plan-a-zero-downtime-migration.md)

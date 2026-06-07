@@ -14,6 +14,9 @@ Como um blob store real equilibra durabilidade, replicacao, custo e cold storage
 - `Lab`: [Lab - Chapter 08](../labs/chapters/chapter-08-blob-durability-and-storage-tiers.md)
 - `Review card`: [Card 08](../reviews/cards/08-blob-durability-and-storage-tiers.md)
 - `Contraste sugerido`: [Contrast 03 - Blob Store vs Relational Binary Storage](../decision-contrasts/03-blob-store-vs-relational-binary-storage.md)
+- `Simulation labs`: [Disaster Recovery / Failover Drill](../simulation-labs/disaster-recovery-failover-drill.md)
+- `Operational playbook`: [Disaster Recovery and Failover Drill](../areas/11-operational-playbooks/playbooks/disaster-recovery-and-failover-drill.md)
+- `Bridge lab`: [Secure File Uploads and Storage Events](../areas/13-backend-principle-labs/labs/secure-file-uploads-and-storage-events.md)
 
 ## Historia de Produto
 

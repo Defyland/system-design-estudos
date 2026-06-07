@@ -16,6 +16,9 @@ Como um monolito em escala isola tenants e roteia requests para o pod ou shard c
 - `Lab`: [Lab - Chapter 02](../labs/chapters/chapter-02-pod-isolation-and-tenant-routing.md)
 - `Review card`: [Card 02](../reviews/cards/02-pod-isolation-and-tenant-routing.md)
 - `Contraste sugerido`: [Contrast 02 - Pod Isolation vs Microservices](../decision-contrasts/02-pod-isolation-vs-microservices.md)
+- `Simulation labs`: [Sharding / Pod Isolation](../simulation-labs/sharding-pod-isolation.md), [Noisy Neighbor / Workload Isolation](../simulation-labs/noisy-neighbor-workload-isolation.md)
+- `Operational playbook`: [Incident Severity and Triage](../areas/11-operational-playbooks/playbooks/incident-severity-and-triage.md)
+- `Bridge lab`: [Write a Multi-Tenant ADR](../areas/14-engineering-case-study-labs/labs/write-a-multi-tenant-adr.md)
 
 ## Historia de Produto
 

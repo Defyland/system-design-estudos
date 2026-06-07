@@ -15,6 +15,9 @@ Como um marketplace geolocalizado transforma lat/long em buckets operaveis para 
 - `Lab`: [Lab - Chapter 11](../labs/chapters/chapter-11-geospatial-indexing-for-marketplace-search.md)
 - `Review card`: [Card 11](../reviews/cards/11-geospatial-indexing-for-marketplace-search.md)
 - `Contraste sugerido`: [Contrast 10 - H3 Buckets vs PostGIS Distance Only](../decision-contrasts/10-h3-buckets-vs-postgis-distance-only.md)
+- `Simulation labs`: [Search Freshness / Reindex](../simulation-labs/search-freshness-reindex.md)
+- `Operational playbook`: [Deploy Rollback and Kill Switch](../areas/11-operational-playbooks/playbooks/deploy-rollback-and-kill-switch.md)
+- `Bridge lab`: [Run a Progressive Rollout with Guardrails](../areas/14-engineering-case-study-labs/labs/run-a-progressive-rollout-with-guardrails.md)
 
 ## Historia de Produto
 

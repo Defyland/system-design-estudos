@@ -15,6 +15,9 @@ Como um backbone de eventos deixa de ser "so uma fila" e vira uma decisao sobre 
 - `Lab`: [Lab - Chapter 04](../labs/chapters/chapter-04-event-backbone-partitions-and-consumer-scale.md)
 - `Review card`: [Card 04](../reviews/cards/04-event-backbone-partitions-and-consumer-scale.md)
 - `Contraste sugerido`: [Contrast 06 - Queue vs Event Backbone](../decision-contrasts/06-queue-vs-event-backbone.md)
+- `Simulation labs`: [Event Backbone / Consumer Lag](../simulation-labs/event-backbone-consumer-lag.md), [Queue Replay / Idempotency](../simulation-labs/queue-replay-idempotency.md)
+- `Operational playbook`: [Queue Lag, DLQ and Replay](../areas/11-operational-playbooks/playbooks/queue-lag-dlq-and-replay.md)
+- `Bridge lab`: [Build a Data Contract, Replay and Freshness Plan](../areas/14-engineering-case-study-labs/labs/build-a-data-contract-replay-and-freshness-plan.md)
 
 ## Historia de Produto
 

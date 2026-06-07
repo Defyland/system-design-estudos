@@ -12,6 +12,8 @@ Backend Principle Labs converte fundamentos em exercicios de implementacao e rev
 4. valide os criterios de saida;
 5. registre o que voce deixaria automatizado no projeto real.
 
+Quando um chapter apontar para um bridge lab no `Study Context`, use esse atalho. A ideia e transformar a decisao estudada em implementacao pequena, nao abrir um experimento aleatorio.
+
 ## Labs
 
 - [Build an Idempotent Write API](./labs/build-an-idempotent-write-api.md)

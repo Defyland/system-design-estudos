@@ -16,6 +16,9 @@ Como decidir o que deve morrer na borda, o que o gateway precisa governar e o qu
 - `Lab`: [Lab - Chapter 06](../labs/chapters/chapter-06-edge-rate-limiting-waf-and-gateway-boundaries.md)
 - `Review card`: [Card 06](../reviews/cards/06-edge-rate-limiting-waf-and-gateway-boundaries.md)
 - `Contraste sugerido`: [Contrast 08 - Edge Rate Limit vs App Authorization](../decision-contrasts/08-edge-rate-limit-vs-app-authorization.md)
+- `Simulation labs`: [Rate Limit vs Load Shedding](../simulation-labs/rate-limit-vs-load-shedding.md), [Noisy Neighbor / Workload Isolation](../simulation-labs/noisy-neighbor-workload-isolation.md)
+- `Operational playbook`: [Incident Severity and Triage](../areas/11-operational-playbooks/playbooks/incident-severity-and-triage.md)
+- `Bridge lab`: [Run a Progressive Rollout with Guardrails](../areas/14-engineering-case-study-labs/labs/run-a-progressive-rollout-with-guardrails.md)
 
 ## Historia de Produto
 

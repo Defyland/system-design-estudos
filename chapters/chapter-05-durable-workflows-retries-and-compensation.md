@@ -15,6 +15,9 @@ Como um fluxo longo deixa de caber em jobs encadeados e passa a precisar de esta
 - `Lab`: [Lab - Chapter 05](../labs/chapters/chapter-05-durable-workflows-retries-and-compensation.md)
 - `Review card`: [Card 05](../reviews/cards/05-durable-workflows-retries-and-compensation.md)
 - `Contraste sugerido`: [Contrast 07 - Durable Workflow vs Chained Jobs](../decision-contrasts/07-durable-workflow-vs-chained-jobs.md)
+- `Simulation labs`: [Saga / Compensation](../simulation-labs/saga-compensation.md), [Disaster Recovery / Failover Drill](../simulation-labs/disaster-recovery-failover-drill.md)
+- `Operational playbook`: [Disaster Recovery and Failover Drill](../areas/11-operational-playbooks/playbooks/disaster-recovery-and-failover-drill.md)
+- `Bridge lab`: [Execute a Multi-Region DR Drill](../areas/14-engineering-case-study-labs/labs/execute-a-multi-region-dr-drill.md)
 
 ## Historia de Produto
 

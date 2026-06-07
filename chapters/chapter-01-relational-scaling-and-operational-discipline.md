@@ -16,6 +16,9 @@ Como um produto cresce sem transformar o banco relacional no vilao errado.
 - `Lab`: [Lab - Chapter 01](../labs/chapters/chapter-01-relational-scaling-and-operational-discipline.md)
 - `Review card`: [Card 01](../reviews/cards/01-relational-scaling-and-operational-discipline.md)
 - `Contraste sugerido`: [Contrast 01 - Read Replica vs Cache-Aside](../decision-contrasts/01-read-replica-vs-cache-aside.md)
+- `Simulation labs`: [Cache](../simulation-labs/cache.md), [Sharding / Pod Isolation](../simulation-labs/sharding-pod-isolation.md)
+- `Operational playbook`: [Database Migration and Backfill](../areas/11-operational-playbooks/playbooks/database-migration-and-backfill.md)
+- `Bridge lab`: [Tune Postgres Indexes and Transactions](../areas/13-backend-principle-labs/labs/tune-postgres-indexes-and-transactions.md)
 
 ## Historia de Produto
 

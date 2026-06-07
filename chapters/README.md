@@ -52,7 +52,8 @@ O objetivo e impedir que a leitura comece por ferramenta. Primeiro voce limpa o 
 Quando terminar um chapter:
 1. rode o card correspondente em [reviews/](../reviews/README.md)
 2. escolha um contraste vizinho em [decision-contrasts/](../decision-contrasts/README.md)
-3. uma vez por semana, puxe um [capstone](../capstones/README.md)
+3. rode o simulation lab, playbook ou bridge lab recomendado no `Study Context`
+4. uma vez por semana, puxe um [capstone](../capstones/README.md)
 
 ## Sequencia Principal
 

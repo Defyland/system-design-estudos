@@ -206,7 +206,10 @@ def referenced_chapter_paths(chapter)
     chapter.fetch("suggested_contrast").fetch("path"),
     chapter.fetch("primary_case").fetch("path"),
     *chapter.fetch("complementary_cases").map { |case_ref| case_ref.fetch("path") },
-    *chapter.fetch("notes")
+    *chapter.fetch("notes"),
+    *simulation_paths(chapter),
+    *chapter.fetch("playbooks", []),
+    *chapter.fetch("bridge_labs", [])
   ]
 end
 
@@ -218,11 +221,18 @@ def study_context_targets(chapter, area_by_id)
     chapter.fetch("primary_case").fetch("path"),
     *chapter.fetch("complementary_cases").map { |case_ref| case_ref.fetch("path") },
     area_by_id.fetch(chapter.fetch("primary_area")).fetch("content_dirs").fetch("readme"),
-    *chapter.fetch("secondary_areas").map { |area_id| area_by_id.fetch(area_id).fetch("content_dirs").fetch("readme") }
+    *chapter.fetch("secondary_areas").map { |area_id| area_by_id.fetch(area_id).fetch("content_dirs").fetch("readme") },
+    *simulation_paths(chapter),
+    *chapter.fetch("playbooks", []),
+    *chapter.fetch("bridge_labs", [])
   ]
 end
 
-def validate_chapter_contract(chapter, phase_ids, area_ids, area_by_id)
+def simulation_paths(chapter)
+  chapter.fetch("simulations", []).map { |simulation| "simulation-labs/#{simulation}.md" }
+end
+
+def validate_chapter_contract(chapter, phase_ids, area_ids, area_by_id, simulation_ids)
   number = chapter.fetch("number")
   title = chapter.fetch("title")
   chapter_path = chapter.fetch("path")
@@ -233,6 +243,9 @@ def validate_chapter_contract(chapter, phase_ids, area_ids, area_by_id)
   assert(area_ids.include?(chapter.fetch("primary_area")), "unknown primary area for chapter #{number}")
   chapter.fetch("secondary_areas").each do |area_id|
     assert(area_ids.include?(area_id), "unknown secondary area #{area_id} for chapter #{number}")
+  end
+  chapter.fetch("simulations", []).each do |simulation_id|
+    assert(simulation_ids.include?(simulation_id), "unknown simulation #{simulation_id} for chapter #{number}")
   end
 
   referenced_chapter_paths(chapter).each do |path|
@@ -258,9 +271,17 @@ def validate_chapter_contract(chapter, phase_ids, area_ids, area_by_id)
   end
 end
 
-def validate_chapters(chapters, phase_ids, area_ids, area_by_id)
+def validate_simulation_catalog(simulation_ids)
+  assert(simulation_ids.uniq.size == simulation_ids.size, "simulation_labs ids must be unique")
+
+  simulation_ids.each do |simulation_id|
+    assert(exists?("simulation-labs/#{simulation_id}.md"), "simulation path missing: simulation-labs/#{simulation_id}.md")
+  end
+end
+
+def validate_chapters(chapters, phase_ids, area_ids, area_by_id, simulation_ids)
   chapters.each do |chapter|
-    validate_chapter_contract(chapter, phase_ids, area_ids, area_by_id)
+    validate_chapter_contract(chapter, phase_ids, area_ids, area_by_id, simulation_ids)
   end
 end
 
@@ -285,6 +306,7 @@ area_ids = areas.map { |area| area.fetch("id") }.to_set
 area_by_id = areas.to_h { |area| [ area.fetch("id"), area ] }
 phase_ids = CURRICULUM.fetch("phases").map { |phase| phase.fetch("id") }.to_set
 phase_chapter_ids = CURRICULUM.fetch("phases").flat_map { |phase| phase.fetch("chapters") }
+simulation_ids = CURRICULUM.fetch("simulation_labs")
 
 unless system(RbConfig.ruby, ROOT.join("scripts/render_curriculum_indexes.rb").to_s, "--check")
   error("generated curriculum indexes are stale; run ruby scripts/render_curriculum_indexes.rb")
@@ -292,7 +314,8 @@ end
 
 validate_manifest_shape(chapters, phase_chapter_ids)
 validate_area_paths(areas)
-validate_chapters(chapters, phase_ids, area_ids, area_by_id)
+validate_simulation_catalog(simulation_ids)
+validate_chapters(chapters, phase_ids, area_ids, area_by_id, simulation_ids.to_set)
 validate_markdown_links
 
 if @errors.any?

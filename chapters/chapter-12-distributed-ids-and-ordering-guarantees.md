@@ -15,6 +15,9 @@ Como escolher IDs distribuidos quando unicidade nao basta e um sequence central 
 - `Lab`: [Lab - Chapter 12](../labs/chapters/chapter-12-distributed-ids-and-ordering-guarantees.md)
 - `Review card`: [Card 12](../reviews/cards/12-distributed-ids-and-ordering-guarantees.md)
 - `Contraste sugerido`: [Contrast 12 - Snowflake vs UUID or Serial](../decision-contrasts/12-snowflake-vs-uuid-or-serial.md)
+- `Simulation labs`: [Canary Rollout](../simulation-labs/canary-rollout.md)
+- `Operational playbook`: [Deploy Rollback and Kill Switch](../areas/11-operational-playbooks/playbooks/deploy-rollback-and-kill-switch.md)
+- `Bridge lab`: [Plan a Zero-Downtime Migration](../areas/14-engineering-case-study-labs/labs/plan-a-zero-downtime-migration.md)
 
 ## Historia de Produto
 

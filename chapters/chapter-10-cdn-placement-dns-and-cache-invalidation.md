@@ -15,6 +15,9 @@ Como decidir o que merece ficar perto do usuario, quem escolhe o caminho ate ess
 - `Lab`: [Lab - Chapter 10](../labs/chapters/chapter-10-cdn-placement-dns-and-cache-invalidation.md)
 - `Review card`: [Card 10](../reviews/cards/10-cdn-placement-dns-and-cache-invalidation.md)
 - `Contraste sugerido`: [Contrast 09 - CDN Cache vs App Cache](../decision-contrasts/09-cdn-cache-vs-app-cache.md)
+- `Simulation labs`: [Cache](../simulation-labs/cache.md), [Disaster Recovery / Failover Drill](../simulation-labs/disaster-recovery-failover-drill.md)
+- `Operational playbook`: [Cache Hot Key and Origin Protection](../areas/11-operational-playbooks/playbooks/cache-hot-key-and-origin-protection.md)
+- `Bridge lab`: [Run a Progressive Rollout with Guardrails](../areas/14-engineering-case-study-labs/labs/run-a-progressive-rollout-with-guardrails.md)
 
 ## Historia de Produto
 

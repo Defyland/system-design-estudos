@@ -15,6 +15,9 @@ Como um produto descobre que "mais threads" nao resolve quando conexoes vivas, f
 - `Lab`: [Lab - Chapter 13](../labs/chapters/chapter-13-realtime-concurrency-and-workload-isolation.md)
 - `Review card`: [Card 13](../reviews/cards/13-realtime-concurrency-and-workload-isolation.md)
 - `Contraste sugerido`: [Contrast 13 - Rate Limit vs Load Shedding](../decision-contrasts/13-rate-limit-vs-load-shedding.md)
+- `Simulation labs`: [Event Backbone / Consumer Lag](../simulation-labs/event-backbone-consumer-lag.md), [Noisy Neighbor / Workload Isolation](../simulation-labs/noisy-neighbor-workload-isolation.md)
+- `Operational playbook`: [Incident Severity and Triage](../areas/11-operational-playbooks/playbooks/incident-severity-and-triage.md)
+- `Bridge lab`: [Write an SLO, Runbook and Postmortem](../areas/14-engineering-case-study-labs/labs/write-an-slo-runbook-and-postmortem.md)
 
 ## Historia de Produto
 

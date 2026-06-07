@@ -15,6 +15,9 @@ Como um feed deixa de ser lista cronologica e vira uma decisao de produto sobre 
 - `Lab`: [Lab - Chapter 14](../labs/chapters/chapter-14-feed-ranking-and-fanout-trade-offs.md)
 - `Review card`: [Card 14](../reviews/cards/14-feed-ranking-and-fanout-trade-offs.md)
 - `Contraste sugerido`: [Contrast 11 - Fanout-on-Write vs Fanout-on-Read](../decision-contrasts/11-fanout-on-write-vs-fanout-on-read.md)
+- `Simulation labs`: [Fanout / Feed Ranking Cost](../simulation-labs/fanout-feed-ranking-cost.md), [Feed Ranking / Guardrails](../simulation-labs/feed-ranking-guardrails.md)
+- `Operational playbook`: [Deploy Rollback and Kill Switch](../areas/11-operational-playbooks/playbooks/deploy-rollback-and-kill-switch.md)
+- `Bridge lab`: [Design a Feed Ranking Experiment Loop](../areas/14-engineering-case-study-labs/labs/design-a-feed-ranking-experiment-loop.md)
 
 ## Historia de Produto
 

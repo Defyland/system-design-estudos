@@ -15,6 +15,9 @@ Como um sistema de busca indexa documentos, respeita permissoes e entrega result
 - `Lab`: [Lab - Chapter 09](../labs/chapters/chapter-09-search-indexing-and-permission-aware-retrieval.md)
 - `Review card`: [Card 09](../reviews/cards/09-search-indexing-and-permission-aware-retrieval.md)
 - `Contraste sugerido`: [Contrast 04 - Search Index vs Relational Querying](../decision-contrasts/04-search-index-vs-relational-querying.md)
+- `Simulation labs`: [Search Freshness / Reindex](../simulation-labs/search-freshness-reindex.md), [Search Cutover / ACL / Freshness](../simulation-labs/search-cutover-acl-freshness.md)
+- `Operational playbook`: [Search Reindex and Freshness](../areas/11-operational-playbooks/playbooks/search-reindex-and-freshness.md)
+- `Bridge lab`: [Build a Data Contract, Replay and Freshness Plan](../areas/14-engineering-case-study-labs/labs/build-a-data-contract-replay-and-freshness-plan.md)
 
 ## Historia de Produto
 
