@@ -5,18 +5,28 @@
 - [Chapter 10](../../chapters/chapter-10-cdn-placement-dns-and-cache-invalidation.md)
 - [Lab 10](../../labs/chapters/chapter-10-cdn-placement-dns-and-cache-invalidation.md)
 
-## 15-Second Recall
+## Anchor
 
-- `Pergunta`: qual pergunta vem antes de "qual TTL eu uso?"?
-- `Resposta curta`: quem consome isso, por quanto tempo continua valido e em qual camada vale guardar mais.
+- `Problema`: latencia global e freshness estao sendo tratadas como se fossem so "mais cache".
+- `Decisao`: pensar CDN como placement, roteamento e envelhecimento por camada, nao so como TTL.
 
-## Design Pass Recall
+## Case Anchor
 
-- `Requirement`: a dor real e latencia global ou so cache mal usado?
-- `Delete`: qual camada de cache ou purge exagerado voce cortaria primeiro?
-- `Forma mais simples`: CDN para conteudo estavel com invalidacao previsivel.
+- `Caso real`: [Netflix - Open Connect CDN](../../real-world-cases/04-edge-and-delivery/netflix-open-connect-cdn/README.md)
+- `Lembrete`: placement e freshness andam juntos; cache bom nao e so "ficar perto".
 
-## Wrong Turn
+## QDSAA Recall
+
+- `Requirement corrigido`: a dor real pode ser geografia, origem ou freshness, nao "falta de cache" genericamente.
+- `Delete`: purge exagerado e camada duplicada de cache sem contrato claro.
+- `Forma simples`: CDN para conteudo estavel com invalidacao previsivel.
+
+## Trade-off to Remember
+
+- `Custo`: mais cache e placement compram hit ratio, mas complicam freshness e origem.
+- `Failure mode`: miss storm depois de purge ruim ou stale demais em conteudo sensivel.
+
+## Trap
 
 - `Resposta ruim`: "purge all a cada deploy e simples".
 - `Troque por isto`: versionamento e TTL por camada preservam hit ratio e evitam miss storm.
@@ -24,17 +34,3 @@
 ## 1-Minute Answer
 
 CDN bom combina placement, roteamento e freshness. Asset imutavel pede fingerprint e TTL longo; conteudo mutavel pede TTL curto, `stale-while-revalidate` ou purge cirurgico.
-
-## Production Recall
-
-- `Pergunta`: qual numero abre um purge ruim mais rapido?
-- `Resposta curta`: hit ratio caindo junto com origem subindo de repente.
-
-## Wrong Production Move
-
-- `Resposta ruim`: "purga tudo de novo para corrigir".
-- `Troque por isto`: purge demais tambem e incidente; primeiro proteja a origem.
-
-## Transfer Check
-
-- empresa menor quase sempre compra valor enorme so acertando headers, fingerprint e invalidacao

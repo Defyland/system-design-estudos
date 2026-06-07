@@ -5,18 +5,28 @@
 - [Chapter 01](../../chapters/chapter-01-relational-scaling-and-operational-discipline.md)
 - [Lab 01](../../labs/chapters/chapter-01-relational-scaling-and-operational-discipline.md)
 
-## 15-Second Recall
+## Anchor
 
-- `Pergunta`: quando o banco doi, qual acusacao voce segura?
-- `Resposta curta`: eu nao culpo SQL primeiro; eu olho leitura, escrita, cache, replica e upgrade.
+- `Problema`: o banco esta doendo e o time quer culpar o modelo cedo demais.
+- `Decisao`: manter o core relacional e escalar na ordem certa: query path, replica honesta, cache-aside e isolamento mais caro so quando blast radius justificar.
 
-## Design Pass Recall
+## Case Anchor
 
-- `Requirement`: quais reads precisam mesmo de frescor total e quais podem respirar com replica ou cache?
-- `Delete`: qual query pesada ou leitura ornamental voce tiraria primeiro da primary?
-- `Forma mais simples`: core relacional bem operado com replica e cache antes de shard ou datastore novo.
+- `Caso real`: [GitHub - Rails and MySQL at Scale](../../real-world-cases/01-platforms-and-apps/github-rails-and-mysql-at-scale/README.md)
+- `Lembrete`: GitHub e Shopify mostram que disciplina operacional costuma render mais do que trocar de datastore por ansiedade.
 
-## Wrong Turn
+## QDSAA Recall
+
+- `Requirement corrigido`: nem toda leitura precisa do mesmo frescor.
+- `Delete`: query ornamental ou leitura quente demais na primary.
+- `Forma simples`: relacional bem operado com replica e cache antes de shard ou datastore novo.
+
+## Trade-off to Remember
+
+- `Custo`: replica e cache aliviam throughput, mas compram staleness e invalidacao.
+- `Failure mode`: read-after-write quebrando porque a leitura saiu cedo demais da primary.
+
+## Trap
 
 - `Resposta ruim`: "ficou lento, entao agora e NoSQL".
 - `Troque por isto`: muitas vezes o problema e disciplina operacional fraca, nao o modelo relacional.
@@ -24,17 +34,3 @@
 ## 1-Minute Answer
 
 O core continua relacional enquanto integridade e write transacional ainda dominam. Escale na ordem: query path, replica honesta, cache-aside e isolamento mais caro so quando blast radius justificar.
-
-## Production Recall
-
-- `Pergunta`: qual primeira metrica separa problema de replica de problema de cache?
-- `Resposta curta`: replica lag por endpoint e stale complaint no fluxo que acabou de escrever.
-
-## Wrong Production Move
-
-- `Resposta ruim`: "limpa todo o cache e deixa a replica ligada para ver se melhora".
-- `Troque por isto`: senior primeiro devolve o fluxo sensivel para a primary e isola a camada que quebrou o contrato.
-
-## Transfer Check
-
-- se o usuario acabou de escrever e precisa ver o efeito agora, a leitura continua na primary

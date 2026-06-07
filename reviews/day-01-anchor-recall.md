@@ -28,11 +28,11 @@ Depois rode o resto:
 
 ## Mixed Oral Checks
 
-- se o tenant ruidoso machuca todos os outros, qual fronteira voce compra antes de microservicos?
-- se o usuario acabou de salvar e nao pode ver stale read, onde a leitura fica?
-- se o `POST` pode ser repetido depois de falha ambigua, o que precisa virar contrato?
-- se a request e obviamente abusiva, onde ela deveria morrer?
-- se checkout mistura sessao, risco e pagamento, qual boundary precisa nascer?
+- se o tenant ruidoso machuca todos os outros, qual escolha arquitetural o chapter 02 ensinou?
+- se o usuario acabou de salvar e nao pode ver stale read, qual decisao do chapter 01 responde isso?
+- se o `POST` pode ser repetido depois de falha ambigua, qual contrato vira o centro do chapter 03?
+- se auth, risco e pagamento se encostam, qual boundary o chapter 07 faz nascer?
+- se a cronologia falhou no produto, quais duas partes o chapter 14 separa?
 
 ## Done When
 

@@ -16,14 +16,14 @@ Parar de revisar em silos e comecar a puxar dois ou tres chapters para o mesmo p
 
 ## Mixed Oral Checks
 
-- antes de puxar qualquer componente, qual requisito voce questiona primeiro e o que tentaria remover?
-- o mesmo marketplace pode precisar de H3, fila simples e idempotencia ao mesmo tempo. Onde cada coisa entra?
+- qual problema unico faz um marketplace puxar H3, fila simples e idempotencia ao mesmo tempo?
 - busca com ACL, indexacao assincrona e feed de atividade puxam quais boundaries diferentes?
+- em cada tema, qual overengineering prematuro o chapter rejeita?
 - o que mudaria entre responder isso em Rails e explicar por que Elixir ou Go so entram depois?
-- em cada cenario, qual primeira metrica ou dashboard voce abriria antes de especular?
+- qual caso real ancora melhor cada uma dessas escolhas?
 
 ## Done When
 
 - voce consegue puxar pelo menos `3 chapters` para um problema unico sem se perder
-- voce consegue explicar o primeiro requisito a questionar antes de vender componente
+- voce consegue explicar o problema, a decisao e o trade-off antes de vender componente
 - voce nao confunde mais `tema do curso` com `componente do sistema`

@@ -5,18 +5,28 @@
 - [Chapter 06](../../chapters/chapter-06-edge-rate-limiting-waf-and-gateway-boundaries.md)
 - [Lab 06](../../labs/chapters/chapter-06-edge-rate-limiting-waf-and-gateway-boundaries.md)
 
-## 15-Second Recall
+## Anchor
 
-- `Pergunta`: o que deve morrer antes da app?
-- `Resposta curta`: trafego obviamente abusivo, invalido ou caro demais para ganhar CPU da origem.
+- `Problema`: trafego abusivo, caro ou invalido esta gastando CPU da origem e confundindo fronteiras.
+- `Decisao`: matar barato na borda, governar entrada no gateway e deixar semantica e permissao fina na app.
 
-## Design Pass Recall
+## Case Anchor
 
-- `Requirement`: o que deve morrer cedo na borda e o que ainda depende do dominio?
-- `Delete`: qual regra duplicada entre edge, gateway e app voce removeria primeiro?
-- `Forma mais simples`: edge bloqueia abuso obvio, gateway governa entrada, app decide semantica.
+- `Caso real`: [Cloudflare - Edge Platform](../../real-world-cases/04-edge-and-delivery/cloudflare-edge-platform/README.md)
+- `Lembrete`: protecao de borda so fica madura quando separa bloqueio barato, governanca compartilhada e regra de negocio.
 
-## Wrong Turn
+## QDSAA Recall
+
+- `Requirement corrigido`: nem tudo deve morrer na borda; parte do julgamento ainda pertence ao dominio.
+- `Delete`: regra duplicada entre edge, gateway e app.
+- `Forma simples`: edge bloqueia abuso obvio, gateway governa entrada, app decide semantica.
+
+## Trade-off to Remember
+
+- `Custo`: mais poder na borda aumenta tuning e risco de falso positivo.
+- `Failure mode`: trafego legitimo bloqueado ou identidade errada de fairness deixando o vizinho ruidoso passar.
+
+## Trap
 
 - `Resposta ruim`: "o gateway decide toda a autorizacao do sistema".
 - `Troque por isto`: edge e gateway governam a entrada; a app ainda decide semantica e permissao fina.
@@ -24,17 +34,3 @@
 ## 1-Minute Answer
 
 O desenho bom divide responsabilidade: edge bloqueia barato, gateway governa auth tecnica e roteamento, app protege regra de negocio e recursos caros recebem fairness mais perto do dano.
-
-## Production Recall
-
-- `Pergunta`: qual combinacao de numeros voce abre antes de mexer na regra?
-- `Resposta curta`: 429 ou 403 por rota e tenant, junto com CPU ou fila da origem.
-
-## Wrong Production Move
-
-- `Resposta ruim`: "se a origem melhorou, sobe o bloqueio mais ainda".
-- `Troque por isto`: edge bom mata abuso sem matar login, leitura ou receita legitima.
-
-## Transfer Check
-
-- limite por IP quase nunca conta a historia inteira em produto B2B ou multi-tenant

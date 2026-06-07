@@ -17,10 +17,11 @@ Provar memoria de longo prazo e transferencia real.
 - qual requisito voce aprendeu a questionar antes de falar de ferramenta?
 - qual componente ou processo voce hoje tentaria remover antes de escalar?
 - qual decisao voce ainda lembra pelo problema, e nao pelo nome?
+- qual trade-off voce ainda lembra sem reler o chapter?
 - qual resposta ruim ainda te seduz?
 - em quais temas Rails continua sendo a explicacao certa?
 - em quais temas Elixir ou Go finalmente ensinam algo que Rails sozinho nao ensina?
-- em quais cenarios voce faria rollback na hora, e em quais seguraria mitigacao antes de reverter?
+- qual caso real ainda funciona como anchor sem voce reler a fonte?
 
 ## Done When
 

@@ -12,7 +12,15 @@ Revisao espacada para consolidar os chapters sem depender de exercicio escrito.
    - `errei`
 4. no proximo ciclo, gaste mais tempo no que ficou `hesitante` ou `errei`
 
-Os cards agora tambem incluem `Design Pass Recall`, para treinar o primeiro requisito a questionar, o primeiro corte a fazer e a forma mais simples antes de vender componente.
+Os cards agora priorizam memoria do chapter:
+- `Anchor`
+- `Case Anchor`
+- `QDSAA Recall`
+- `Trade-off to Remember`
+- `Trap`
+- `1-Minute Answer`
+
+Se voce quer primeira acao operacional, use [Operational Playbooks](../areas/11-operational-playbooks/README.md) e [Simulation Labs](../simulation-labs/README.md). O review card nao e runbook.
 
 ## Cadencia
 
@@ -45,7 +53,7 @@ Os cards agora tambem incluem `Design Pass Recall`, para treinar o primeiro requ
 
 O chapter ensina.
 
-O review faz voce lembrar sem ajuda.
+O review faz voce lembrar sem ajuda o que foi estudado.
 
 O contraste faz voce nao confundir decisoes parecidas.
 

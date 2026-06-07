@@ -5,18 +5,28 @@
 - [Chapter 07](../../chapters/chapter-07-critical-checkout-flows-and-auth-boundaries.md)
 - [Lab 07](../../labs/chapters/chapter-07-critical-checkout-flows-and-auth-boundaries.md)
 
-## 15-Second Recall
+## Anchor
 
-- `Pergunta`: o que o boundary de checkout responde que a sessao comum nao responde?
-- `Resposta curta`: se esta mutacao critica pode acontecer agora, com este risco, sem cobrar duas vezes.
+- `Problema`: sessao, risco e pagamento se encostam no mesmo ponto onde dinheiro entra.
+- `Decisao`: criar um boundary de checkout que decide a mutacao critica, protege idempotencia e devolve a proxima acao do fluxo.
 
-## Design Pass Recall
+## Case Anchor
 
-- `Requirement`: qual transicao critica precisa ter um dono unico agora?
-- `Delete`: qual logica duplicada de checkout ou auth voce cortaria primeiro?
-- `Forma mais simples`: um boundary claro para estado critico antes de varios servicos laterais.
+- `Caso real`: [Uber - Unified Checkout](../../real-world-cases/05-product-scenarios/uber-unified-checkout/README.md)
+- `Lembrete`: checkout nao responde so "quem e voce?"; responde "esta mutacao financeira pode acontecer agora sem divergencia?".
 
-## Wrong Turn
+## QDSAA Recall
+
+- `Requirement corrigido`: o dono aqui nao e "mais auth"; e a transicao critica de estado.
+- `Delete`: logica duplicada de checkout, reauth e payment method espalhada por produtos.
+- `Forma simples`: um boundary claro para estado critico antes de varios servicos laterais.
+
+## Trade-off to Remember
+
+- `Custo`: mais centralizacao, mais disciplina de estado e mais ownership explicito.
+- `Failure mode`: conversao cai ou a mutacao fica ambigua justamente porque cada canal decidiu checkout de um jeito.
+
+## Trap
 
 - `Resposta ruim`: "login e gateway ja cobrem checkout".
 - `Troque por isto`: checkout centraliza auth sensivel, idempotencia, estado de pagamento e proxima acao recuperavel.
@@ -24,17 +34,3 @@
 ## 1-Minute Answer
 
 Quando auth, risco e pagamento se encostam, checkout precisa virar fronteira propria. A principio isso pode viver dentro do monolito Rails, com service claro e contrato explicito de estado.
-
-## Production Recall
-
-- `Pergunta`: qual painel voce abre antes de debugar o controller?
-- `Resposta curta`: conversao por etapa, timeout de PSP, `requires_action` e `processing` preso.
-
-## Wrong Production Move
-
-- `Resposta ruim`: "manda mais retry e ve se o pedido sai".
-- `Troque por isto`: primeiro reconcilie estado financeiro e preserve idempotencia.
-
-## Transfer Check
-
-- o ganho inicial nao e microservico; e parar de espalhar mutacao critica em controllers soltos

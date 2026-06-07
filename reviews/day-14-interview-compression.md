@@ -17,9 +17,9 @@ Comprimir resposta. Aqui voce nao quer lembrar tudo; quer dizer a coisa certa ra
 ## Compression Drill
 
 Para cada tema, responda em voz alta nestes tres formatos:
-- `15 segundos`: qual requisito eu questiono primeiro e o que eu tentaria remover?
 - `15 segundos`: qual problema isso resolve?
-- `15 segundos`: qual mitigacao segura voce faria primeiro se isso quebrasse em producao?
+- `15 segundos`: qual decisao entrou?
+- `15 segundos`: por que nao a alternativa vizinha?
 - `1 minuto`: quando eu uso e quando eu nao uso?
 - `3 minutos`: qual caso real explica isso e como eu faria menor em Rails?
 

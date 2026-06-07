@@ -5,18 +5,28 @@
 - [Chapter 05](../../chapters/chapter-05-durable-workflows-retries-and-compensation.md)
 - [Lab 05](../../labs/chapters/chapter-05-durable-workflows-retries-and-compensation.md)
 
-## 15-Second Recall
+## Anchor
 
-- `Pergunta`: o que workflow duravel compra que job encadeado nao compra?
-- `Resposta curta`: memoria do caminho. O sistema sabe onde parou e de onde retoma.
+- `Problema`: fluxo longo atravessa varios passos, espera, retry e compensation que nao cabem em job encadeado ingenuo.
+- `Decisao`: explicitar estado duravel do processo para retomar do ponto certo, em vez de recomecar tudo no escuro.
 
-## Design Pass Recall
+## Case Anchor
 
-- `Requirement`: esse fluxo precisa mesmo viver por muito tempo e compensar etapas?
-- `Delete`: qual passo ou compensacao voce cortaria primeiro?
-- `Forma mais simples`: coordenador explicito ou maquina de estados antes de engine dedicada.
+- `Caso real`: [Uber - Cadence Workflows](../../real-world-cases/03-async-workflows-and-payments/uber-cadence-workflows/README.md)
+- `Lembrete`: o ganho do workflow duravel e memoria do caminho, nao "mais fila".
 
-## Wrong Turn
+## QDSAA Recall
+
+- `Requirement corrigido`: o centro do problema e sobreviver a espera, crash e efeitos externos, nao so fazer async.
+- `Delete`: passo ou compensation que nao precisa existir.
+- `Forma simples`: coordenador explicito ou maquina de estados antes de engine dedicada.
+
+## Trade-off to Remember
+
+- `Custo`: mais infraestrutura, visibilidade e disciplina de estado.
+- `Failure mode`: execucoes presas entre steps ou compensation falhando depois do efeito externo.
+
+## Trap
 
 - `Resposta ruim`: "se falhar no meio, eu reinicio tudo".
 - `Troque por isto`: efeitos externos e timers longos pedem retomada por estado, nao recomeco heroico.
@@ -24,17 +34,3 @@
 ## 1-Minute Answer
 
 Workflow duravel aparece quando retry, timeout e compensation variam por etapa e precisam sobreviver a crash. O primeiro efeito externo serio ja merece compensation explicita.
-
-## Production Recall
-
-- `Pergunta`: qual tela ou metrica abre um workflow quebrado mais rapido?
-- `Resposta curta`: execucoes presas por step, timeout rate e compensation failure.
-
-## Wrong Production Move
-
-- `Resposta ruim`: "aumenta timeout e deixa rodar mais um pouco".
-- `Troque por isto`: quando o fluxo esta preso, senior primeiro pausa entrada e impede retry avalanche.
-
-## Transfer Check
-
-- para produto menor, uma tabela de execucao e jobs retomaveis ensinam muito antes de instalar Temporal ou Cadence

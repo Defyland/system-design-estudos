@@ -5,18 +5,28 @@
 - [Chapter 04](../../chapters/chapter-04-event-backbone-partitions-and-consumer-scale.md)
 - [Lab 04](../../labs/chapters/chapter-04-event-backbone-partitions-and-consumer-scale.md)
 
-## 15-Second Recall
+## Anchor
 
-- `Pergunta`: quando fila simples deixa de bastar?
-- `Resposta curta`: quando o mesmo fato precisa de varios consumidores, replay e vida propria alem do primeiro job.
+- `Problema`: o mesmo fato de negocio precisa servir varios consumidores, replay e historico.
+- `Decisao`: sair da fila ponto a ponto e assumir um backbone de eventos com particao, schema e consumo independente.
 
-## Design Pass Recall
+## Case Anchor
 
-- `Requirement`: voce precisa de replay e consumidores independentes ou so de async?
-- `Delete`: qual evento ainda e so chamada interna fantasiada?
-- `Forma mais simples`: fila simples com outbox antes de backbone completo.
+- `Caso real`: [LinkedIn - Kafka Backbone](../../real-world-cases/03-async-workflows-and-payments/linkedin-kafka-backbone/README.md)
+- `Lembrete`: Kafka virou backbone quando um produtor precisou publicar um fato uma vez e deixar varios leitores viverem no proprio ritmo.
 
-## Wrong Turn
+## QDSAA Recall
+
+- `Requirement corrigido`: o requisito nao e "tenho muito volume"; e "tenho varios consumidores e replay".
+- `Delete`: evento que ainda e chamada interna fantasiada.
+- `Forma simples`: fila simples com outbox antes de backbone completo.
+
+## Trade-off to Remember
+
+- `Custo`: schema governance, lag e replay viram responsabilidade de plataforma.
+- `Failure mode`: particao quente ou replay grande derrubando downstream.
+
+## Trap
 
 - `Resposta ruim`: "Kafka e melhor sempre que ha muitas mensagens".
 - `Troque por isto`: backbone entra quando o problema e multiplicidade de leitores e historico de evento, nao volume isolado.
@@ -24,17 +34,3 @@
 ## 1-Minute Answer
 
 Evento com particao certa preserva ordem util dentro do agregado. Consumer lag, skew e replay passam a fazer parte do desenho, nao so da operacao.
-
-## Production Recall
-
-- `Pergunta`: qual leitura voce quer antes de olhar lag medio?
-- `Resposta curta`: a particao mais quente, a fila que nao drena e o schema que acabou de mudar.
-
-## Wrong Production Move
-
-- `Resposta ruim`: "se esta atrasado, aumenta replay e consumo para todos".
-- `Troque por isto`: senior primeiro isola particao ruim e protege downstream, depois acelera.
-
-## Transfer Check
-
-- se voce ainda tem um unico consumidor e nunca reprocessa nada, provavelmente ainda esta no mundo da fila simples
