@@ -43,6 +43,10 @@ Mantive pasta apenas para blocos que de fato acumulam material:
 - [08 - Sistemas de IA](areas/08-sistemas-ia/README.md) (`topic_catalog`)
 - [09 - Backend Principles](areas/09-backend-principles/README.md) (`backend_principle_catalog`)
 - [10 - Engineering Case Studies](areas/10-engineering-case-studies/README.md) (`engineering_case_study_catalog`)
+- [11 - Operational Playbooks](areas/11-operational-playbooks/README.md) (`operational_playbook_catalog`)
+- [12 - Engineering Practice](areas/12-engineering-practice/README.md) (`engineering_practice_catalog`)
+- [13 - Backend Principle Labs](areas/13-backend-principle-labs/README.md) (`backend_lab_catalog`)
+- [14 - Engineering Case Study Labs](areas/14-engineering-case-study-labs/README.md) (`engineering_case_lab_catalog`)
 <!-- curriculum:end:area-list -->
 
 ## O que nao virou pasta

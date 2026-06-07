@@ -8,22 +8,80 @@ require "yaml"
 
 ROOT = Pathname(__dir__).join("..").expand_path
 CURRICULUM = YAML.safe_load(ROOT.join("curriculum.yml").read, aliases: true)
-CARD_SECTION_CONTRACTS = {
-  "backend_principle_catalog" => [
-    "When to Use",
-    "What Breaks First",
-    "Interview Trap",
-    "Practice Drill",
-    "Source Anchor"
-  ],
-  "engineering_case_study_catalog" => [
-    "Case Pattern",
-    "When to Use",
-    "What Breaks First",
-    "Interview Trap",
-    "Practice Drill",
-    "Source Anchor"
-  ]
+CATALOG_CONTRACTS = {
+  "backend_principle_catalog" => {
+    "dir_key" => "cards",
+    "readme_prefix" => "./cards/",
+    "required_sections" => [
+      "When to Use",
+      "What Breaks First",
+      "Interview Trap",
+      "Practice Drill",
+      "Source Anchor"
+    ]
+  },
+  "engineering_case_study_catalog" => {
+    "dir_key" => "cards",
+    "readme_prefix" => "./cards/",
+    "required_sections" => [
+      "Case Pattern",
+      "When to Use",
+      "What Breaks First",
+      "Interview Trap",
+      "Practice Drill",
+      "Source Anchor"
+    ]
+  },
+  "operational_playbook_catalog" => {
+    "dir_key" => "playbooks",
+    "readme_prefix" => "./playbooks/",
+    "required_sections" => [
+      "Trigger",
+      "Signals",
+      "Immediate Actions",
+      "Stabilize",
+      "Deep Checks",
+      "Exit Criteria",
+      "Practice Drill",
+      "Source Anchor"
+    ]
+  },
+  "engineering_practice_catalog" => {
+    "dir_key" => "cards",
+    "readme_prefix" => "./cards/",
+    "required_sections" => [
+      "When to Use",
+      "What Breaks First",
+      "Design Moves",
+      "Interview Trap",
+      "Practice Drill",
+      "Source Anchor"
+    ]
+  },
+  "backend_lab_catalog" => {
+    "dir_key" => "labs",
+    "readme_prefix" => "./labs/",
+    "required_sections" => [
+      "Objective",
+      "Setup",
+      "Tasks",
+      "Exit Criteria",
+      "Deliverable",
+      "Linked Concepts"
+    ]
+  },
+  "engineering_case_lab_catalog" => {
+    "dir_key" => "labs",
+    "readme_prefix" => "./labs/",
+    "required_sections" => [
+      "Objective",
+      "Setup",
+      "Tasks",
+      "Exit Criteria",
+      "Deliverable",
+      "Linked Concepts"
+    ]
+  }
 }.freeze
 
 @errors = []
@@ -65,26 +123,28 @@ def clean_local_target(target)
 end
 
 def validate_card_contract(area)
-  required_sections = CARD_SECTION_CONTRACTS[area.fetch("kind")]
-  return unless required_sections
+  contract = CATALOG_CONTRACTS[area.fetch("kind")]
+  return unless contract
 
-  cards_dir = area.fetch("content_dirs").fetch("cards", nil)
-  unless cards_dir
-    error("area #{area.fetch("id")} missing cards content dir")
+  dir_key = contract.fetch("dir_key")
+  required_sections = contract.fetch("required_sections")
+  content_dir = area.fetch("content_dirs").fetch(dir_key, nil)
+  unless content_dir
+    error("area #{area.fetch("id")} missing #{dir_key} content dir")
     return
   end
 
-  cards_path = ROOT.join(cards_dir)
-  assert(cards_path.directory?, "area #{area.fetch("id")} cards path is not a directory: #{cards_dir}")
-  return unless cards_path.directory?
+  content_path = ROOT.join(content_dir)
+  assert(content_path.directory?, "area #{area.fetch("id")} #{dir_key} path is not a directory: #{content_dir}")
+  return unless content_path.directory?
 
-  cards = markdown_cards(cards_dir)
-  assert(cards.any?, "area #{area.fetch("id")} has no markdown cards: #{cards_dir}")
-  validate_area_readme_cards(area, cards)
+  documents = markdown_cards(content_dir)
+  assert(documents.any?, "area #{area.fetch("id")} has no markdown documents: #{content_dir}")
+  validate_area_readme_cards(area, documents, contract.fetch("readme_prefix"))
 
-  cards.each do |card|
-    body = card.read
-    relative_path = card.relative_path_from(ROOT)
+  documents.each do |document|
+    body = document.read
+    relative_path = document.relative_path_from(ROOT)
     h1_count = body.scan(/^# [^\n]+$/).size
 
     assert(h1_count == 1, "card #{relative_path} must have exactly one H1")
@@ -103,15 +163,15 @@ def validate_card_contract(area)
   end
 end
 
-def validate_area_readme_cards(area, cards)
+def validate_area_readme_cards(area, documents, readme_prefix)
   readme_path = ROOT.join(area.fetch("content_dirs").fetch("readme"))
   readme_body = readme_path.read
   listed_card_paths = markdown_links(readme_body)
     .map { |target| clean_local_target(target) }
-    .select { |target| target.start_with?("./cards/") && target.end_with?(".md") }
+    .select { |target| target.start_with?(readme_prefix) && target.end_with?(".md") }
     .map { |target| readme_path.dirname.join(target).cleanpath.relative_path_from(ROOT).to_s }
     .sort
-  actual_card_paths = cards.map { |card| card.relative_path_from(ROOT).to_s }.sort
+  actual_card_paths = documents.map { |document| document.relative_path_from(ROOT).to_s }.sort
 
   missing = actual_card_paths - listed_card_paths
   extra = listed_card_paths - actual_card_paths

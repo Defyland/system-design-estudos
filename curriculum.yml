@@ -104,6 +104,34 @@ areas:
       cards: areas/10-engineering-case-studies/cards
       loop: areas/10-engineering-case-studies/learning-loop.md
       sources: areas/10-engineering-case-studies/sources.md
+  - id: 11-operational-playbooks
+    title: Operational Playbooks
+    kind: operational_playbook_catalog
+    content_dirs:
+      readme: areas/11-operational-playbooks/README.md
+      notes: areas/11-operational-playbooks/notes.md
+      playbooks: areas/11-operational-playbooks/playbooks
+  - id: 12-engineering-practice
+    title: Engineering Practice
+    kind: engineering_practice_catalog
+    content_dirs:
+      readme: areas/12-engineering-practice/README.md
+      notes: areas/12-engineering-practice/notes.md
+      cards: areas/12-engineering-practice/cards
+  - id: 13-backend-principle-labs
+    title: Backend Principle Labs
+    kind: backend_lab_catalog
+    content_dirs:
+      readme: areas/13-backend-principle-labs/README.md
+      notes: areas/13-backend-principle-labs/notes.md
+      labs: areas/13-backend-principle-labs/labs
+  - id: 14-engineering-case-study-labs
+    title: Engineering Case Study Labs
+    kind: engineering_case_lab_catalog
+    content_dirs:
+      readme: areas/14-engineering-case-study-labs/README.md
+      notes: areas/14-engineering-case-study-labs/notes.md
+      labs: areas/14-engineering-case-study-labs/labs
 chapters:
   - id: relational-scaling-and-operational-discipline
     number: 1
