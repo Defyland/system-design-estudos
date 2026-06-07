@@ -9,7 +9,7 @@ Ela usa [rasbt/LLMs-from-scratch](https://github.com/rasbt/LLMs-from-scratch) co
 ## Boundary
 
 - isto e `side track`, nao prerequisito da trilha principal
-- o `curriculum.yml` continua mandando so nos `14 chapters`
+- o `curriculum.yml` agora declara esta trilha separadamente dos `14 chapters`
 - aqui o foco e `mecanismo -> trade-off -> consequencia arquitetural`
 
 ## Como estudar
@@ -27,18 +27,20 @@ Ela usa [rasbt/LLMs-from-scratch](https://github.com/rasbt/LLMs-from-scratch) co
 
 ## Ordem
 
-1. [Chapter 01 - Tokens, Embeddings and Training Windows](./chapters/01-tokens-embeddings-and-training-windows.md)
-2. [Chapter 02 - Self-Attention, Causal Masking and Multi-Head Structure](./chapters/02-self-attention-causal-masking-and-multi-head-structure.md)
-3. [Chapter 03 - GPT Blocks, Residual Paths and Generation Flow](./chapters/03-gpt-blocks-residual-paths-and-generation-flow.md)
-4. [Chapter 04 - Pretraining Loop, Data Flow and Loss Discipline](./chapters/04-pretraining-loop-data-flow-and-loss-discipline.md)
-5. [Chapter 05 - Finetuning, Instruction Following and LoRA Boundaries](./chapters/05-finetuning-instruction-following-and-lora-boundaries.md)
-6. [Chapter 06 - From Model Internals to LLM System Design](./chapters/06-from-model-internals-to-llm-system-design.md)
+<!-- curriculum:start:llm-foundations-chapters -->
+1. [Chapter 01 - Tokens, Embeddings and Training Windows](chapters/01-tokens-embeddings-and-training-windows.md)
+2. [Chapter 02 - Self-Attention, Causal Masking and Multi-Head Structure](chapters/02-self-attention-causal-masking-and-multi-head-structure.md)
+3. [Chapter 03 - GPT Blocks, Residual Paths and Generation Flow](chapters/03-gpt-blocks-residual-paths-and-generation-flow.md)
+4. [Chapter 04 - Pretraining Loop, Data Flow and Loss Discipline](chapters/04-pretraining-loop-data-flow-and-loss-discipline.md)
+5. [Chapter 05 - Finetuning, Instruction Following and LoRA Boundaries](chapters/05-finetuning-instruction-following-and-lora-boundaries.md)
+6. [Chapter 06 - From Model Internals to LLM System Design](chapters/06-from-model-internals-to-llm-system-design.md)
+<!-- curriculum:end:llm-foundations-chapters -->
 
 ## Obrigatorio vs Opcional
 
 - `Obrigatorio`: os `6` chapters locais e os `6` review cards
 - `Opcional`: Appendix A como warmup de PyTorch, Appendix D para treino mais robusto, Appendix E para LoRA
-- `Nao entra na v1`: labs executaveis locais, sync automatico com o repo upstream e novos chapters no `curriculum.yml`
+- `Nao entra na v1`: labs executaveis locais, sync automatico com o repo upstream e transformar esta trilha em prerequisito da ordem canonica
 
 ## Pontes Locais
 

@@ -285,6 +285,125 @@ def validate_chapters(chapters, phase_ids, area_ids, area_by_id, simulation_ids)
   end
 end
 
+def side_track_chapter_label(chapter)
+  "Chapter %02d - %s" % [ chapter.fetch("number"), chapter.fetch("title") ]
+end
+
+def side_track_review_label(chapter)
+  "Card %02d - %s" % [ chapter.fetch("number"), chapter.fetch("title") ]
+end
+
+def validate_side_track_readme(track, chapters)
+  readme_path = ROOT.join(track.fetch("path"))
+  body = readme_path.read
+  listed_paths = markdown_links(body)
+    .map { |target| clean_local_target(target) }
+    .select { |target| (target.start_with?("./chapters/") || target.start_with?("chapters/")) && target.end_with?(".md") }
+    .map { |target| readme_path.dirname.join(target).cleanpath.relative_path_from(ROOT).to_s }
+    .sort
+  actual_paths = chapters.map { |chapter| chapter.fetch("path") }.sort
+
+  missing = actual_paths - listed_paths
+  extra = listed_paths - actual_paths
+
+  assert(missing.empty?, "side track #{track.fetch("id")} README missing chapters: #{missing.join(", ")}")
+  assert(extra.empty?, "side track #{track.fetch("id")} README lists unknown chapters: #{extra.join(", ")}")
+end
+
+def validate_side_track_reviews_readme(track, chapters)
+  readme_path = ROOT.join(track.fetch("reviews_readme"))
+  body = readme_path.read
+  listed_paths = markdown_links(body)
+    .map { |target| clean_local_target(target) }
+    .select { |target| (target.start_with?("./cards/") || target.start_with?("cards/")) && target.end_with?(".md") }
+    .map { |target| readme_path.dirname.join(target).cleanpath.relative_path_from(ROOT).to_s }
+    .sort
+  actual_paths = chapters.map { |chapter| chapter.fetch("review_card") }.sort
+
+  missing = actual_paths - listed_paths
+  extra = listed_paths - actual_paths
+
+  assert(missing.empty?, "side track #{track.fetch("id")} reviews README missing cards: #{missing.join(", ")}")
+  assert(extra.empty?, "side track #{track.fetch("id")} reviews README lists unknown cards: #{extra.join(", ")}")
+end
+
+def validate_side_track_review_card(track, chapter)
+  review_path = chapter.fetch("review_card")
+  body = ROOT.join(review_path).read
+
+  assert(body.include?("# Review #{side_track_review_label(chapter)}"), "side track #{track.fetch("id")} review H1 mismatch for chapter #{chapter.fetch("number")}")
+
+  [
+    "Anchor",
+    "Cue Signal",
+    "Case/Bridge Anchor",
+    "QDSAA Recall",
+    "Trade-off to Remember",
+    "Trap",
+    "1-Minute Answer"
+  ].each do |section|
+    assert(body.match?(/^## #{Regexp.escape(section)}\s*$/), "side track #{track.fetch("id")} review card missing section #{section}: #{review_path}")
+  end
+end
+
+def validate_side_track_chapter(track, chapter)
+  chapter_path = chapter.fetch("path")
+  body = ROOT.join(chapter_path).read
+
+  assert(body.include?("# #{side_track_chapter_label(chapter)}"), "side track #{track.fetch("id")} chapter H1 mismatch for chapter #{chapter.fetch("number")}")
+  assert(body.include?("## Study Context"), "side track #{track.fetch("id")} chapter #{chapter.fetch("number")} missing Study Context")
+  assert(body.include?(relative_link(chapter_path, chapter.fetch("review_card"))), "side track #{track.fetch("id")} chapter #{chapter.fetch("number")} missing review link")
+
+  chapter.fetch("bridge_topics", []).each do |target_path|
+    assert(body.include?(relative_link(chapter_path, target_path)), "side track #{track.fetch("id")} chapter #{chapter.fetch("number")} missing bridge topic #{target_path}")
+  end
+
+  chapter.fetch("bridge_cases", []).each do |target_path|
+    assert(body.include?(relative_link(chapter_path, target_path)), "side track #{track.fetch("id")} chapter #{chapter.fetch("number")} missing bridge case #{target_path}")
+  end
+
+  chapter.fetch("upstream", []).each do |url|
+    assert(body.include?(url), "side track #{track.fetch("id")} chapter #{chapter.fetch("number")} missing upstream link #{url}")
+  end
+
+  validate_side_track_review_card(track, chapter)
+end
+
+def validate_side_track_contract(track, area_ids)
+  track_id = track.fetch("id")
+  chapters = track.fetch("chapters").sort_by { |chapter| chapter.fetch("number") }
+
+  assert(area_ids.include?(track.fetch("area_id")), "side track #{track_id} references unknown area #{track.fetch("area_id")}")
+  assert(chapters.map { |chapter| chapter.fetch("number") } == (1..chapters.size).to_a, "side track #{track_id} chapter numbers must be sequential")
+  assert(chapters.map { |chapter| chapter.fetch("path") }.uniq.size == chapters.size, "side track #{track_id} chapter paths must be unique")
+  assert(chapters.map { |chapter| chapter.fetch("review_card") }.uniq.size == chapters.size, "side track #{track_id} review card paths must be unique")
+
+  [
+    track.fetch("path"),
+    track.fetch("source_map"),
+    track.fetch("reviews_readme"),
+    *chapters.flat_map { |chapter| [ chapter.fetch("path"), chapter.fetch("review_card"), *chapter.fetch("bridge_topics", []), *chapter.fetch("bridge_cases", []) ] }
+  ].each do |path|
+    assert(exists?(path), "side track #{track_id} references missing path: #{path}")
+  end
+
+  return unless exists?(track.fetch("path")) && exists?(track.fetch("reviews_readme"))
+
+  body = ROOT.join(track.fetch("path")).read
+  assert(body.include?("# #{track.fetch("title")}"), "side track #{track_id} H1 does not match manifest title")
+
+  validate_side_track_readme(track, chapters)
+  validate_side_track_reviews_readme(track, chapters)
+  chapters.each { |chapter| validate_side_track_chapter(track, chapter) }
+end
+
+def validate_side_tracks(side_tracks, area_ids)
+  assert(side_tracks.map { |track| track.fetch("id") }.uniq.size == side_tracks.size, "side track ids must be unique")
+  side_tracks.each do |track|
+    validate_side_track_contract(track, area_ids)
+  end
+end
+
 def validate_markdown_links
   Dir.glob(ROOT.join("**/*.md")).each do |file|
     path = Pathname(file)
@@ -307,6 +426,7 @@ area_by_id = areas.to_h { |area| [ area.fetch("id"), area ] }
 phase_ids = CURRICULUM.fetch("phases").map { |phase| phase.fetch("id") }.to_set
 phase_chapter_ids = CURRICULUM.fetch("phases").flat_map { |phase| phase.fetch("chapters") }
 simulation_ids = CURRICULUM.fetch("simulation_labs")
+side_tracks = CURRICULUM.fetch("side_tracks", [])
 
 unless system(RbConfig.ruby, ROOT.join("scripts/render_curriculum_indexes.rb").to_s, "--check")
   error("generated curriculum indexes are stale; run ruby scripts/render_curriculum_indexes.rb")
@@ -316,6 +436,7 @@ validate_manifest_shape(chapters, phase_chapter_ids)
 validate_area_paths(areas)
 validate_simulation_catalog(simulation_ids)
 validate_chapters(chapters, phase_ids, area_ids, area_by_id, simulation_ids.to_set)
+validate_side_tracks(side_tracks, area_ids)
 validate_markdown_links
 
 if @errors.any?
@@ -323,4 +444,4 @@ if @errors.any?
   exit 1
 end
 
-puts "curriculum OK: #{chapters.size} chapters, #{areas.size} areas"
+puts "curriculum OK: #{chapters.size} chapters, #{areas.size} areas, #{side_tracks.size} side tracks"

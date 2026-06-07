@@ -22,12 +22,14 @@ Use a mesma cadencia do repo principal:
 
 ## Review Cards
 
-- [Card 01 - Tokens, Embeddings and Training Windows](./cards/01-tokens-embeddings-and-training-windows.md)
-- [Card 02 - Self-Attention, Causal Masking and Multi-Head Structure](./cards/02-self-attention-causal-masking-and-multi-head-structure.md)
-- [Card 03 - GPT Blocks, Residual Paths and Generation Flow](./cards/03-gpt-blocks-residual-paths-and-generation-flow.md)
-- [Card 04 - Pretraining Loop, Data Flow and Loss Discipline](./cards/04-pretraining-loop-data-flow-and-loss-discipline.md)
-- [Card 05 - Finetuning, Instruction Following and LoRA Boundaries](./cards/05-finetuning-instruction-following-and-lora-boundaries.md)
-- [Card 06 - From Model Internals to LLM System Design](./cards/06-from-model-internals-to-llm-system-design.md)
+<!-- curriculum:start:llm-foundations-review-cards -->
+- [Card 01 - Tokens, Embeddings and Training Windows](cards/01-tokens-embeddings-and-training-windows.md)
+- [Card 02 - Self-Attention, Causal Masking and Multi-Head Structure](cards/02-self-attention-causal-masking-and-multi-head-structure.md)
+- [Card 03 - GPT Blocks, Residual Paths and Generation Flow](cards/03-gpt-blocks-residual-paths-and-generation-flow.md)
+- [Card 04 - Pretraining Loop, Data Flow and Loss Discipline](cards/04-pretraining-loop-data-flow-and-loss-discipline.md)
+- [Card 05 - Finetuning, Instruction Following and LoRA Boundaries](cards/05-finetuning-instruction-following-and-lora-boundaries.md)
+- [Card 06 - From Model Internals to LLM System Design](cards/06-from-model-internals-to-llm-system-design.md)
+<!-- curriculum:end:llm-foundations-review-cards -->
 
 ## Objetivo Real
 

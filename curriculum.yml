@@ -600,6 +600,97 @@ chapters:
     estimated_minutes: 10
     mastery_objectives: [candidate inventory, fanout cost, ranking latency]
     interview_objectives: [explicar ranking sem vender ML prematuro]
+side_tracks:
+  - id: llm-foundations
+    title: LLM Foundations
+    area_id: 08-sistemas-ia
+    path: areas/08-sistemas-ia/llm-foundations/README.md
+    source_map: areas/08-sistemas-ia/llm-foundations/source-map.md
+    reviews_readme: areas/08-sistemas-ia/llm-foundations/reviews/README.md
+    chapters:
+      - number: 1
+        title: Tokens, Embeddings and Training Windows
+        path: areas/08-sistemas-ia/llm-foundations/chapters/01-tokens-embeddings-and-training-windows.md
+        review_card: areas/08-sistemas-ia/llm-foundations/reviews/cards/01-tokens-embeddings-and-training-windows.md
+        upstream:
+          - https://github.com/rasbt/LLMs-from-scratch/blob/main/ch02/01_main-chapter-code/ch02.ipynb
+          - https://github.com/rasbt/LLMs-from-scratch/blob/main/ch02/01_main-chapter-code/dataloader.ipynb
+        bridge_topics:
+          - areas/08-sistemas-ia/topics/token-cost.md
+          - areas/08-sistemas-ia/topics/vector-search.md
+        bridge_cases:
+          - real-world-cases/05-product-scenarios/chatgpt-llm-product/README.md
+          - real-world-cases/05-product-scenarios/perplexity-rag-answer-engine/README.md
+      - number: 2
+        title: Self-Attention, Causal Masking and Multi-Head Structure
+        path: areas/08-sistemas-ia/llm-foundations/chapters/02-self-attention-causal-masking-and-multi-head-structure.md
+        review_card: areas/08-sistemas-ia/llm-foundations/reviews/cards/02-self-attention-causal-masking-and-multi-head-structure.md
+        upstream:
+          - https://github.com/rasbt/LLMs-from-scratch/blob/main/ch03/01_main-chapter-code/ch03.ipynb
+          - https://github.com/rasbt/LLMs-from-scratch/blob/main/ch03/02_bonus_efficient-multihead-attention/multihead-attention.ipynb
+        bridge_topics:
+          - areas/08-sistemas-ia/topics/token-cost.md
+          - areas/08-sistemas-ia/topics/streaming-responses.md
+        bridge_cases:
+          - real-world-cases/05-product-scenarios/chatgpt-llm-product/README.md
+          - real-world-cases/05-product-scenarios/github-copilot-ai-coding/README.md
+      - number: 3
+        title: GPT Blocks, Residual Paths and Generation Flow
+        path: areas/08-sistemas-ia/llm-foundations/chapters/03-gpt-blocks-residual-paths-and-generation-flow.md
+        review_card: areas/08-sistemas-ia/llm-foundations/reviews/cards/03-gpt-blocks-residual-paths-and-generation-flow.md
+        upstream:
+          - https://github.com/rasbt/LLMs-from-scratch/blob/main/ch04/01_main-chapter-code/ch04.ipynb
+          - https://github.com/rasbt/LLMs-from-scratch/blob/main/ch04/01_main-chapter-code/gpt.py
+        bridge_topics:
+          - areas/08-sistemas-ia/topics/streaming-responses.md
+          - areas/08-sistemas-ia/topics/model-gateway.md
+        bridge_cases:
+          - real-world-cases/05-product-scenarios/chatgpt-llm-product/README.md
+          - real-world-cases/05-product-scenarios/github-copilot-ai-coding/README.md
+      - number: 4
+        title: Pretraining Loop, Data Flow and Loss Discipline
+        path: areas/08-sistemas-ia/llm-foundations/chapters/04-pretraining-loop-data-flow-and-loss-discipline.md
+        review_card: areas/08-sistemas-ia/llm-foundations/reviews/cards/04-pretraining-loop-data-flow-and-loss-discipline.md
+        upstream:
+          - https://github.com/rasbt/LLMs-from-scratch/blob/main/ch05/01_main-chapter-code/ch05.ipynb
+          - https://github.com/rasbt/LLMs-from-scratch/blob/main/ch05/01_main-chapter-code/gpt_train.py
+        bridge_topics:
+          - areas/08-sistemas-ia/topics/gpu-autoscaling.md
+          - areas/08-sistemas-ia/topics/llm-observability.md
+        bridge_cases:
+          - real-world-cases/05-product-scenarios/perplexity-rag-answer-engine/README.md
+      - number: 5
+        title: Finetuning, Instruction Following and LoRA Boundaries
+        path: areas/08-sistemas-ia/llm-foundations/chapters/05-finetuning-instruction-following-and-lora-boundaries.md
+        review_card: areas/08-sistemas-ia/llm-foundations/reviews/cards/05-finetuning-instruction-following-and-lora-boundaries.md
+        upstream:
+          - https://github.com/rasbt/LLMs-from-scratch/blob/main/ch06/01_main-chapter-code/ch06.ipynb
+          - https://github.com/rasbt/LLMs-from-scratch/blob/main/ch07/01_main-chapter-code/ch07.ipynb
+        bridge_topics:
+          - areas/08-sistemas-ia/topics/rag.md
+          - areas/08-sistemas-ia/topics/prompt-injection.md
+          - areas/08-sistemas-ia/topics/model-gateway.md
+        bridge_cases:
+          - real-world-cases/05-product-scenarios/chatgpt-llm-product/README.md
+          - real-world-cases/05-product-scenarios/github-copilot-ai-coding/README.md
+      - number: 6
+        title: From Model Internals to LLM System Design
+        path: areas/08-sistemas-ia/llm-foundations/chapters/06-from-model-internals-to-llm-system-design.md
+        review_card: areas/08-sistemas-ia/llm-foundations/reviews/cards/06-from-model-internals-to-llm-system-design.md
+        upstream:
+          - https://github.com/rasbt/LLMs-from-scratch/blob/main/ch07/01_main-chapter-code/gpt_instruction_finetuning.py
+          - https://github.com/rasbt/LLMs-from-scratch/blob/main/ch07/01_main-chapter-code/ollama_evaluate.py
+        bridge_topics:
+          - areas/08-sistemas-ia/topics/llm-gateway.md
+          - areas/08-sistemas-ia/topics/model-gateway.md
+          - areas/08-sistemas-ia/topics/rag.md
+          - areas/08-sistemas-ia/topics/streaming-responses.md
+          - areas/08-sistemas-ia/topics/prompt-injection.md
+          - areas/08-sistemas-ia/topics/agentic-systems.md
+        bridge_cases:
+          - real-world-cases/05-product-scenarios/chatgpt-llm-product/README.md
+          - real-world-cases/05-product-scenarios/github-copilot-ai-coding/README.md
+          - real-world-cases/05-product-scenarios/perplexity-rag-answer-engine/README.md
 simulation_labs:
   - load-balancer
   - cache

@@ -17,6 +17,10 @@ def areas
   CURRICULUM.fetch("areas")
 end
 
+def side_tracks
+  CURRICULUM.fetch("side_tracks", [])
+end
+
 def area_by_id
   @area_by_id ||= areas.to_h { |area| [ area.fetch("id"), area ] }
 end
@@ -138,13 +142,52 @@ def render_case_order
   end.join("\n")
 end
 
+def side_track_chapter_label(chapter)
+  "Chapter %02d - %s" % [ chapter.fetch("number"), chapter.fetch("title") ]
+end
+
+def side_track_review_label(chapter)
+  "Card %02d - %s" % [ chapter.fetch("number"), chapter.fetch("title") ]
+end
+
+def render_side_track_list(file)
+  side_tracks.map do |track|
+    area = area_by_id.fetch(track.fetch("area_id"))
+    track_link = link(file, track.fetch("title"), track.fetch("path"))
+    area_link = link(file, area.fetch("title"), area.fetch("content_dirs").fetch("readme"))
+    source_link = link(file, "Source Map", track.fetch("source_map"))
+    review_link = link(file, "Reviews", track.fetch("reviews_readme"))
+
+    "- #{track_link} - Area: #{area_link} - #{source_link} - #{review_link}"
+  end.join("\n")
+end
+
+def render_side_track_chapters(track)
+  track.fetch("chapters").sort_by { |chapter| chapter.fetch("number") }.map do |chapter|
+    "#{chapter.fetch("number")}. #{link(track.fetch("path"), side_track_chapter_label(chapter), chapter.fetch("path"))}"
+  end.join("\n")
+end
+
+def render_side_track_reviews(track)
+  track.fetch("chapters").sort_by { |chapter| chapter.fetch("number") }.map do |chapter|
+    "- #{link(track.fetch("reviews_readme"), side_track_review_label(chapter), chapter.fetch("review_card"))}"
+  end.join("\n")
+end
+
 replace_block("README.md", "readme-start", render_readme_start)
+replace_block("README.md", "side-track-list", render_side_track_list("README.md"))
 replace_block("README.md", "area-list", render_area_list)
 replace_block("chapters/README.md", "chapter-sequence", render_chapter_sequence("chapters/README.md"))
 replace_block("STUDY_ORDER.md", "study-order", render_study_order)
 replace_block("labs/README.md", "labs-by-chapter", render_labs)
 replace_block("reviews/README.md", "review-cards", render_reviews)
 replace_block("real-world-cases/ROADMAP.md", "canonical-case-order", render_case_order)
+replace_block("areas/08-sistemas-ia/README.md", "side-track-list", render_side_track_list("areas/08-sistemas-ia/README.md"))
+
+side_tracks.each do |track|
+  replace_block(track.fetch("path"), "#{track.fetch("id")}-chapters", render_side_track_chapters(track))
+  replace_block(track.fetch("reviews_readme"), "#{track.fetch("id")}-review-cards", render_side_track_reviews(track))
+end
 
 if CHECK
   if @stale_blocks.any?

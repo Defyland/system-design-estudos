@@ -21,7 +21,13 @@ Se quiser o mapa pedagogico da mesma trilha:
 - [Curriculum manifest](curriculum.yml)
 <!-- curriculum:end:readme-start -->
 
-Se quiser IA com fundamento de modelo, nao so API, use a trilha paralela [LLM Foundations](areas/08-sistemas-ia/llm-foundations/README.md). Ela nao altera a ordem dos `14 chapters` nem o `curriculum.yml`.
+## Parallel Tracks
+
+<!-- curriculum:start:side-track-list -->
+- [LLM Foundations](areas/08-sistemas-ia/llm-foundations/README.md) - Area: [Sistemas de IA](areas/08-sistemas-ia/README.md) - [Source Map](areas/08-sistemas-ia/llm-foundations/source-map.md) - [Reviews](areas/08-sistemas-ia/llm-foundations/reviews/README.md)
+<!-- curriculum:end:side-track-list -->
+
+Se quiser IA com fundamento de modelo, nao so API, use a trilha paralela acima. Ela agora fica declarada no `curriculum.yml` como `side_track`, sem alterar a ordem dos `14 chapters`.
 
 O caminho padrao do repo agora e:
 1. comecar em `Chapter 01`
@@ -66,7 +72,7 @@ Esses itens foram absorvidos nos READMEs das areas, porque nao justificam uma ar
 - `areas/`: blocos principais de estudo
 - cada area declara seu contrato em `curriculum.yml` via `kind` e `content_dirs`
 - `simulation-labs/`: simulacoes guiadas para carga, custo, falha e trade-off
-- `curriculum.yml`: fonte canonica para o cockpit navegar a trilha
+- `curriculum.yml`: fonte canonica para o cockpit navegar a trilha canonica e os side tracks
 - `assets/ementa/`: imagens da ementa original
 
 ## Regra pratica

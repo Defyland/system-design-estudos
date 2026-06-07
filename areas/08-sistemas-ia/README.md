@@ -23,11 +23,11 @@ Camada de produto e arquitetura em volta do modelo:
 
 ### LLM Foundations
 
-Trilha paralela para entender internals do modelo e pipeline de treino sem mudar a ordem canonica do repo:
+Trilha paralela declarada no `curriculum.yml` para entender internals do modelo e pipeline de treino sem mudar a ordem canonica do repo:
 
-- [LLM Foundations](./llm-foundations/README.md)
-- [Source Map](./llm-foundations/source-map.md)
-- [Reviews - LLM Foundations](./llm-foundations/reviews/README.md)
+<!-- curriculum:start:side-track-list -->
+- [LLM Foundations](llm-foundations/README.md) - Area: [Sistemas de IA](README.md) - [Source Map](llm-foundations/source-map.md) - [Reviews](llm-foundations/reviews/README.md)
+<!-- curriculum:end:side-track-list -->
 
 ## Chapters conectados
 
