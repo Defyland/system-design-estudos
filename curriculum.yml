@@ -103,6 +103,7 @@ areas:
       notes: areas/10-engineering-case-studies/notes.md
       cards: areas/10-engineering-case-studies/cards
       loop: areas/10-engineering-case-studies/learning-loop.md
+      sources: areas/10-engineering-case-studies/sources.md
 chapters:
   - id: relational-scaling-and-operational-discipline
     number: 1

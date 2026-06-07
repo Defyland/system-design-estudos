@@ -34,6 +34,7 @@ Para cada card:
 ## Loop
 
 - [Learning Loop](./learning-loop.md)
+- [Engineering Blog Sources](./sources.md)
 
 ## Fonte
 

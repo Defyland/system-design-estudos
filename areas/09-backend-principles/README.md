@@ -42,7 +42,6 @@ Use esta area para fechar gaps praticos. Para cada card:
 - [DevOps for Backend Engineers](./cards/devops-for-backend-engineers.md)
 - [Scaling and Performance](./cards/scaling-performance.md)
 - [Concurrency and Parallelism](./cards/concurrency-parallelism.md)
-- [Engineering Blog Reading Map](./cards/engineering-blog-reading-map.md)
 
 ## Fonte
 

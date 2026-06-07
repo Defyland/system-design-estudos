@@ -1,22 +1,17 @@
-# Engineering Blog Reading Map
+# Engineering Blog Sources
 
-## When to Use
+## Uso
 
-Use quando um card de backend principle precisa virar caso real. Blogs de engenharia entram como fonte de exemplos, incidentes, migracoes e trade-offs, nao como lista infinita de leitura.
+Use estas fontes quando um card precisar de caso real, incidente, migracao ou trade-off de producao. A fonte so deve entrar no ciclo quando ajudar a responder: qual decisao foi tomada, qual restricao forçou a decisao, qual alternativa foi rejeitada e qual sinal mostrou sucesso ou falha.
 
-## What Breaks First
+## Criterio de entrada
 
-Importar blog demais cria biblioteca morta. O criterio de entrada e: o post ensina uma decisao, uma falha, uma migracao ou uma operacao que voce conseguiria defender em entrevista.
+- O post ensina uma decisao, falha, migracao ou operacao defendivel.
+- O mecanismo e mais importante que a marca da empresa.
+- O caso pode ser reduzido para uma versao menor em entrevista ou implementacao.
+- O conteudo nao duplica um card existente sem acrescentar restricao nova.
 
-## Interview Trap
-
-Citar empresa grande como autoridade. O ponto e extrair a decisao menor: requisito, restricao, trade-off, primeiro sinal e rollback.
-
-## Practice Drill
-
-Escolha um blog abaixo, selecione um post e preencha: problema, constraints, decisao, alternativa rejeitada, metrica de sucesso, como traduzir para empresa menor.
-
-## Source Anchor
+## Fontes
 
 - [Netflix Tech Blog](https://netflixtechblog.com/): CDN, video delivery, resiliencia, data platform e operacao global.
 - [LinkedIn Engineering Blog](https://www.linkedin.com/blog/engineering): data streams, search, feed, infra, scalability e distributed systems.
