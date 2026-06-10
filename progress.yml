@@ -1,0 +1,27 @@
+# Progresso da trilha canonica (estado pessoal, editavel a mao).
+#
+# Registre a data de inicio de cada chapter no formato YYYY-MM-DD.
+# Deixe ~ nos chapters que ainda nao comecou.
+#
+# Veja o que esta vencido hoje:
+#   rake progress                 # usa a data de hoje
+#   rake 'progress[2026-06-10]'   # simula uma data
+#
+# A janela de revisao espacada vem de review_offsets_days (D+1, D+3, D+7, D+14, D+30).
+review_offsets_days: [1, 3, 7, 14, 30]
+
+chapters:
+  relational-scaling-and-operational-discipline: ~
+  pod-isolation-and-tenant-routing: ~
+  idempotent-writes-under-ambiguous-failure: ~
+  event-backbone-partitions-and-consumer-scale: ~
+  durable-workflows-retries-and-compensation: ~
+  edge-rate-limiting-waf-and-gateway-boundaries: ~
+  critical-checkout-flows-and-auth-boundaries: ~
+  blob-durability-and-storage-tiers: ~
+  search-indexing-and-permission-aware-retrieval: ~
+  cdn-placement-dns-and-cache-invalidation: ~
+  geospatial-indexing-for-marketplace-search: ~
+  distributed-ids-and-ordering-guarantees: ~
+  realtime-concurrency-and-workload-isolation: ~
+  feed-ranking-and-fanout-trade-offs: ~
