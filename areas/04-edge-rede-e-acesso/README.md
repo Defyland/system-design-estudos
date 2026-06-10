@@ -31,6 +31,12 @@ Este e o bloco de entrada do sistema: trafego, roteamento, autenticacao e protec
 3. Uber Load Management
 4. Meta Video
 
+## Apoios desta area
+
+- [Notes](./notes.md)
+- [Example - Smaller Marketplace Checkout Boundary](./examples/smaller-marketplace-checkout-boundary.md)
+- [Snippet - Rails Checkout Boundary and Auth Guard](./snippets/rails-checkout-boundary-and-auth-guard.md)
+
 ## Regra de implementacao
 
 - Rails primeiro para auth, throttle e caching

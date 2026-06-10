@@ -16,6 +16,23 @@ Encoding.default_internal = Encoding::UTF_8
 ROOT = Pathname(__dir__).join("..").expand_path
 CURRICULUM = YAML.safe_load(ROOT.join("curriculum.yml").read, aliases: true)
 CATALOG_CONTRACTS = {
+  "topic_catalog" => {
+    "dir_key" => "topics",
+    "readme_prefix" => "./topics/",
+    "required_sections" => [
+      "When to Use",
+      "Interview Trap"
+    ]
+  },
+  "component_catalog" => {
+    "dir_key" => "cards",
+    "readme_prefix" => "./cards/",
+    "required_sections" => [
+      "When to Use",
+      "What Breaks First",
+      "Interview Trap"
+    ]
+  },
   "backend_principle_catalog" => {
     "dir_key" => "cards",
     "readme_prefix" => "./cards/",
@@ -187,6 +204,36 @@ def validate_area_readme_cards(area, documents, readme_prefix)
   assert(extra.empty?, "area #{area.fetch("id")} README lists unknown cards: #{extra.join(", ")}")
 end
 
+def validate_practice_area(area)
+  return unless area.fetch("kind") == "practice_area"
+
+  content_dirs = area.fetch("content_dirs")
+  readme_path = ROOT.join(content_dirs.fetch("readme"))
+  listed = markdown_links(readme_path.read)
+    .map { |target| clean_local_target(target) }
+    .select { |target| local_link?(target) }
+    .map { |target| readme_path.dirname.join(target).cleanpath.relative_path_from(ROOT).to_s }
+    .to_set
+
+  %w[examples snippets].each do |sub|
+    dir = content_dirs.fetch(sub, nil)
+    next unless dir && ROOT.join(dir).directory?
+
+    markdown_cards(dir).each do |document|
+      next if document.basename.to_s == "README.md"
+
+      relative_path = document.relative_path_from(ROOT).to_s
+      assert(listed.include?(relative_path), "practice area #{area.fetch("id")} README missing link to #{relative_path}")
+    end
+  end
+
+  notes = content_dirs.fetch("notes", nil)
+  return unless notes && exists?(notes)
+
+  h1_count = ROOT.join(notes).read.scan(/^# [^\n]+$/).size
+  assert(h1_count == 1, "practice area #{area.fetch("id")} notes must have exactly one H1: #{notes}")
+end
+
 def validate_area_paths(areas)
   areas.each do |area|
     area.fetch("content_dirs").each_value do |path|
@@ -194,6 +241,7 @@ def validate_area_paths(areas)
     end
 
     validate_card_contract(area)
+    validate_practice_area(area)
   end
 end
 

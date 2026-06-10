@@ -34,6 +34,12 @@ Fila nao e so broker. Este bloco junta os problemas realmente importantes de sis
 4. Twitter Snowflake
 5. Discord
 
+## Apoios desta area
+
+- [Notes](./notes.md)
+- [Example - Smaller B2B Idempotent Order Submission](./examples/smaller-b2b-idempotent-order-submission.md)
+- [Snippet - Rails Idempotency Key for Mutating Endpoints](./snippets/rails-idempotency-key-for-mutating-endpoints.md)
+
 ## Regra de implementacao
 
 - Rails primeiro

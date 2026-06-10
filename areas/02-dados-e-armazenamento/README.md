@@ -34,6 +34,12 @@ Boa parte dos trade-offs reais de system design nasce aqui: modelagem, leitura, 
 4. Dropbox Nautilus
 5. Twitter Snowflake
 
+## Apoios desta area
+
+- [Notes](./notes.md)
+- [Example - Smaller SaaS Read/Write and Cache](./examples/smaller-saas-read-write-and-cache.md)
+- [Snippet - Rails Read/Write Split and Cache Aside](./snippets/rails-read-write-split-and-cache-aside.md)
+
 ## Regra de implementacao
 
 - Rails primeiro
