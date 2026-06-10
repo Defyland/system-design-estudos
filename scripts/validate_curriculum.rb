@@ -6,6 +6,13 @@ require "rbconfig"
 require "set"
 require "yaml"
 
+# Read every file as UTF-8 regardless of the host locale. Without this the
+# script crashes with "invalid byte sequence in US-ASCII" whenever the default
+# external encoding is not UTF-8 (e.g. the system Ruby on macOS), because the
+# study content is full of accented Portuguese text.
+Encoding.default_external = Encoding::UTF_8
+Encoding.default_internal = Encoding::UTF_8
+
 ROOT = Pathname(__dir__).join("..").expand_path
 CURRICULUM = YAML.safe_load(ROOT.join("curriculum.yml").read, aliases: true)
 CATALOG_CONTRACTS = {

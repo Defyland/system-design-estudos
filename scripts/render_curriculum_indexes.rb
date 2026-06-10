@@ -4,6 +4,11 @@
 require "pathname"
 require "yaml"
 
+# Read and write every index as UTF-8 regardless of the host locale, so the
+# accented Portuguese content never trips "invalid byte sequence in US-ASCII".
+Encoding.default_external = Encoding::UTF_8
+Encoding.default_internal = Encoding::UTF_8
+
 ROOT = Pathname(__dir__).join("..").expand_path
 CURRICULUM = YAML.safe_load(ROOT.join("curriculum.yml").read, aliases: true)
 CHECK = ARGV.include?("--check")
