@@ -19,6 +19,7 @@ Como uma API mutante evita efeitos duplicados quando a rede falha no pior moment
 - `Simulation labs`: [Queue Replay / Idempotency](../simulation-labs/queue-replay-idempotency.md)
 - `Operational playbook`: [Queue Lag, DLQ and Replay](../areas/11-operational-playbooks/playbooks/queue-lag-dlq-and-replay.md)
 - `Bridge lab`: [Build an Idempotent Write API](../areas/13-backend-principle-labs/labs/build-an-idempotent-write-api.md)
+- `Foundations`: [Two-Phase Commit](../areas/06-foundations-distribuidas/topics/two-phase-commit.md), [Deadlocks](../areas/06-foundations-distribuidas/topics/deadlocks.md)
 
 ## Historia de Produto
 

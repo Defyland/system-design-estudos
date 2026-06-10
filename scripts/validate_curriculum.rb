@@ -216,7 +216,8 @@ def referenced_chapter_paths(chapter)
     *chapter.fetch("notes"),
     *simulation_paths(chapter),
     *chapter.fetch("playbooks", []),
-    *chapter.fetch("bridge_labs", [])
+    *chapter.fetch("bridge_labs", []),
+    *chapter.fetch("foundations", [])
   ]
 end
 
@@ -231,7 +232,8 @@ def study_context_targets(chapter, area_by_id)
     *chapter.fetch("secondary_areas").map { |area_id| area_by_id.fetch(area_id).fetch("content_dirs").fetch("readme") },
     *simulation_paths(chapter),
     *chapter.fetch("playbooks", []),
-    *chapter.fetch("bridge_labs", [])
+    *chapter.fetch("bridge_labs", []),
+    *chapter.fetch("foundations", [])
   ]
 end
 

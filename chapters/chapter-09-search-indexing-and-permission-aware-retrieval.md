@@ -18,6 +18,7 @@ Como um sistema de busca indexa documentos, respeita permissoes e entrega result
 - `Simulation labs`: [Search Freshness / Reindex](../simulation-labs/search-freshness-reindex.md), [Search Cutover / ACL / Freshness](../simulation-labs/search-cutover-acl-freshness.md)
 - `Operational playbook`: [Search Reindex and Freshness](../areas/11-operational-playbooks/playbooks/search-reindex-and-freshness.md)
 - `Bridge lab`: [Build a Data Contract, Replay and Freshness Plan](../areas/14-engineering-case-study-labs/labs/build-a-data-contract-replay-and-freshness-plan.md)
+- `Foundations`: [Consistency Models](../areas/06-foundations-distribuidas/topics/consistency-models.md)
 
 ## Historia de Produto
 

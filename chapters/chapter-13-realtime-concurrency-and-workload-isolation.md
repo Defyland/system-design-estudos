@@ -18,6 +18,7 @@ Como um produto descobre que "mais threads" nao resolve quando conexoes vivas, f
 - `Simulation labs`: [Event Backbone / Consumer Lag](../simulation-labs/event-backbone-consumer-lag.md), [Noisy Neighbor / Workload Isolation](../simulation-labs/noisy-neighbor-workload-isolation.md)
 - `Operational playbook`: [Incident Severity and Triage](../areas/11-operational-playbooks/playbooks/incident-severity-and-triage.md)
 - `Bridge lab`: [Write an SLO, Runbook and Postmortem](../areas/14-engineering-case-study-labs/labs/write-an-slo-runbook-and-postmortem.md)
+- `Foundations`: [Network Partitions](../areas/06-foundations-distribuidas/topics/network-partitions.md)
 
 ## Historia de Produto
 

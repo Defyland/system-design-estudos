@@ -141,6 +141,9 @@ chapters:
     phase: fase-1
     primary_area: 02-dados-e-armazenamento
     secondary_areas: [05-arquitetura-e-operacao]
+    foundations:
+      - areas/06-foundations-distribuidas/topics/consistency-models.md
+      - areas/06-foundations-distribuidas/topics/deadlocks.md
     notes:
       - areas/02-dados-e-armazenamento/notes.md
       - areas/05-arquitetura-e-operacao/notes.md
@@ -211,6 +214,9 @@ chapters:
     phase: fase-1
     primary_area: 03-filas-e-consistencia
     secondary_areas: [04-edge-rede-e-acesso]
+    foundations:
+      - areas/06-foundations-distribuidas/topics/two-phase-commit.md
+      - areas/06-foundations-distribuidas/topics/deadlocks.md
     notes:
       - areas/03-filas-e-consistencia/notes.md
       - areas/04-edge-rede-e-acesso/notes.md
@@ -246,6 +252,10 @@ chapters:
     phase: fase-1
     primary_area: 03-filas-e-consistencia
     secondary_areas: [01-metodo-e-entrevistas]
+    foundations:
+      - areas/06-foundations-distribuidas/topics/cap-theorem.md
+      - areas/06-foundations-distribuidas/topics/network-partitions.md
+      - areas/06-foundations-distribuidas/topics/vector-clocks.md
     notes:
       - areas/03-filas-e-consistencia/notes.md
       - areas/01-metodo-e-entrevistas/notes.md
@@ -278,6 +288,9 @@ chapters:
     phase: fase-1
     primary_area: 05-arquitetura-e-operacao
     secondary_areas: [03-filas-e-consistencia]
+    foundations:
+      - areas/06-foundations-distribuidas/topics/two-phase-commit.md
+      - areas/06-foundations-distribuidas/topics/cap-theorem.md
     notes:
       - areas/05-arquitetura-e-operacao/notes.md
       - areas/03-filas-e-consistencia/notes.md
@@ -411,6 +424,8 @@ chapters:
     phase: fase-2
     primary_area: 02-dados-e-armazenamento
     secondary_areas: [01-metodo-e-entrevistas]
+    foundations:
+      - areas/06-foundations-distribuidas/topics/consistency-models.md
     notes:
       - areas/02-dados-e-armazenamento/notes.md
       - areas/01-metodo-e-entrevistas/notes.md
@@ -512,6 +527,10 @@ chapters:
     phase: fase-3
     primary_area: 03-filas-e-consistencia
     secondary_areas: [02-dados-e-armazenamento]
+    foundations:
+      - areas/06-foundations-distribuidas/topics/lamport-timestamps.md
+      - areas/06-foundations-distribuidas/topics/vector-clocks.md
+      - areas/06-foundations-distribuidas/topics/consensus.md
     notes:
       - areas/03-filas-e-consistencia/notes.md
       - areas/02-dados-e-armazenamento/notes.md
@@ -544,6 +563,8 @@ chapters:
     phase: fase-3
     primary_area: 05-arquitetura-e-operacao
     secondary_areas: [03-filas-e-consistencia]
+    foundations:
+      - areas/06-foundations-distribuidas/topics/network-partitions.md
     notes:
       - areas/05-arquitetura-e-operacao/notes.md
       - areas/03-filas-e-consistencia/notes.md

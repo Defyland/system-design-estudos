@@ -18,6 +18,7 @@ Como um fluxo longo deixa de caber em jobs encadeados e passa a precisar de esta
 - `Simulation labs`: [Saga / Compensation](../simulation-labs/saga-compensation.md), [Disaster Recovery / Failover Drill](../simulation-labs/disaster-recovery-failover-drill.md)
 - `Operational playbook`: [Disaster Recovery and Failover Drill](../areas/11-operational-playbooks/playbooks/disaster-recovery-and-failover-drill.md)
 - `Bridge lab`: [Execute a Multi-Region DR Drill](../areas/14-engineering-case-study-labs/labs/execute-a-multi-region-dr-drill.md)
+- `Foundations`: [Two-Phase Commit](../areas/06-foundations-distribuidas/topics/two-phase-commit.md), [CAP Theorem](../areas/06-foundations-distribuidas/topics/cap-theorem.md)
 
 ## Historia de Produto
 

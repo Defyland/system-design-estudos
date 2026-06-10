@@ -18,6 +18,7 @@ Como escolher IDs distribuidos quando unicidade nao basta e um sequence central 
 - `Simulation labs`: [Canary Rollout](../simulation-labs/canary-rollout.md)
 - `Operational playbook`: [Deploy Rollback and Kill Switch](../areas/11-operational-playbooks/playbooks/deploy-rollback-and-kill-switch.md)
 - `Bridge lab`: [Plan a Zero-Downtime Migration](../areas/14-engineering-case-study-labs/labs/plan-a-zero-downtime-migration.md)
+- `Foundations`: [Lamport Timestamps](../areas/06-foundations-distribuidas/topics/lamport-timestamps.md), [Vector Clocks](../areas/06-foundations-distribuidas/topics/vector-clocks.md), [Consensus](../areas/06-foundations-distribuidas/topics/consensus.md)
 
 ## Historia de Produto
 
