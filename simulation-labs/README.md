@@ -11,6 +11,11 @@ Labs de simulacao guiada para transformar leitura em decisao com consequencia vi
 5. responda o mastery check;
 6. depois puxe o playbook ou bridge lab do mesmo chapter para transformar intuicao em rotina.
 
+## Engine numerico
+
+Quatro labs tem um modelo executavel (com uma secao `## Run It`): mude um parametro e
+veja o numero mover. Veja [sim/README.md](./sim/README.md) ou rode `rake simulate:list`.
+
 ## Labs
 
 - [Load Balancer](./load-balancer.md)

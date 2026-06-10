@@ -11,6 +11,16 @@ Um feed simples vira feed ranqueado. Produtores gigantes explodem escrita; ranki
 - read rate
 - ranking cost
 
+## Run It
+
+```bash
+rake 'simulate[fanout]'                                          # defaults
+rake 'simulate[fanout]' ARGS="avg_followers=50000 reads_per_day=5"
+```
+
+Compare o custo diario de `fanout-on-write` (writes por seguidor) contra `fanout-on-read`
+(merges por seguido) e veja qual vence para o perfil. Engine: [sim/run.rb](./sim/run.rb).
+
 ## What Changes
 
 Fanout-on-write reduz read latency e aumenta write cost. Fanout-on-read melhora frescor e aumenta read cost.

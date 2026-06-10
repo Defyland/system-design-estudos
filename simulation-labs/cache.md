@@ -11,6 +11,16 @@ Um dashboard de tenant grande recarrega a mesma consulta centenas de vezes por m
 - origin latency
 - invalidation quality
 
+## Run It
+
+```bash
+rake 'simulate[cache]'                                  # defaults
+rake 'simulate[cache]' ARGS="hit_rate=0.8 origin_ms=60"
+```
+
+Mexa em `hit_rate`, `origin_ms`, `cache_ms`, `rps` e `ttl_s` e observe a latencia efetiva,
+o RPS que sobra para a origem e a janela de stale. Engine: [sim/run.rb](./sim/run.rb).
+
 ## What Changes
 
 Hit rate alto reduz latencia e carga na origem. TTL longo aumenta risco de stale.

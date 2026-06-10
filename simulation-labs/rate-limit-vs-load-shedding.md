@@ -11,6 +11,16 @@ Uma rota cara sofre abuso e, ao mesmo tempo, usuarios legitimos fazem pico norma
 - tenant limit
 - burst size
 
+## Run It
+
+```bash
+rake 'simulate[rate-limit]'                                      # defaults
+rake 'simulate[rate-limit]' ARGS="arrival_rps=2000 capacity_rps=1000"
+```
+
+Veja, sob `arrival_rps` acima da `capacity_rps`, quanto cada estrategia serve e descarta:
+rate limit rejeita por taxa, shedding desce ate a capacidade. Engine: [sim/run.rb](./sim/run.rb).
+
 ## What Changes
 
 Rate limit protege fairness. Load shedding protege sobrevivencia do sistema quando a capacidade ja foi ultrapassada.

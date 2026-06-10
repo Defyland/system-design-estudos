@@ -11,6 +11,16 @@ Novos consumidores entram no log de eventos e um deles comeca a atrasar horas.
 - consumer throughput
 - replay size
 
+## Run It
+
+```bash
+rake 'simulate[consumer-lag]'                                       # defaults
+rake 'simulate[consumer-lag]' ARGS="produce_rps=1500 consumers=3"
+```
+
+Compare `produce_rps` com `consumer_rps x consumers` e veja o saldo, o lag acumulado em
+`horizon_s` e o minimo de consumers para acompanhar. Engine: [sim/run.rb](./sim/run.rb).
+
 ## What Changes
 
 Mais particoes aumentam paralelismo, mas a chave errada cria skew.
