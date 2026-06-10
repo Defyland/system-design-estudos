@@ -1,0 +1,30 @@
+name: curriculum
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          # Reads the version from .ruby-version so CI never drifts from local.
+          ruby-version: .ruby-version
+
+      # The curriculum scripts are pure standard library, so CI runs them
+      # directly with Ruby and does not depend on a specific Bundler version.
+      - name: Generated indexes are in sync with curriculum.yml
+        run: ruby scripts/render_curriculum_indexes.rb --check
+
+      - name: Validate manifest, catalog contracts and links
+        run: ruby scripts/validate_curriculum.rb
+
+      - name: Numeric simulation models smoke test
+        run: ruby simulation-labs/sim/run.rb --selftest
