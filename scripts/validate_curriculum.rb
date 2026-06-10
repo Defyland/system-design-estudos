@@ -413,17 +413,57 @@ def validate_side_tracks(side_tracks, area_ids)
   end
 end
 
+def link_fragment(target)
+  return nil unless target.include?("#")
+
+  fragment = target.split("#", 2).last
+  fragment.empty? ? nil : fragment
+end
+
+# Mirrors GitHub's heading -> anchor slug: downcase, drop formatting and
+# punctuation, turn spaces into hyphens. Unicode letters (accents) are kept.
+def github_anchor(text)
+  text.strip.downcase.delete("`").gsub(/[^\p{Word}\- ]/u, "").tr(" ", "-")
+end
+
+def heading_anchors(body)
+  body.scan(/^\#{1,6}[ \t]+(.+?)[ \t\#]*$/).flatten.map { |heading| github_anchor(heading) }.to_set
+end
+
 def validate_markdown_links
   Dir.glob(ROOT.join("**/*.md")).each do |file|
     path = Pathname(file)
-    markdown_links(path.read).each do |target|
+    body = path.read
+    own_anchors = nil
+
+    markdown_links(body).each do |target|
+      fragment = link_fragment(target)
+
+      if target.start_with?("#")
+        next unless fragment
+
+        own_anchors ||= heading_anchors(body)
+        assert(own_anchors.include?(fragment), "broken in-page anchor in #{path.relative_path_from(ROOT)}: #{target}")
+        next
+      end
+
       next unless local_link?(target)
 
       clean_target = clean_local_target(target)
       next if clean_target.empty?
 
       target_path = path.dirname.join(clean_target).cleanpath
-      assert(target_path.exist?, "broken markdown link in #{path.relative_path_from(ROOT)}: #{target}")
+      unless target_path.exist?
+        error("broken markdown link in #{path.relative_path_from(ROOT)}: #{target}")
+        next
+      end
+
+      next unless fragment && target_path.extname == ".md"
+
+      assert(
+        heading_anchors(target_path.read).include?(fragment),
+        "broken anchor in #{path.relative_path_from(ROOT)}: #{target}"
+      )
     end
   end
 end
