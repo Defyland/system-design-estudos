@@ -147,6 +147,25 @@ def render_case_order
   end.join("\n")
 end
 
+def render_study_plan_chapters
+  CURRICULUM.fetch("phases").map do |phase|
+    phase_chapters = phase.fetch("chapters").map { |chapter_id| chapters.find { |chapter| chapter.fetch("id") == chapter_id } }
+    lines = phase_chapters.map do |chapter|
+      chapter_link = link("STUDY_PLAN.md", chapter_label(chapter), chapter.fetch("path"))
+      case_link = link("STUDY_PLAN.md", chapter.fetch("primary_case").fetch("title"), chapter.fetch("primary_case").fetch("path"))
+      "- [ ] #{chapter_link} - Caso: #{case_link}"
+    end
+    [ "### #{phase.fetch("title")}", "", lines.join("\n") ].join("\n")
+  end.join("\n\n")
+end
+
+def render_study_plan_areas
+  areas.map do |area|
+    area_link = link("STUDY_PLAN.md", "#{area.fetch("id").split("-").first} - #{area.fetch("title")}", area.fetch("content_dirs").fetch("readme"))
+    "- [ ] #{area_link} (`#{area.fetch("kind")}`)"
+  end.join("\n")
+end
+
 def side_track_chapter_label(chapter)
   "Chapter %02d - %s" % [ chapter.fetch("number"), chapter.fetch("title") ]
 end
@@ -184,6 +203,8 @@ replace_block("README.md", "side-track-list", render_side_track_list("README.md"
 replace_block("README.md", "area-list", render_area_list)
 replace_block("chapters/README.md", "chapter-sequence", render_chapter_sequence("chapters/README.md"))
 replace_block("STUDY_ORDER.md", "study-order", render_study_order)
+replace_block("STUDY_PLAN.md", "study-plan-chapters", render_study_plan_chapters)
+replace_block("STUDY_PLAN.md", "study-plan-areas", render_study_plan_areas)
 replace_block("labs/README.md", "labs-by-chapter", render_labs)
 replace_block("reviews/README.md", "review-cards", render_reviews)
 replace_block("real-world-cases/ROADMAP.md", "canonical-case-order", render_case_order)
