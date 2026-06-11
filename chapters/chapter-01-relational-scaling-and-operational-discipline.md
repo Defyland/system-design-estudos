@@ -47,6 +47,20 @@ Seu PO pede duas coisas que parecem inocentes: dashboard mais rapido para contas
 - `Resposta ruim que parece boa`: "SQL ficou pequeno para o produto".
 - `Troque por isto`: primeiro eu provo que o requisito e real; depois eu vejo se replica, cache e disciplina operacional ja resolvem.
 
+## Empirical Pass
+
+O `First Principles Design Pass` argumenta o que deveria acontecer. Este passo mede o que acontece - e onde o argumento erra. Drill: [bench/replica-lag](../bench/replica-lag/README.md), um primary + replica streaming efemero (sem Docker) que induz lag e o mede.
+
+- `Predict`: "replica lag transforma read-after-write em bug intermitente; uma janela curta de stickiness na primary resolve." Quao curta? O snippet deste chapter chuta `5.seconds`.
+- `Measure / Break`: escreva no primary e leia o mesmo id na replica na hora, conte os stale; amostre o lag (`now() - pg_last_xact_replay_timestamp()`) sob escrita continua.
+- `Observe` (nesta maquina, `40` trials, `120` amostras):
+  - sem delay induzido: read-after-write `40/40` stale (`100%`); lag p50 aprox `23ms`, p95 aprox `177ms`, p99 aprox `310ms`.
+  - com `recovery_min_apply_delay=300ms`: `40/40` stale (`100%`); lag p50 aprox `321ms`, p95 aprox `428ms`, p99 aprox `773ms`.
+- `Reconcile`:
+  - No caminho read-after-write contra a replica o bug **nao e intermitente**: e `100%` stale por construcao, porque a replicacao e assincrona - o primary confirma o commit antes de a replica aplicar. O lag nao decide *se* ha stale, decide *por quanto tempo*.
+  - O `5.seconds` chutado e cerca de `6`-`15x` o p99 observado aqui; seguro, porem folgado. Em producao a replica e distante e carregada: **meca o seu p99** antes de fixar a constante, em vez de herdar um numero.
+  - O proprio drill ensina uma armadilha de medicao: `now() - replay_timestamp` so vale enquanto ha escrita fluindo; em idle mede obsolescencia da metrica, nao lag.
+
 ## Foco em Entrevistas
 
 - como defender SQL relacional sem parecer preso ao passado
