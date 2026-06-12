@@ -26,3 +26,4 @@ Use estas fontes quando um card precisar de caso real, incidente, migracao ou tr
 - [Discord Blog](https://discord.com/blog): realtime, Elixir, infra, safety, media e client/server operations.
 - [Spotify Engineering Blog](https://engineering.atspotify.com/): personalization, experimentation, platform, reliability e engineering culture.
 - [Figma Engineering Blog](https://www.figma.com/blog/engineering/): multiplayer collaboration, files, performance, editor infra e product engineering.
+- [Martin Fowler - Architecture](https://martinfowler.com/architecture/): boundaries, legacy modernization, toggles, operating model e trade-offs arquiteturais.

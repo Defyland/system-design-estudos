@@ -16,6 +16,7 @@ Se o chapter ja sugeriu um lab no `Study Context`, comece por ele. Esses labs sa
 ## Labs
 
 - [Plan a Zero-Downtime Migration](./labs/plan-a-zero-downtime-migration.md)
+- [Plan an Incremental Legacy Displacement](./labs/plan-an-incremental-legacy-displacement.md)
 - [Write an SLO, Runbook and Postmortem](./labs/write-an-slo-runbook-and-postmortem.md)
 - [Build a Data Contract, Replay and Freshness Plan](./labs/build-a-data-contract-replay-and-freshness-plan.md)
 - [Run a Progressive Rollout with Guardrails](./labs/run-a-progressive-rollout-with-guardrails.md)

@@ -36,6 +36,7 @@ Se voce continuar abrindo terceira e quarta alternativa, isso ja virou deriva e 
 - [13 - Rate Limit vs Load Shedding](./13-rate-limit-vs-load-shedding.md)
 - [14 - Canary vs Big-Bang Rollout](./14-canary-vs-big-bang-rollout.md)
 - [15 - Retry More vs Roll Back](./15-retry-more-vs-roll-back.md)
+- [16 - Transitional Architecture vs Big-Bang Rewrite](./16-transitional-architecture-vs-big-bang-rewrite.md)
 
 ## Rotas Boas
 

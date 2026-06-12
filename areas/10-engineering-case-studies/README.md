@@ -19,6 +19,7 @@ Para cada card:
 ## Cards
 
 - [Production Migrations and Backfills](./cards/production-migrations-backfills.md)
+- [Legacy Displacement and Transitional Architecture](./cards/legacy-displacement-and-transitional-architecture.md)
 - [Incident Management and SRE](./cards/incident-management-sre.md)
 - [Data Pipelines and Stream Processing](./cards/data-pipelines-stream-processing.md)
 - [Experimentation and Guardrails](./cards/experimentation-guardrails.md)

@@ -22,6 +22,7 @@ Use esta area para fechar gaps praticos. Para cada card:
 - [Authentication and Authorization](./cards/auth-authz.md)
 - [Validation and Transformation](./cards/validation-transformation.md)
 - [Controllers, Services, Repositories, Middleware and Context](./cards/controllers-services-repositories-middleware-context.md)
+- [Application Boundaries and Service Layer](./cards/application-boundaries-and-service-layer.md)
 - [REST API Design](./cards/rest-api-design.md)
 - [Postgres Databases](./cards/postgres-databases.md)
 - [Caching](./cards/caching.md)
