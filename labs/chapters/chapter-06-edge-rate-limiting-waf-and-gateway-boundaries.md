@@ -21,11 +21,18 @@ Responda em voz alta. Nao escreva; use o gabarito logo abaixo para corrigir na h
 - desenhe o request path de uma API pequena com edge, gateway, Rails e banco;
 - escolha tres riscos: brute force, scraping e tenant barulhento;
 - diga qual risco morre no edge, qual passa pelo gateway e qual so o app ou o gate interno consegue decidir;
+- para cada risco, escolha uma chave e diga se voce usaria `fixed window`, `sliding window`, `token bucket` ou `concurrency gate`;
 - imagine o overload: um cliente dispara exports pesados; explique como voce preserva fairness sem derrubar login e leitura interativa.
 
 ## Gabarito Oral Imediato
 
 - `Resposta curta`: brute force e scraping bruto deveriam morrer cedo no edge; semantica fina de tenant barulhento costuma precisar chegar mais perto do recurso.
 - `Resposta curta`: gateway governa auth tecnica, schema e roteamento comum; a app ainda decide se aquela mutacao faz sentido.
+- `Resposta curta`: login tende a aceitar limite bruto e previsivel; burst de leitura e export pesado costumam pedir chave e mecanismo diferentes.
 - `Resposta curta`: fairness para exports pesados costuma pedir fila e concorrencia separadas do fluxo interativo.
 - `Armadilha`: "rate limit por IP resolve tudo". Nao. Em multi-tenant, o dano real raramente mora so no IP.
+
+## Build Bridge
+
+- [Build a Ruby Rate Limiter](../../areas/13-backend-principle-labs/labs/build-a-ruby-rate-limiter.md)
+- [Ruby Rate Limiter Keys and Sliding Window](../../areas/04-edge-rede-e-acesso/snippets/ruby-rate-limiter-keys-and-sliding-window.md)

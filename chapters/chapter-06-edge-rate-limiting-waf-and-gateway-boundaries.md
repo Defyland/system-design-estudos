@@ -19,6 +19,9 @@ Como decidir o que deve morrer na borda, o que o gateway precisa governar e o qu
 - `Simulation labs`: [Rate Limit vs Load Shedding](../simulation-labs/rate-limit-vs-load-shedding.md), [Noisy Neighbor / Workload Isolation](../simulation-labs/noisy-neighbor-workload-isolation.md)
 - `Operational playbook`: [Incident Severity and Triage](../areas/11-operational-playbooks/playbooks/incident-severity-and-triage.md)
 - `Bridge lab`: [Run a Progressive Rollout with Guardrails](../areas/14-engineering-case-study-labs/labs/run-a-progressive-rollout-with-guardrails.md)
+- `Backend principle`: [Rate Limiting Algorithms and Keys](../areas/09-backend-principles/cards/rate-limiting-algorithms-and-keys.md)
+- `Backend lab`: [Build a Ruby Rate Limiter](../areas/13-backend-principle-labs/labs/build-a-ruby-rate-limiter.md)
+- `Snippet`: [Ruby Rate Limiter Keys and Sliding Window](../areas/04-edge-rede-e-acesso/snippets/ruby-rate-limiter-keys-and-sliding-window.md)
 
 ## Historia de Produto
 
@@ -132,6 +135,17 @@ end
 ```
 
 O snippet e deliberadamente simples. `Rack::Attack` ajuda na borda logica da app. O `TenantConcurrencyGate` protege o recurso caro contra vizinho barulhento. Se voce precisa de WAF, JWT validation ou schema enforcement no edge, isso sai do Rails e sobe para a infraestrutura apropriada. O que permanece no Rails e o julgamento semantico.
+
+## Escolha de Algoritmo Ainda Importa
+
+Depois que a fronteira ficou clara, a proxima pergunta e menos cosmetica do que parece:
+
+- `fixed window` funciona bem para brute force, quotas simples e cap bruto de endpoint publico;
+- `sliding window` ou `floating window` suavizam fairness quando burst legitimo e leitura intensa convivem;
+- `token bucket` deixa burst curto acontecer sem entregar media infinita;
+- `concurrency gate` vence contagem por minuto quando o dano real mora em jobs em voo, conexoes ou workers ocupados.
+
+Em Ruby, isso costuma virar uma escada honesta: `Rack::Attack` ou `INCR/EXPIRE` para o cap barato, `Redis ZSET + WATCH/MULTI` quando voce quer estudar janela mais suave sem sair da stack e, so depois, componentes mais especializados se a disputa distribuida realmente justificar. O importante e a politica nascer do recurso protegido, nao do primeiro algoritmo lembrado.
 
 ## Stack Translation
 

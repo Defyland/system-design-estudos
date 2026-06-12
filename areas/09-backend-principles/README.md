@@ -34,6 +34,7 @@ Use esta area para fechar gaps praticos. Para cada card:
 - [Logging, Monitoring and Observability](./cards/logging-monitoring-observability.md)
 - [Graceful Shutdown](./cards/graceful-shutdown.md)
 - [Backend Security](./cards/backend-security.md)
+- [Rate Limiting Algorithms and Keys](./cards/rate-limiting-algorithms-and-keys.md)
 - [Object Storage and Large Files](./cards/object-storage-large-files.md)
 - [Realtime Backend Systems](./cards/realtime-backend-systems.md)
 - [Testing and Code Quality](./cards/testing-code-quality.md)

@@ -25,6 +25,12 @@ rate limit rejeita por taxa, shedding desce ate a capacidade. Engine: [sim/run.r
 
 Rate limit protege fairness. Load shedding protege sobrevivencia do sistema quando a capacidade ja foi ultrapassada.
 
+## Algorithm Lens
+
+- `fixed window`: cap barato e previsivel, bom para abuso obvio, mas deixa burst feio na virada;
+- `sliding window` ou `token bucket`: melhores quando trafego legitimo vem em rajadas e voce nao quer punir leitura interativa do mesmo jeito;
+- `concurrency gate`: melhor que contagem por minuto quando o dano real mora em jobs, conexoes ou workers presos.
+
 ## Failure Mode
 
 Limite por IP pune NAT corporativo e deixa tenant barulhento escapar.
@@ -45,6 +51,12 @@ Rate limit decide quem pode consumir. Load shedding decide o que precisa morrer 
 ## Linked Areas
 
 - [Edge, Rede e Acesso](../areas/04-edge-rede-e-acesso/README.md)
+- [Backend Principles](../areas/09-backend-principles/README.md)
+
+## Build Bridge
+
+- [Rate Limiting Algorithms and Keys](../areas/09-backend-principles/cards/rate-limiting-algorithms-and-keys.md)
+- [Build a Ruby Rate Limiter](../areas/13-backend-principle-labs/labs/build-a-ruby-rate-limiter.md)
 
 ## Mastery Checks
 
@@ -52,4 +64,3 @@ Rate limit decide quem pode consumir. Load shedding decide o que precisa morrer 
 - `Resposta com as suas palavras`: retry aumenta carga justamente quando o sistema ja esta saturado.
 - `Resposta ruim que parece boa`: retry ajuda a vencer instabilidade.
 - `Troque por isto`: sob overload, reduza entrada ou degrade resposta antes de repetir trabalho.
-

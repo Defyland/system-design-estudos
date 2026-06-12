@@ -36,9 +36,9 @@ Este e o bloco de entrada do sistema: trafego, roteamento, autenticacao e protec
 - [Notes](./notes.md)
 - [Example - Smaller Marketplace Checkout Boundary](./examples/smaller-marketplace-checkout-boundary.md)
 - [Snippet - Rails Checkout Boundary and Auth Guard](./snippets/rails-checkout-boundary-and-auth-guard.md)
+- [Snippet - Ruby Rate Limiter Keys and Sliding Window](./snippets/ruby-rate-limiter-keys-and-sliding-window.md)
 
 ## Regra de implementacao
 
 - Rails primeiro para auth, throttle e caching
 - Go depois para proxies, gateways e limiters
-

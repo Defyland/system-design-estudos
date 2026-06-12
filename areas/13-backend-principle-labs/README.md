@@ -22,4 +22,5 @@ Quando um chapter apontar para um bridge lab no `Study Context`, use esse atalho
 - [Tune Postgres Indexes and Transactions](./labs/tune-postgres-indexes-and-transactions.md)
 - [Publish OpenAPI and Versioned Errors](./labs/publish-openapi-and-versioned-errors.md)
 - [Instrument Observability and Graceful Shutdown](./labs/instrument-observability-and-graceful-shutdown.md)
+- [Build a Ruby Rate Limiter](./labs/build-a-ruby-rate-limiter.md)
 - [Secure File Uploads and Storage Events](./labs/secure-file-uploads-and-storage-events.md)
