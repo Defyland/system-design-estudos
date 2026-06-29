@@ -19,6 +19,7 @@ WORKSPACE_ROOT = ROOT.parent
 PORTFOLIO_MAP_PATH = "areas/12-engineering-practice/cards/backend-portfolio-evidence-map.md"
 READINESS_BASE_PATH = WORKSPACE_ROOT.join(".agents/eval-reports/full-program-readiness-2026-06-29.json")
 READINESS_DASHBOARD_PATH = WORKSPACE_ROOT.join(".agents/eval-reports/release-readiness-dashboard.md")
+PUBLICATION_BASELINE_PATH = WORKSPACE_ROOT.join(".agents/eval-reports/publication-baseline-2026-06-29.md")
 CURRICULUM = YAML.safe_load(ROOT.join("curriculum.yml").read, aliases: true)
 CATALOG_CONTRACTS = {
   "topic_catalog" => {
@@ -597,12 +598,35 @@ def load_dashboard_readiness_overrides
   overrides
 end
 
+def load_ready_public_repos
+  return nil unless PUBLICATION_BASELINE_PATH.exist?
+
+  section = nil
+  repos = Set.new
+
+  PUBLICATION_BASELINE_PATH.each_line do |line|
+    case line
+    when /^## Ready Now/
+      section = :ready
+    when /^## /
+      section = nil
+    else
+      next unless section == :ready && line.start_with?("| `")
+
+      repo = split_markdown_row(line).first.to_s[/`([^`]+)`/, 1]
+      repos << repo if repo
+    end
+  end
+
+  repos
+end
+
 def portfolio_evidence_rows(body)
   body.each_line.filter_map.with_index(1) do |line, lineno|
     next unless line.start_with?("|")
 
     columns = split_markdown_row(line)
-    next unless columns.size == 6
+    next unless columns.size == 7
     next if columns.first == "Concept"
     next unless columns[1].include?("](") && columns[2].include?("](")
 
@@ -612,7 +636,8 @@ def portfolio_evidence_rows(body)
       project: columns[1],
       evidence: columns[2],
       command: columns[3],
-      trust: columns[4]
+      trust: columns[4],
+      operational_lesson: columns[6]
     }
   end
 end
@@ -621,6 +646,7 @@ def validate_backend_portfolio_evidence_map
   return unless exists?(PORTFOLIO_MAP_PATH)
 
   readiness_by_repo = load_base_readiness_by_repo.merge(load_dashboard_readiness_overrides)
+  ready_public_repos = load_ready_public_repos
   body = ROOT.join(PORTFOLIO_MAP_PATH).read
 
   portfolio_evidence_rows(body).each do |row|
@@ -661,6 +687,20 @@ def validate_backend_portfolio_evidence_map
     assert(
       row.fetch(:trust).include?(expected_label),
       "portfolio evidence row #{row.fetch(:concept)} line #{row.fetch(:line)} should use trust label #{expected_label.inspect}"
+    )
+
+    if ready_public_repos
+      public_marker = row.fetch(:trust)[/`public:\s*(yes|no)`/, 1]
+      expected_public = ready_public_repos.include?(project_repo) ? "yes" : "no"
+      assert(
+        public_marker == expected_public,
+        "portfolio evidence row #{row.fetch(:concept)} line #{row.fetch(:line)} says public #{public_marker || 'missing'} but authority says #{expected_public} for #{project_repo}"
+      )
+    end
+
+    assert(
+      !row.fetch(:operational_lesson).strip.empty?,
+      "portfolio evidence row #{row.fetch(:concept)} line #{row.fetch(:line)} must include an operational lesson"
     )
   end
 end
