@@ -16,6 +16,7 @@ Use esta area para fechar gaps praticos. Para cada card:
 ## Cards
 
 - [Backend Roadmap](./cards/backend-roadmap.md)
+- [10 Backend Concepts Visual Field Guide](./cards/ten-backend-concepts-visual-field-guide.md)
 - [HTTP Protocol](./cards/http-protocol.md)
 - [Routing](./cards/routing.md)
 - [Serialization and Deserialization](./cards/serialization-deserialization.md)

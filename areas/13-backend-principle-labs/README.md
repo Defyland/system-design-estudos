@@ -16,6 +16,7 @@ Quando um chapter apontar para um bridge lab no `Study Context`, use esse atalho
 
 ## Labs
 
+- [Map a Backend Request Path](./labs/map-a-backend-request-path.md)
 - [Build an Idempotent Write API](./labs/build-an-idempotent-write-api.md)
 - [Enforce Authz, Validation and Context](./labs/enforce-authz-validation-and-context.md)
 - [Design Cache, Jobs and Webhooks](./labs/design-cache-jobs-and-webhooks.md)
