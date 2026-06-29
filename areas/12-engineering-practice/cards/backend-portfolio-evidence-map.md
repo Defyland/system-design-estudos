@@ -76,13 +76,14 @@ Nao leia em ordem alfabetica. Leia em ordem de sistema:
 | CI/CD | [Active Record Optimizer](../../../../active_record_optimizer/README.md) | [.github/workflows/ci.yml](../../../../active_record_optimizer/.github/workflows/ci.yml) | `cd ../active_record_optimizer && bundle exec rake verify` | Trusted first. `ready: yes` no report. Publication signal: authority file inclui commit `Initial public release`. | CI forte prova contrato publicado, empacotamento e integracao real; nao basta rodar unit test solto no host do autor. |
 | Kubernetes | [KubePulse Go Operator](../../../../kubepulse-go-operator/README.md) | [internal/controller/goservice_controller_test.go](../../../../kubepulse-go-operator/internal/controller/goservice_controller_test.go) | `cd ../kubepulse-go-operator && go test ./internal/controller -count=1` | Trusted first. `ready: yes` no report. Publication signal not explicit in authority file. | Reconciliacao com status conditions custa mais que Helm ou manifestos estaticos, mas compra drift repair, idempotencia e feedback de rollout. |
 
-## Em Construcao Worth One Read
+## Advanced Security Control Plane
 
-Use estas linhas so depois de dominar as ancoras `trusted first`.
+Use esta linha depois de dominar as ancoras `trusted first` do request boundary
+e do runtime.
 
 | Concept | Project | Exact evidence file | Verification command | Trust status | Tradeoff taught |
 | --- | --- | --- | --- | --- | --- |
-| Auth control plane | [TrustVault Go Security Control Plane](../../../../trustvault-go-security-control-plane/README.md) | [docs/security/authorization-matrix.md](../../../../trustvault-go-security-control-plane/docs/security/authorization-matrix.md) | `cd ../trustvault-go-security-control-plane && make verify` | Em construcao. `ready: no` no report atual; a autoridade aponta warning de context pack desatualizado. | Tirar credenciais, secret rotation e break-glass de cada servico reduz drift de seguranca, mas cria um novo plano de controle que tambem precisa alta disciplina operacional. |
+| Auth control plane | [TrustVault Go Security Control Plane](../../../../trustvault-go-security-control-plane/README.md) | [docs/security/authorization-matrix.md](../../../../trustvault-go-security-control-plane/docs/security/authorization-matrix.md) | `cd ../trustvault-go-security-control-plane && make verify` | Trusted first. O sweep ativo agora marca `ready: yes`, e o repo ja esta publico em `main`. | Tirar credenciais, secret rotation e break-glass de cada servico reduz drift de seguranca, mas cria um novo plano de controle que tambem precisa alta disciplina operacional. |
 
 ## Source Anchor
 
