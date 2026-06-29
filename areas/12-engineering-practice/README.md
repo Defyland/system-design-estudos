@@ -15,6 +15,7 @@ Para cada card:
 
 ## Cards
 
+- [Backend Portfolio Evidence Map](./cards/backend-portfolio-evidence-map.md)
 - [Data Contracts and Schema Evolution](./cards/data-contracts-and-schema-evolution.md)
 - [OLTP, OLAP and Lakehouse Boundaries](./cards/oltp-olap-and-lakehouse-boundaries.md)
 - [Batch vs Stream Processing](./cards/batch-vs-stream-processing.md)

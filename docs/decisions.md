@@ -2,6 +2,25 @@
 
 Registro curto das decisoes tecnicas. Entrada nova no topo.
 
+## [2026-06-29] Ancorar conceitos em um portfolio evidence map dentro de Engineering Practice
+
+Contexto: O repo `system-design-estudos` ja tinha chapters, catalogs e labs fortes, mas ainda faltava uma ponte curta entre "sei o conceito" e "consigo provar isso no meu portfolio". O pedido desta loop era criar um mapa no formato `concept -> project -> exact evidence file -> verification command -> tradeoff taught`, reaproveitando os melhores repos locais ja prontos sem abrir codigo novo no cockpit.
+
+Opcoes consideradas:
+- Espalhar links de portfolio por varios cards existentes em `areas/09`, `areas/10` e `areas/12`
+- Criar um card unico em `areas/12-engineering-practice` e apontar o README raiz para ele
+- Criar navegacao ou feature nova no cockpit para portfolio evidence
+
+Decisao: Criar `areas/12-engineering-practice/cards/backend-portfolio-evidence-map.md`, listar o card no catalogo de `Engineering Practice` e adicionar um ponteiro curto no `README.md` raiz.
+
+Porque: `Engineering Practice` ja e a area que traduz system design para operacao, deploy, seguranca, capacidade e decisao arquitetural. Colocar o mapa ali preserva a estrutura existente, mantem a descoberta natural pelo cockpit e evita espalhar cross-links manuais por varios pontos do curriculo.
+
+Consequencias / tradeoffs aceitos: A maior parte das ancoras reaproveita repos `ready: yes`, mas duas excecoes ficaram explicitas: `system-design-estudos` para CAP e `kubepulse-go-operator` para Kubernetes. O mapa ganha utilidade imediata para entrevista e portfolio, mas passa a depender de links cross-repo que precisam continuar estaveis quando os projetos irmaos evoluirem.
+
+Verificacao: `ruby scripts/render_curriculum_indexes.rb --check`, `bundle exec rake check`, `ruby simulation-labs/sim/run.rb --selftest`.
+
+Revisar se: O cockpit ganhar uma navegacao dedicada para "portfolio evidence", ou se varios novos repos exigirem um mapa filtravel por stack, senioridade ou dominio.
+
 ## [2026-06-29] Integrar os 10 conceitos de backend como guia visual e lab de request path
 
 Contexto: O artigo "10 Backend Concepts Every Developer Must Know" foi usado como lista de topicos para cobrir auth/authz, rate limiting, indexing, ACID/transactions, caching, queues, load balancing, CAP, reverse proxy e CDN dentro do curriculo existente. O material precisava servir para estudo ativo e preparacao de entrevista, sem copiar texto do artigo nem abrir uma trilha paralela redundante.

@@ -231,3 +231,9 @@ Se a próxima feature for um novo chapter ou side track:
 - O guia conecta cada conceito a pelo menos uma fronteira de sistema, falha comum, pergunta de entrevista, exemplo backend e material ja existente no curriculo.
 - O lab força transferencia: desenhar o request path, preencher `conceito -> boundary -> decisao -> falha -> sinal` e rodar simuladores quando o tema pedir numero.
 - O cockpit nao precisou de codigo novo porque `backend_principle` e `backend_lab` ja sao content kinds importados; o README do cockpit foi ajustado para documentar essa superficie.
+
+## 2026-06-29 - Portfolio evidence map
+
+- `areas/12-engineering-practice/cards/backend-portfolio-evidence-map.md` agora conecta conceitos estudados a repos locais, arquivo de evidencia exato e comando curto de verificacao.
+- A descoberta fica no fluxo normal do repo: o card entrou no catalogo de `Engineering Practice` e ganhou um ponteiro curto no `README.md` raiz.
+- As ancoras priorizam repos ja prontos para review (`tracebridge`, `settleflow`, `trustvault`, `ferrisledger`, `active_record_optimizer`); as excecoes declaradas sao CAP em `system-design-estudos` e Kubernetes em `kubepulse-go-operator`.

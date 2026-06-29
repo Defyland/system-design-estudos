@@ -75,6 +75,10 @@ Esses itens foram absorvidos nos READMEs das areas, porque nao justificam uma ar
 - `curriculum.yml`: fonte canonica para o cockpit navegar a trilha canonica e os side tracks
 - `assets/ementa/`: imagens da ementa original
 
+## Ponte para Portfolio
+
+- [Backend Portfolio Evidence Map](./areas/12-engineering-practice/cards/backend-portfolio-evidence-map.md): liga conceitos do curriculo aos repos locais, ao arquivo de evidencia certo e ao comando mais curto para provar cada claim.
+
 ## Regra pratica
 
 Se um assunto nao gerar:
