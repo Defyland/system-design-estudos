@@ -77,7 +77,7 @@ Esses itens foram absorvidos nos READMEs das areas, porque nao justificam uma ar
 
 ## Ponte para Portfolio
 
-- [Backend Portfolio Evidence Map](./areas/12-engineering-practice/cards/backend-portfolio-evidence-map.md): liga conceitos do curriculo aos repos locais, ao arquivo de evidencia certo e ao comando mais curto para provar cada claim.
+- [Backend Portfolio Evidence Map](./areas/12-engineering-practice/cards/backend-portfolio-evidence-map.md): field guide trust-first que liga conceitos do curriculo aos repos locais mais fortes, ao arquivo exato de evidencia e ao comando certo para provar cada claim.
 
 ## Regra pratica
 

@@ -2,6 +2,25 @@
 
 Registro curto das decisoes tecnicas. Entrada nova no topo.
 
+## [2026-06-29] Usar o report de readiness como legenda de confianca do portfolio map
+
+Contexto: O `backend-portfolio-evidence-map.md` ja existia, mas ainda parecia um indice forte em vez de um field guide reutilizavel. A nova autoridade em `.agents/eval-reports/full-program-readiness-2026-06-29.json` trouxe uma base objetiva para escolher quais repos devem aparecer primeiro e quais devem entrar apenas como contraste.
+
+Opcoes consideradas:
+- Continuar com um mapa unico sem status de confianca
+- Adicionar uma coluna de trust baseada no report e reorganizar o card por passes de estudo
+- Esperar o cockpit ganhar navegacao propria para portfolio evidence
+
+Decisao: Reescrever o card como field guide em tres passes (`request boundary`, `consistency spine`, `runtime and delivery`) e usar o report como legenda de confianca: `trusted first` para `ready: yes`, `em construcao` para `ready: no`.
+
+Porque: O learner e o modelo menor nao precisam so de links; precisam saber por onde confiar primeiro. O report nao expoe um campo separado de visibilidade GitHub, entao a decisao foi ser explicito: readiness e a base primaria de confianca, e publication signal so entra quando o proprio report mostra isso em evidencias de commit.
+
+Consequencias / tradeoffs aceitos: O mapa ficou mais opinado e didatico, menos neutro. A selecao passou a favorecer `SettleFlow`, `TraceBridge`, `FerrisLedger`, `KubePulse` e `Active Record Optimizer` como primeiras ancoras, enquanto `TrustVault` saiu do caminho principal e virou leitura de contraste arquitetural.
+
+Verificacao: `ruby scripts/render_curriculum_indexes.rb --check`, `PATH=/Users/allanflavio/.asdf/shims:$PATH bundle exec rake check`, `ruby simulation-labs/sim/run.rb --selftest`.
+
+Revisar se: O report futuro ganhar um campo explicito de publicacao/visibilidade, ou se o cockpit passar a consumir o trust legend diretamente.
+
 ## [2026-06-29] Ancorar conceitos em um portfolio evidence map dentro de Engineering Practice
 
 Contexto: O repo `system-design-estudos` ja tinha chapters, catalogs e labs fortes, mas ainda faltava uma ponte curta entre "sei o conceito" e "consigo provar isso no meu portfolio". O pedido desta loop era criar um mapa no formato `concept -> project -> exact evidence file -> verification command -> tradeoff taught`, reaproveitando os melhores repos locais ja prontos sem abrir codigo novo no cockpit.

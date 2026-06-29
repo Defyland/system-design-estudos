@@ -237,3 +237,11 @@ Se a próxima feature for um novo chapter ou side track:
 - `areas/12-engineering-practice/cards/backend-portfolio-evidence-map.md` agora conecta conceitos estudados a repos locais, arquivo de evidencia exato e comando curto de verificacao.
 - A descoberta fica no fluxo normal do repo: o card entrou no catalogo de `Engineering Practice` e ganhou um ponteiro curto no `README.md` raiz.
 - As ancoras priorizam repos ja prontos para review (`tracebridge`, `settleflow`, `trustvault`, `ferrisledger`, `active_record_optimizer`); as excecoes declaradas sao CAP em `system-design-estudos` e Kubernetes em `kubepulse-go-operator`.
+
+## 2026-06-29 - Trust-first rewrite do portfolio map
+
+- O report `.agents/eval-reports/full-program-readiness-2026-06-29.json` virou a legenda de confianca do card.
+- O mapa deixou de ser tabela unica e passou a ser lido em tres passes: `request boundary`, `consistency spine` e `runtime and delivery`.
+- `ready: yes` virou `trusted first`; `ready: no` virou `em construcao`.
+- Como o report nao traz campo separado de visibilidade GitHub, o card agora separa explicitamente `readiness` de `publication signal`.
+- `TrustVault` saiu da trilha principal e ficou como contraste arquitetural de auth control plane, enquanto `SettleFlow`, `TraceBridge`, `FerrisLedger`, `KubePulse` e `Active Record Optimizer` viraram as primeiras ancoras.
