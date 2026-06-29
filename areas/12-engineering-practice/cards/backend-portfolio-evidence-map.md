@@ -28,12 +28,13 @@ Faca 3 passes:
 ## Trust Legend
 
 Autoridade usada neste card:
-- [full-program-readiness-2026-06-29.json](../../../../.agents/eval-reports/full-program-readiness-2026-06-29.json)
+- [release-readiness-dashboard.md](../../../../.agents/eval-reports/release-readiness-dashboard.md)
+- [full-program-readiness-2026-06-29.json](../../../../.agents/eval-reports/full-program-readiness-2026-06-29.json) como snapshot base quando o dashboard nao precisa sobrescrever deltas
 
 Como ler o status:
 
-- `Trusted first`: `ready: yes` no report. Comece por aqui.
-- `Em construcao`: `ready: no` no report. Leia como contraste arquitetural, nao como primeira ancora de confianca.
+- `Trusted first`: repo listado em `Ready Now` no dashboard atual; use o JSON base so como fallback quando nao houver delta mais novo.
+- `Em construcao`: repo continua fora de `Ready Now` e ainda nao virou ancora confiavel de review.
 - `Publication signal`: o report nao expõe um campo separado de visibilidade GitHub. Quando ele nao traz um sinal explicito de publicacao, trate a confianca como `readiness-first`, nao como prova de repo publico.
 
 ## How to Read This Map

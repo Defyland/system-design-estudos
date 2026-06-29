@@ -245,3 +245,9 @@ Se a próxima feature for um novo chapter ou side track:
 - `ready: yes` virou `trusted first`; `ready: no` virou `em construcao`.
 - Como o report nao traz campo separado de visibilidade GitHub, o card agora separa explicitamente `readiness` de `publication signal`.
 - `TrustVault` saiu da trilha principal e ficou como contraste arquitetural de auth control plane, enquanto `SettleFlow`, `TraceBridge`, `FerrisLedger`, `KubePulse` e `Active Record Optimizer` viraram as primeiras ancoras.
+
+## 2026-06-29 - Validacao executavel do portfolio map
+
+- O card de portfolio agora depende do `release-readiness-dashboard.md` como autoridade viva, usando `full-program-readiness-2026-06-29.json` apenas como base/fallback.
+- `scripts/validate_curriculum.rb` passou a validar tres coisas que antes podiam envelhecer em silencio: se o repo do projeto bate com o repo do arquivo de evidencia, se o comando aponta para o mesmo repo, e se `Trusted first` / `Em construcao` continuam coerentes com a autoridade de readiness.
+- Isso fecha um gap didatico importante: o learner e o modelo menor nao recebem mais um mapa tecnicamente navegavel, porem semanticamente stale, sem o check acusar.

@@ -2,6 +2,25 @@
 
 Registro curto das decisoes tecnicas. Entrada nova no topo.
 
+## [2026-06-29] Validar o portfolio evidence map contra a autoridade viva de readiness
+
+Contexto: O `backend-portfolio-evidence-map.md` passou a ensinar confianca (`Trusted first` vs `Em construcao`), mas a legenda ainda apontava so para `.agents/eval-reports/full-program-readiness-2026-06-29.json`. Esse arquivo e um snapshot base e pode ficar atras dos deltas reais ja consolidados em `.agents/eval-reports/release-readiness-dashboard.md`, como aconteceu com `trustvault-go-security-control-plane`.
+
+Opcoes consideradas:
+- Continuar usando so o JSON base e aceitar drift ocasional entre o card e o controle
+- Trocar a autoridade do card para o dashboard e validar automaticamente se `repo`, `evidence file`, `verification command` e `trust status` continuam coerentes
+- Parar de expor `Trusted first` no card para evitar acoplamento com o estado do portfolio
+
+Decisao: Tratar `release-readiness-dashboard.md` como autoridade viva, usar o JSON apenas como snapshot base/fallback, e fazer `scripts/validate_curriculum.rb` validar o contrato do portfolio map.
+
+Porque: O learner e o modelo barato precisam abrir o card e confiar que a ordem de estudo nao esta mentindo. Validar apenas links markdown nao basta; o comando precisa apontar para o mesmo repo do projeto, e o `trust status` precisa bater com a autoridade corrente em vez de um snapshot defasado.
+
+Consequencias / tradeoffs aceitos: O repo didatico agora fica explicitamente acoplado aos artefatos de controle do workspace. Isso aumenta dependencia de contexto local, mas evita que o mapa envelheca em silencio justamente na parte que mais importa para revisao e estudo guiado por evidencias.
+
+Verificacao: `ruby scripts/validate_curriculum.rb`, `PATH=/Users/allanflavio/.asdf/shims:$PATH bundle exec rake check`, `ruby simulation-labs/sim/run.rb --selftest`.
+
+Revisar se: O programa passar a publicar um artefato mais estruturado para autoridade viva de readiness, ou se o portfolio map deixar de depender do estado operacional dos repos irmaos.
+
 ## [2026-06-29] Usar o report de readiness como legenda de confianca do portfolio map
 
 Contexto: O `backend-portfolio-evidence-map.md` ja existia, mas ainda parecia um indice forte em vez de um field guide reutilizavel. A nova autoridade em `.agents/eval-reports/full-program-readiness-2026-06-29.json` trouxe uma base objetiva para escolher quais repos devem aparecer primeiro e quais devem entrar apenas como contraste.

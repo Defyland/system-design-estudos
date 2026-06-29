@@ -4,6 +4,7 @@
 require "pathname"
 require "rbconfig"
 require "set"
+require "json"
 require "yaml"
 
 # Read every file as UTF-8 regardless of the host locale. Without this the
@@ -14,6 +15,10 @@ Encoding.default_external = Encoding::UTF_8
 Encoding.default_internal = Encoding::UTF_8
 
 ROOT = Pathname(__dir__).join("..").expand_path
+WORKSPACE_ROOT = ROOT.parent
+PORTFOLIO_MAP_PATH = "areas/12-engineering-practice/cards/backend-portfolio-evidence-map.md"
+READINESS_BASE_PATH = WORKSPACE_ROOT.join(".agents/eval-reports/full-program-readiness-2026-06-29.json")
+READINESS_DASHBOARD_PATH = WORKSPACE_ROOT.join(".agents/eval-reports/release-readiness-dashboard.md")
 CURRICULUM = YAML.safe_load(ROOT.join("curriculum.yml").read, aliases: true)
 CATALOG_CONTRACTS = {
   "topic_catalog" => {
@@ -516,6 +521,150 @@ def validate_markdown_links
   end
 end
 
+def split_markdown_row(line)
+  line.split("|")[1..-2].to_a.map(&:strip)
+end
+
+def first_markdown_link_target(text)
+  text[/\[[^\]]+\]\(([^)]+)\)/, 1]
+end
+
+def workspace_repo_name_for_absolute_path(path)
+  clean = path.cleanpath
+  return ROOT.basename.to_s if clean == ROOT || clean.to_s.start_with?("#{ROOT}/")
+  return nil unless clean.to_s.start_with?("#{WORKSPACE_ROOT}/")
+
+  clean.relative_path_from(WORKSPACE_ROOT).each_filename.first
+rescue ArgumentError
+  nil
+end
+
+def portfolio_repo_name_for_link(source_path, target)
+  clean_target = clean_local_target(target)
+  return nil if clean_target.empty?
+
+  resolved = ROOT.join(source_path).dirname.join(clean_target).cleanpath
+  workspace_repo_name_for_absolute_path(resolved)
+end
+
+def portfolio_repo_name_for_command(command)
+  clean_command = command.strip.delete_prefix("`").delete_suffix("`")
+  if clean_command.match?(/\Acd\s+/)
+    target = clean_command[/\Acd\s+([^\s&]+)\s*&&/, 1]
+    return nil unless target
+
+    resolved = ROOT.join(target).cleanpath
+    return nil unless resolved.directory?
+
+    return workspace_repo_name_for_absolute_path(resolved)
+  end
+
+  ROOT.basename.to_s
+end
+
+def load_base_readiness_by_repo
+  return {} unless READINESS_BASE_PATH.exist?
+
+  JSON.parse(READINESS_BASE_PATH.read).fetch("reports").to_h do |report|
+    [ report.fetch("name"), report.fetch("summary").fetch("ready") ]
+  end
+end
+
+def load_dashboard_readiness_overrides
+  return {} unless READINESS_DASHBOARD_PATH.exist?
+
+  section = nil
+  overrides = {}
+
+  READINESS_DASHBOARD_PATH.each_line do |line|
+    case line
+    when /^## Ready Now/
+      section = :ready
+    when /^## Blocked By Real Gaps/
+      section = :blocked
+    when /^## /
+      section = nil
+    else
+      next unless section && line.start_with?("| `")
+
+      repo = split_markdown_row(line).first.to_s[/`([^`]+)`/, 1]
+      next unless repo
+
+      overrides[repo] = (section == :ready)
+    end
+  end
+
+  overrides
+end
+
+def portfolio_evidence_rows(body)
+  body.each_line.filter_map.with_index(1) do |line, lineno|
+    next unless line.start_with?("|")
+
+    columns = split_markdown_row(line)
+    next unless columns.size == 6
+    next if columns.first == "Concept"
+    next unless columns[1].include?("](") && columns[2].include?("](")
+
+    {
+      line: lineno,
+      concept: columns[0],
+      project: columns[1],
+      evidence: columns[2],
+      command: columns[3],
+      trust: columns[4]
+    }
+  end
+end
+
+def validate_backend_portfolio_evidence_map
+  return unless exists?(PORTFOLIO_MAP_PATH)
+
+  readiness_by_repo = load_base_readiness_by_repo.merge(load_dashboard_readiness_overrides)
+  body = ROOT.join(PORTFOLIO_MAP_PATH).read
+
+  portfolio_evidence_rows(body).each do |row|
+    project_target = first_markdown_link_target(row.fetch(:project))
+    evidence_target = first_markdown_link_target(row.fetch(:evidence))
+    project_repo = portfolio_repo_name_for_link(PORTFOLIO_MAP_PATH, project_target.to_s)
+    evidence_repo = portfolio_repo_name_for_link(PORTFOLIO_MAP_PATH, evidence_target.to_s)
+    command_repo = portfolio_repo_name_for_command(row.fetch(:command))
+
+    assert(project_repo, "portfolio evidence row #{row.fetch(:concept)} line #{row.fetch(:line)} has unresolvable project link")
+    assert(evidence_repo, "portfolio evidence row #{row.fetch(:concept)} line #{row.fetch(:line)} has unresolvable evidence link")
+    next unless project_repo && evidence_repo
+
+    assert(
+      project_repo == evidence_repo,
+      "portfolio evidence row #{row.fetch(:concept)} line #{row.fetch(:line)} mixes project repo #{project_repo} with evidence repo #{evidence_repo}"
+    )
+    assert(
+      command_repo == project_repo,
+      "portfolio evidence row #{row.fetch(:concept)} line #{row.fetch(:line)} points command repo #{command_repo || 'unknown'} at a different repo than the project link #{project_repo}"
+    )
+
+    authority_ready = readiness_by_repo.fetch(project_repo, nil)
+    assert(
+      !authority_ready.nil?,
+      "portfolio evidence row #{row.fetch(:concept)} line #{row.fetch(:line)} references repo missing from readiness authority: #{project_repo}"
+    )
+    next if authority_ready.nil?
+
+    ready_marker = row.fetch(:trust)[/`ready:\s*(yes|no)`/, 1]
+    expected_marker = authority_ready ? "yes" : "no"
+    assert(
+      ready_marker == expected_marker,
+      "portfolio evidence row #{row.fetch(:concept)} line #{row.fetch(:line)} says ready #{ready_marker || 'missing'} but authority says #{expected_marker} for #{project_repo}"
+    )
+
+    expected_label = authority_ready ? "Trusted first" : "Em construcao"
+    assert(
+      row.fetch(:trust).include?(expected_label),
+      "portfolio evidence row #{row.fetch(:concept)} line #{row.fetch(:line)} should use trust label #{expected_label.inspect}"
+    )
+  end
+end
+
 chapters = CURRICULUM.fetch("chapters").sort_by { |chapter| chapter.fetch("number") }
 areas = CURRICULUM.fetch("areas")
 area_ids = areas.map { |area| area.fetch("id") }.to_set
@@ -535,6 +684,7 @@ validate_simulation_catalog(simulation_ids)
 validate_chapters(chapters, phase_ids, area_ids, area_by_id, simulation_ids.to_set)
 validate_side_tracks(side_tracks, area_ids)
 validate_markdown_links
+validate_backend_portfolio_evidence_map
 
 if @errors.any?
   puts @errors.map { |message| "- #{message}" }
