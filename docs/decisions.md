@@ -2,6 +2,34 @@
 
 Registro curto das decisoes tecnicas. Entrada nova no topo.
 
+## [2026-06-29] Publicar o curriculo sob MIT para estudo, remix e portfolio evidence
+
+Contexto: O repositorio ja virou material publico de estudo com chapters, labs,
+cases reais, simulation labs e mapas de evidencia ligados aos outros projetos da
+pasta. Sem licenca explicita, o learner consegue ler, mas nao tem uma fronteira
+clara para reaproveitar os materiais em estudo proprio, onboarding interno ou
+adaptacoes locais.
+
+Opcoes consideradas:
+- Manter o copyright implicito e tratar o repositorio so como leitura
+- Publicar sob MIT e explicitar isso no README
+- Usar uma licenca mais restritiva para impedir remix sem reciprocidade
+
+Decisao: Publicar o repositorio sob MIT e adicionar uma secao de licenca no
+README.
+
+Porque: O objetivo aqui e ensino aplicado. A licenca permissiva alinha o
+contrato legal com o contrato pedagogico que o repositorio ja comunica.
+
+Consequencias / tradeoffs aceitos: Quem reutilizar partes do curriculo pode
+separar o material do contexto original e perder alguns links de navegacao. Esse
+risco e aceitavel perto do ganho de reutilizacao clara para estudo.
+
+Verificacao: `ruby scripts/validate_curriculum.rb`, `PATH=/Users/allanflavio/.asdf/shims:$PATH bundle exec rake check`, `ruby simulation-labs/sim/run.rb --selftest`.
+
+Revisar se: Surgir um pacote separado de conteudo comercial ou uma necessidade
+de licenciamento diferente para assets de terceiros.
+
 ## [2026-06-29] Validar o portfolio evidence map contra a autoridade viva de readiness
 
 Contexto: O `backend-portfolio-evidence-map.md` passou a ensinar confianca (`Trusted first` vs `Em construcao`), mas a legenda ainda apontava so para `.agents/eval-reports/full-program-readiness-2026-06-29.json`. Esse arquivo e um snapshot base e pode ficar atras dos deltas reais ja consolidados em `.agents/eval-reports/release-readiness-dashboard.md`, como aconteceu com `trustvault-go-security-control-plane`.

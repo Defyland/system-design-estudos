@@ -117,3 +117,11 @@ O repositorio agora tem quatro camadas para nao depender so de leitura:
 
 - [Biblioteca de casos reais pesquisados na internet](./real-world-cases/README.md)
 - [Roadmap priorizado de leitura dos casos reais](./real-world-cases/ROADMAP.md)
+
+## Licenca
+
+Este repositorio e publicado sob a MIT License. Veja
+[LICENSE.txt](./LICENSE.txt).
+
+Isso deixa chapters, labs, mapas de evidencia e material de revisao
+reutilizaveis para estudo e adaptacao interna.
