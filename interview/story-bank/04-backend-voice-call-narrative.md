@@ -1,16 +1,16 @@
 # Narrativa Final - Backend Ruby / Rails
 
-Curriculo alvo: `allan_resume_fullstack_en.pdf`.
+> Curriculo alvo: `allan_resume_fullstack_en.pdf`. Leia com pausas. A narrativa corrida e base de 6-8 min; a secao de Q&A de Reserva no fim e municao de follow-up - so puxe quando o entrevistador cavar.
 
-Foco: narrativa de entrevista ao vivo para backend Rails, arquitetura, performance, seguranca, pagamentos, mensageria e operacao.
-
-Use este documento quando voce quiser responder "tell me about yourself" de forma tecnica, cronologica e forte o suficiente para puxar a conversa para senioridade real.
+---
 
 ## Abertura
 
-Tenho mais de dez anos trabalhando com Ruby on Rails e sistemas backend, com base full stack. Vou seguir em ordem cronologica porque isso mostra bem a evolucao da minha carreira: comecei resolvendo integracao externa, confiabilidade e produto full stack; depois fui para arquitetura Rails, performance, pagamento, seguranca, sistemas financeiros regulados e mensageria em escala.
+Tenho mais de dez anos trabalhando com Ruby on Rails e sistemas backend, com base full stack. Vou seguir em ordem cronologica porque mostra bem a evolucao da minha carreira: comecei resolvendo integracao externa, confiabilidade e produto full stack; depois fui para arquitetura Rails, performance, pagamento, seguranca, sistemas financeiros regulados e mensageria em escala.
 
 O fio condutor e sempre o mesmo: eu identifico onde esta o acoplamento, o risco ou o gargalo; crio uma fronteira tecnica; garanto consistencia; reduzo latencia; e deixo o sistema mais operavel.
+
+---
 
 ## Fulllab / Total Commit - 2016 a 2018
 
@@ -28,6 +28,8 @@ Para realtime, eu teria cuidado com o termo dependendo da versao do Rails. Se a 
 
 O ganho tecnico nessa fase foi aprender a isolar instabilidade externa, controlar efeitos assincronos e evitar que integracao, geolocalizacao ou realtime virassem gargalos do dominio principal.
 
+---
+
 ## Sonata - 2018 a 2019
 
 Na Sonata, trabalhei em uma plataforma internacional de e-commerce com Rails API, React, React Native e TypeScript. O problema era manter a API sustentavel conforme o produto crescia.
@@ -44,11 +46,13 @@ A diferenca entre essas tecnicas importa. Preload faz queries separadas. Eager l
 
 O ganho nessa fase foi tornar o legado mais previsivel: menos regra espalhada, menos callback escondido, fluxo de negocio mais testavel e hot paths de e-commerce com resposta melhor.
 
+---
+
 ## Globo / Stormgroup / Projac - 2019 a 2020
 
 Na Globo, o backend mais relevante para contar e pagamento em escala, performance de APIs e reducao de risco operacional com CI/CD.
 
-O sistema processava pagamentos para milhoes de clientes mensais em multiplas plataformas. Em pagamento, o primeiro ponto era reduzir exposicao de dado sensivel. O backend nao deveria trafegar ou armazenar cartao cru se pudesse operar com token do gateway. Tokenizacao reduz risco porque o sistema passa a trabalhar com uma referencia segura, nao com PAN ou cartao.
+O sistema processava pagamentos para milhoes de clientes mensais em multiplas plataformas. Em pagamento, o primeiro ponto era reduzir exposicao de dado sensivel. O backend nao deveria trafegar ou armazenar cartao cru se pudesse operar com token do gateway. Tokenizacao reduz risco porque o sistema passa a trabalhar com uma referencia segura, nao com PAN/cartao diretamente.
 
 O segundo ponto era estado transacional. Timeout de gateway nao significa pagamento recusado. Significa estado desconhecido. Se eu dou retry cego, posso duplicar cobranca. Entao o fluxo precisa persistir estado pendente, suportar confirmacao posterior, webhook ou conciliacao. Retry so e seguro quando existe idempotencia.
 
@@ -57,6 +61,8 @@ Tambem trabalhei em performance de endpoints criticos, com tuning em PostgreSQL 
 Alem disso, CI/CD e deploy sem downtime reduziram risco operacional. Em Rails, o cuidado principal e migration compativel: nao remover ou renomear coluna usada por versao antiga durante rollout. O padrao seguro e expand/contract: adiciona estrutura nova, deploya codigo compativel, migra dados e so depois remove legado.
 
 O ganho tecnico foi reduzir risco em tres pontos criticos: pagamento, performance de API e processo de release.
+
+---
 
 ## Enjoei - 2020 a 2021
 
@@ -72,7 +78,7 @@ Em SQL injection, ActiveRecord protege quando usado corretamente, mas nao proteg
 
 No checkout, apliquei Clean Architecture de forma pragmatica. O ponto nao era criar uma arvore de pastas com domain, application, infra, ports e adapters. O nucleo real era a regra de dependencia: dependencias apontam para dentro. A regra de negocio nao deveria depender diretamente de controller, HTTP, banco, framework, fila ou gateway externo. Rails pode conhecer a regra de negocio, mas a regra de negocio nao deveria precisar conhecer Rails.
 
-Conceitualmente, as camadas seriam: entidades no centro, com regra de negocio mais pura; use cases como regra de aplicacao e orquestracao; interface adapters como controllers, presenters, serializers e gateways; e frameworks ou drivers na borda, como Rails, banco, Sidekiq, Kafka, RabbitMQ e servicos externos.
+Conceitualmente, as camadas seriam: entidades no centro, com regra de negocio mais pura; use cases como regra de aplicacao e orquestracao; interface adapters como controllers, presenters, serializers e gateways; e frameworks/drivers na borda, como Rails, banco, Sidekiq, Kafka, RabbitMQ e servicos externos.
 
 O motivo disso e proteger o dominio de detalhes volateis. Framework muda, banco muda, transporte muda, gateway muda. A regra de negocio e o ativo que mais dura.
 
@@ -80,7 +86,7 @@ Mas existe uma tensao real com Rails: ActiveRecord viola Clean Architecture pura
 
 So que, em muitos sistemas Rails, esse isolamento completo nao paga o custo. Voce duplica modelo, perde produtividade do ActiveRecord, cria indirecao e aumenta complexidade sem ganho proporcional.
 
-Entao minha posicao e pragmatica: eu aplico o espirito, nao o dogma. Extraio use cases para orquestracao de fluxos criticos, desacoplo efeitos externos com gateways ou adapters, deixo autorizacao em policies, explicito transaction boundary, uso Result object para resposta de dominio quando faz sentido, mas mantenho ActiveRecord onde ele continua sendo uma boa ferramenta.
+Entao minha posicao e pragmatica: eu aplico o espirito, nao o dogma. Extraio use cases para orquestracao de fluxos criticos, desacoplo efeitos externos com gateways/adapters, deixo autorizacao em policies, explicito transaction boundary, uso Result object para resposta de dominio quando faz sentido, mas mantenho ActiveRecord onde ele continua sendo uma boa ferramenta.
 
 Eu so introduzo repository quando existe dor real: multiplas fontes de dados, regra que precisa ser testada sem banco, queries muito complexas, troca de persistencia, ou quando ActiveRecord comeca a vazar detalhe demais para o fluxo de negocio.
 
@@ -102,6 +108,8 @@ Dependency Inversion aparecia quando fluxo de alto nivel nao deveria instanciar 
 
 O ganho disso no Enjoei nao era "arquitetura bonita". Era reduzir superficie de ataque, tornar checkout mais auditavel, facilitar teste de regra critica, remover side effects escondidos e impedir que a mesma vulnerabilidade voltasse em outro fluxo.
 
+---
+
 ## Bornlogic / Farfetch / Spring Global - 2022 ate agora
 
 Na fase mais recente, o nivel de escala aumentou bastante. Trabalhei com Rails APIs de alto volume, plataforma financeira regulada, Kafka, RabbitMQ, Docker, Kubernetes e lideranca tecnica.
@@ -112,11 +120,15 @@ Eu comecava por medicao, nao por opiniao. A base era APM, tracing, p95, p99, thr
 
 Os gargalos mais comuns nesse volume sao:
 
-- Connection pool de banco. Se a concorrencia da aplicacao e maior que o pool disponivel, requests comecam a esperar conexao. Parece lentidao generica, mas e contencao.
-- Banco. Query sem indice em hot path domina latency budget. Aqui entram EXPLAIN ANALYZE, indice composto ou parcial quando faz sentido, remocao de N+1 e reducao de leitura desnecessaria.
-- Ruby e GC. Alto volume significa muita alocacao por request. Se a aplicacao materializa colecoes grandes ou serializers criam objetos demais, isso aparece no p99.
-- Serializacao e payload. JSON pesado custa CPU e banda. Campo que o client nao usa e custo sem valor.
-- Chamada externa. Se uma API externa esta dentro do request, minha latencia fica acoplada a dela. Quando possivel, eu movia para fila ou evento. Quando precisava ser inline, usava timeout curto e tratamento de falha.
+**Connection pool de banco.** Se a concorrencia da aplicacao e maior que o pool disponivel, requests comecam a esperar conexao. Parece lentidao generica, mas e contencao.
+
+**Banco.** Query sem indice em hot path domina latency budget. Aqui entram EXPLAIN ANALYZE, indice composto ou parcial quando faz sentido, remocao de N+1 e reducao de leitura desnecessaria.
+
+**Ruby e GC.** Alto volume significa muita alocacao por request. Se a aplicacao materializa colecoes grandes ou serializers criam objetos demais, isso aparece no p99.
+
+**Serializacao e payload.** JSON pesado custa CPU e banda. Campo que o client nao usa e custo sem valor.
+
+**Chamada externa.** Se uma API externa esta dentro do request, minha latencia fica acoplada a dela. Quando possivel, eu movia para fila ou evento. Quando precisava ser inline, usava timeout curto e tratamento de falha.
 
 Em sistema financeiro, idempotencia e requisito de design. Retry errado duplica transacao. Timeout nao e falha definitiva. Mensagem duplicada e cenario esperado. Entao a operacao precisava ter idempotency key persistida com unique constraint no banco. Validacao so na aplicacao nao resolve corrida; duas requisicoes simultaneas podem passar ao mesmo tempo. Quem arbitra duplicidade com seguranca e o banco.
 
@@ -136,23 +148,15 @@ Em incidente, minha ordem e: entender impacto, estabilizar, reduzir blast radius
 
 O resultado dessa fase foi trabalhar com backend em escala maior: APIs Rails de alto volume, reducao de latencia em servico de pagamento, plataforma financeira com rastreabilidade, mensageria, confiabilidade e operacao previsivel.
 
+---
+
 ## Testes - visao transversal
 
 Sobre testes, eu nao trato como "ter cobertura". Eu trato como controle de risco. A pergunta principal nao e so quanto de coverage existe, mas qual risco aquele teste esta reduzindo.
 
-No backend Rails, eu separo por tipo.
+No backend Rails, eu separo por tipo. Unit specs servem para regra isolada: service pequeno, policy, validator, parser, calculo ou objeto de dominio. Request specs servem para API real: rota, autenticacao, autorizacao, params, status HTTP, serializer e contrato de resposta. Integration specs servem para fluxos com banco, transacao, multiplos models, jobs ou side effects. System ou E2E specs ficam para jornada critica, porque sao mais lentos e frageis.
 
-Unit specs servem para regra isolada: service pequeno, policy, validator, parser, calculo ou objeto de dominio.
-
-Request specs servem para API real: rota, autenticacao, autorizacao, params, status HTTP, serializer e contrato de resposta.
-
-Integration specs servem para fluxos com banco, transacao, multiplos models, jobs ou side effects.
-
-System ou E2E specs ficam para jornada critica, porque sao mais lentos e frageis.
-
-Em legado, eu nao comeco tentando cobrir tudo. Primeiro identifico hot paths: checkout, pagamento, autorizacao, jobs criticos, webhooks, conciliacao e endpoints de alto volume. Antes de refatorar, escrevo characterization tests para congelar o comportamento atual. Depois extraio o fluxo com seguranca.
-
-Se encontro bug, escrevo teste que reproduz o bug antes da correcao. Esse teste vira regressao.
+Em legado, eu nao comeco tentando cobrir tudo. Primeiro identifico hot paths: checkout, pagamento, autorizacao, jobs criticos, webhooks, conciliacao e endpoints de alto volume. Antes de refatorar, escrevo characterization tests para congelar o comportamento atual. Depois extraio o fluxo com seguranca. Se encontro bug, escrevo teste que reproduz o bug antes da correcao. Esse teste vira regressao.
 
 Em seguranca, teste e parte da correcao. Para IDOR, crio usuario A e usuario B; A tenta acessar recurso de B; espero 404 ou 403. Para privilege escalation, mando payload tentando setar admin, role, tenant_id ou owner_id. Para mass assignment, garanto que atributos sensiveis sao ignorados ou bloqueados. Para injection ou order injection, testo input fora da allowlist.
 
@@ -160,56 +164,126 @@ Em sistemas financeiros, eu testo idempotencia e concorrencia. Mesmo request dua
 
 Em mensageria, testo o consumer como idempotente. Kafka e RabbitMQ podem entregar mensagem mais de uma vez. Entao processar o mesmo evento duas vezes nao pode duplicar pagamento, auditoria, saldo ou notificacao critica. Tambem testo payload invalido, retry, DLQ e falha parcial.
 
-Sobre Minitest vs RSpec: Rails vem com Minitest por padrao. Ele e simples, rapido, tem pouca DSL e combina bem com a filosofia Rails. Para projetos menores ou times que preferem simplicidade, e uma boa escolha.
-
-RSpec tem mais DSL, expressividade e ecossistema forte para mocks, matchers, shared examples, request specs e organizacao de cenarios complexos. Em times Rails maiores, principalmente com BDD/TDD e muitos fluxos de negocio, RSpec costuma ser mais legivel e produtivo.
-
-Eu nao trataria como religiao. A escolha depende do time e do projeto. Se o projeto ja usa Minitest bem, eu continuo. Se o projeto tem dominio complexo, muitos cenarios e o time ja domina RSpec, RSpec pode dar mais clareza. O problema nao e ferramenta; e teste que nao protege risco real.
+Sobre Minitest vs RSpec: Rails vem com Minitest por padrao. Ele e simples, rapido, tem pouca DSL e combina bem com a filosofia Rails. Para projetos menores ou times que preferem simplicidade, e uma boa escolha. RSpec tem mais DSL, expressividade e ecossistema forte para mocks, matchers, shared examples, request specs e organizacao de cenarios complexos. Em times Rails maiores, principalmente com BDD/TDD e muitos fluxos de negocio, RSpec costuma ser mais legivel e produtivo. Eu nao trataria como religiao. A escolha depende do time e do projeto. O problema nao e ferramenta; e teste que nao protege risco real.
 
 Com mocks e stubs, eu uso principalmente em boundaries externos: gateway de pagamento, API de terceiro, fila, email e storage. Nao gosto de mockar ActiveRecord ou comportamento interno demais, porque o teste fica acoplado a implementacao.
 
-A frase que resume minha visao de testes e:
+A frase que resume minha visao de testes e: teste bom protege decisao importante; teste ruim so congela implementacao.
 
-> Teste bom protege decisao importante. Teste ruim so congela implementacao.
+---
 
 ## Transaction boundary, erro e contratos de API
 
-Em Rails, uma das coisas que mais diferencia codigo senior e saber onde comeca e termina a transacao.
+Em Rails, uma das coisas que mais diferencia codigo senior e saber onde comeca e termina a transacao. Em fluxo simples, ActiveRecord resolve bem. Mas em fluxo critico - pagamento, checkout, transferencia, cancelamento, conciliacao - a transacao precisa ser explicita.
 
-Em fluxo simples, ActiveRecord resolve bem. Mas em fluxo critico, como pagamento, checkout, transferencia, cancelamento ou conciliacao, a transacao precisa ser explicita.
+Dentro da transacao ficam mudancas de estado que precisam ser atomicas. Fora da transacao ficam efeitos externos que nao participam do rollback: email, chamada HTTP, gateway, broker publish direto. Se preciso acoplar mudanca de estado e evento, uso outbox: gravo operacao e evento na mesma transacao; depois worker publica.
 
-Dentro da transacao ficam mudancas de estado que precisam ser atomicas.
+Tambem tomo cuidado com lock. Row-level lock resolve concorrencia no agregado certo, mas lock demais reduz throughput. Entao uso lock quando duas operacoes concorrentes podem quebrar invariante: saldo, status de pagamento, transferencia, estoque, assinatura.
 
-Fora da transacao ficam efeitos externos que nao participam do rollback: email, chamada HTTP, gateway e broker publish direto.
-
-Se preciso acoplar mudanca de estado e evento, uso outbox. Gravo operacao e evento na mesma transacao; depois worker publica.
-
-Tambem tomo cuidado com lock. Row-level lock resolve concorrencia no agregado certo, mas lock demais reduz throughput. Entao uso lock quando duas operacoes concorrentes podem quebrar invariante: saldo, status de pagamento, transferencia, estoque ou assinatura.
-
-Sobre error handling, eu separo erro esperado de erro inesperado.
-
-Erro esperado e dominio: cartao recusado, pedido invalido, usuario sem permissao, saldo insuficiente, assinatura ja cancelada. Isso pode ser Result object.
-
-Erro inesperado e bug, indisponibilidade nao tratada, falha de infraestrutura, nil inesperado, erro de banco ou timeout fora do previsto. Isso pode subir excecao, ser logado e monitorado.
-
-Para erro esperado, gosto de Result object quando o fluxo e critico: success/failure, payload, error code e mensagem de dominio. O controller traduz isso para HTTP. Isso evita usar exception como controle normal de fluxo.
+Sobre error handling, eu separo erro esperado de erro inesperado. Erro esperado e dominio: cartao recusado, pedido invalido, usuario sem permissao, saldo insuficiente, assinatura ja cancelada. Isso pode ser Result object. Erro inesperado e bug, indisponibilidade nao tratada, falha de infraestrutura, nil inesperado, erro de banco ou timeout fora do previsto. Isso pode subir excecao, ser logado e monitorado. Para erro esperado, gosto de Result object quando o fluxo e critico: success/failure, payload, error code e mensagem de dominio. O controller traduz isso para HTTP. Isso evita usar exception como controle normal de fluxo.
 
 Em API design, eu penso em contrato. API boa nao e so endpoint funcionando. Precisa ter status HTTP coerente, erro padronizado, idempotencia em operacoes mutaveis criticas, paginacao em listagens, filtros explicitos, payload enxuto, versionamento quando mudanca quebra contrato, autorizacao no backend e serializers sem vazamento de dado sensivel.
 
-Em APIs de alto volume, payload importa. Campo que o client nao usa custa CPU, memoria, rede e serializacao. Entao eu tento manter resposta enxuta e previsivel.
+Em APIs de alto volume, payload importa. Campo que o client nao usa custa CPU, memoria, rede e serializacao. Entao eu tento manter resposta enxuta e previsivel. Tambem evito endpoint que faz operacao pesada demais de forma sincronona. Se o request dispara processamento longo e o dominio permite, prefiro responder 202 Accepted com status rastreavel e processar via job ou evento.
 
-Tambem evito endpoint que faz operacao pesada demais de forma sincronona. Se o request dispara processamento longo e o dominio permite, prefiro responder 202 Accepted com status rastreavel e processar via job ou evento.
+---
 
 ## Fechamento
 
 Resumindo minha trajetoria backend: comecei com integracoes externas, Sidekiq, PostGIS e confiabilidade; evolui para arquitetura Rails, SOLID e performance de banco; depois pagamento, tokenizacao e CI/CD; depois Application Security e Clean Architecture pragmatica; e hoje atuo com Rails em alto volume, sistema financeiro regulado, idempotencia, outbox, RabbitMQ, Kafka e lideranca tecnica.
 
-Alem de Rails, banco e mensageria, eu destacaria tres preocupacoes transversais na minha forma de trabalhar: teste, boundary e operacao.
-
-Teste, porque refatorar legado, checkout, seguranca ou sistema financeiro sem teste e risco desnecessario.
-
-Boundary, porque muitos problemas vem de regra espalhada: controller sabendo demais, model com callback perigoso, gateway externo acoplado ao dominio ou servico sincronono bloqueando outro.
-
-Operacao, porque sistema senior nao e so codigo limpo. Ele precisa ser observavel, idempotente, recuperavel e seguro para reprocessamento.
+Alem de Rails, banco e mensageria, eu destacaria tres preocupacoes transversais na minha forma de trabalhar: teste, boundary e operacao. Teste, porque refatorar legado, checkout, seguranca ou sistema financeiro sem teste e risco desnecessario. Boundary, porque muitos problemas vem de regra espalhada: controller sabendo demais, model com callback perigoso, gateway externo acoplado ao dominio ou servico sincronono bloqueando outro. Operacao, porque sistema senior nao e so codigo limpo. Ele precisa ser observavel, idempotente, recuperavel e seguro para reprocessamento.
 
 O padrao e: eu nao escolho tecnologia por moda. Eu olho onde esta o risco: acoplamento, latencia, inconsistancia, falha de seguranca ou gargalo operacional. Depois crio a fronteira certa, garanto consistencia, reduzo custo por request e deixo o sistema mais previsivel.
+
+---
+
+## Q&A de Reserva - Follow-ups Tecnicos
+
+> Nao estao na narrativa corrida de proposito. Use so quando o entrevistador cavar - cada um sustenta um ponto que a narrativa toca de leve.
+
+### 1. Locking otimista vs pessimista
+
+**Q: Como voce escolhe entre lock otimista e pessimista numa operacao financeira?**
+
+Pessimista (`SELECT FOR UPDATE` / `lock!`) segura a linha - uso sob alta contencao no mesmo agregado, tipo saldo de conta quente, onde retry constante seria pior que esperar o lock. Otimista (`lock_version` do Rails) nao bloqueia: detecta conflito no commit e levanta `StaleObjectError` para retry - uso sob baixa contencao, onde conflito e raro e o lock seguraria throughput a toa. O criterio e probabilidade de conflito, nao preferencia. Em ambos, transacao curta.
+
+### 2. Isolation level e deadlock
+
+**Q: Qual isolation level voce usa e como lida com deadlock?**
+
+O default do Postgres e Read Committed, suficiente para a maioria. Subo para Repeatable Read ou Serializable quando preciso evitar anomalia como lost update ou write skew - o custo e serialization failure, entao o codigo tem que ter retry da transacao. Deadlock vem de ordem de aquisicao de lock inconsistente entre transacoes; mitigo lockando agregados sempre na mesma ordem e mantendo a transacao curta. Deadlock em sistema financeiro e esperado, nao exotico - o design assume retry.
+
+### 3. Modelo de threading do Ruby (GVL)
+
+**Q: Por que aumentar threads no Puma nem sempre melhora throughput?**
+
+Ruby tem a GVL: threads nao executam codigo Ruby em paralelo, so liberam a GVL durante I/O. Entao threads ajudam em Rails porque a maioria dos requests e I/O-bound. Se o gargalo for CPU, aumentar thread piora contencao; nesse caso eu escalo com processos ou workers, ou reduzo CPU por request. Para paralelismo real de CPU voce precisa de processos - workers do Puma, que forkam. Por isso o connection pool tem que casar com `threads x workers`, senao satura. E o mesmo motivo de Sidekiq concorrente funcionar: jobs costumam ser I/O-bound.
+
+### 4. Migration em escala
+
+**Q: Como adiciona indice numa tabela de milhoes de linhas sem downtime?**
+
+`add_index ... algorithm: :concurrently` com `disable_ddl_transaction!`, para nao pegar lock exclusivo na tabela durante a criacao. Coluna nova com backfill em lote via `in_batches`, nunca um `UPDATE` unico que segura lock e infla o WAL. `lock_timeout` e `statement_timeout` para a migration falhar rapido em vez de enfileirar request atras de um DDL travado. Ferramentas como `strong_migrations` podem funcionar como guardrail no CI, mas o ponto principal e a estrategia: migration compativel, indice concorrente, backfill em lote e timeout configurado.
+
+### 5. Estrategia de cache
+
+**Q: Como voce usa cache em API de alto volume?**
+
+`Rails.cache` low-level com read-through e invalidacao por key versionada - mudo a key em vez de apagar, evitando race de invalidacao. Em leitura quente, cache ajuda muito, mas eu nao uso cache para esconder query ruim sem entender a causa. Primeiro eu entendo o padrao de acesso; depois decido se o gargalo pede indice, query tuning, cache ou mudanca de arquitetura. Em projetos desse tipo, abordagens como TTL escalonado, jitter ou protecao de regeneracao podem ajudar quando expiracao simultanea comeca a bater forte no banco. Redis como cache, com TTL e descartavel, e decisao diferente de Redis como store duravel.
+
+### 6. Graceful shutdown
+
+**Q: O que acontece com requests e jobs em andamento durante um deploy?**
+
+No SIGTERM, o pod precisa drenar: o Puma para de aceitar conexao nova e termina as in-flight; o Sidekiq para de puxar job novo e deixa o atual terminar dentro do `terminationGracePeriod`. A readiness probe tira o pod do balanceador antes de matar. Sem isso, o deploy corta transacao no meio. Isso liga direto com idempotencia: o retry do job que morreu so e seguro porque o job e idempotente.
+
+### 7. Saga / transacao compensatoria
+
+**Q: Como garante consistencia numa operacao que cruza varios servicos?**
+
+Quando a operacao cruza varios servicos e nao existe transacao distribuida viavel, a abordagem que eu usaria e saga: a operacao vira uma sequencia de passos locais, cada um com uma transacao compensatoria - um undo. Se um passo falha, executo as compensacoes dos passos anteriores em ordem reversa. Orquestracao, com um coordenador central, quando o fluxo e complexo e precisa de visibilidade; coreografia, onde cada servico reage a evento, quando e simples. E consistencia eventual com compensacao explicita, nao rollback distribuido.
+
+### 8. Paginacao keyset
+
+**Q: Por que offset pagination degrada em escala e o que usa no lugar?**
+
+`OFFSET N` faz o banco varrer e descartar N linhas antes de retornar - em pagina alta vira scan caro, e ainda fica instavel se ha insercao entre requests, porque pula ou repete linha. Keyset ou cursor, por exemplo `WHERE id > :last_seen ORDER BY id LIMIT n`, usa o indice direto, e O(1) por pagina e estavel sob insercao. O custo e nao poder pular para pagina arbitraria, so next/prev - aceitavel em feed e scroll infinito, que e o caso de alto volume.
+
+### 9. Multi-tenancy e data leakage
+
+**Q: Como evita vazamento entre tenants?**
+
+Tenant precisa estar no modelo de dados, nas queries, nas policies e nos testes. Eu nao dependo de filtro manual solto em controller. Todo acesso sensivel precisa nascer do tenant ou do current_user, ou passar por policy scope. Tambem testo usuario de um tenant tentando acessar recurso de outro, porque esse tipo de vazamento costuma aparecer em endpoint aparentemente simples.
+
+### 10. Webhooks
+
+**Q: Como processa webhook com seguranca?**
+
+Primeiro valido assinatura e origem. Depois persisto o evento bruto com um `external_event_id` unico para idempotencia. O processamento real pode ir para job. Se o mesmo webhook chegar duas vezes, eu nao duplico efeito. Tambem gosto de separar evento recebido de evento processado, porque isso melhora replay, auditoria e investigacao de incidente.
+
+### 11. Background jobs vs eventos
+
+**Q: Quando usar job e quando usar evento?**
+
+Job e comando interno: "faca essa tarefa". Evento e fato de dominio: "algo aconteceu". Sidekiq ou RabbitMQ funcionam bem para trabalho assincrono dirigido. Kafka faz mais sentido quando multiplos consumidores precisam reagir de forma independente ao mesmo fato, com retencao e replay. O criterio nao e a ferramenta em si; e o tipo de acoplamento e fan-out que o problema pede.
+
+### 12. Fat model vs service object
+
+**Q: Rails nao recomenda fat model?**
+
+Fat model e melhor do que fat controller, mas nao significa colocar todo fluxo no model. Invariante local fica muito bem no model. Orquestracao com multiplos models, transacao, gateway, job, auditoria ou side effect costuma ficar melhor em use case ou service. O ponto e separar regra local de fluxo de negocio.
+
+### 13. Callbacks
+
+**Q: Callback e sempre ruim?**
+
+Nao. Callback para normalizacao simples, como `downcase` de email, pode ser ok. Callback perigoso e o que dispara efeito colateral: cobranca, email, publish, job ou auditoria critica. Esse tipo eu prefiro mover para fluxo explicito, porque fica mais facil testar, auditar e controlar ordem de execucao.
+
+### Menores
+
+**Protecao de dado:** PII sensivel pode ser protegida com criptografia em repouso, controle de acesso, minimizacao de dados, masking em logs e auditoria de acesso. Em Rails moderno, Active Record Encryption e uma opcao.
+
+**Rate limiting / backpressure:** Em projetos desse tipo, abordagens como throttle por IP ou usuario, resposta 429 sob abuso e circuit breaker em dependencia externa ajudam a nao pendurar request e a proteger o sistema de si mesmo sob pico, em vez de deixar a carga cascatear.
+
+**Modelagem:** bigint PK por padrao; UUID quando evitar enumeracao ou distribuir geracao compensa o custo de indice e locality. STI quando os subtipos compartilham quase tudo; polymorphic ou tabela separada quando divergem. Para soft delete, uma abordagem comum e combinar marcacao logica com unique index parcial para nao colidir com registro "apagado".
