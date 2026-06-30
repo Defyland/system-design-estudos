@@ -34,6 +34,23 @@ task :progress, [:today] do |_task, args|
   sh RUBY_BIN, "scripts/progress.rb", *args_for_script
 end
 
+namespace :drills do
+  desc "Run the Ruby DSA drill suite"
+  task :ruby do
+    sh RUBY_BIN, "-Iinterview/dsa-drills/ruby/lib", "interview/dsa-drills/ruby/test/dsa_drills_test.rb"
+  end
+
+  desc "Run the TypeScript DSA drill suite"
+  task :typescript do
+    Dir.chdir("interview/dsa-drills/typescript") do
+      sh "npm", "test"
+    end
+  end
+end
+
+desc "Run the executable DSA drill pack in Ruby and TypeScript"
+task drills: ["drills:ruby", "drills:typescript"]
+
 desc "CI gate: validate manifest + contracts + generated blocks + links"
 task check: :validate
 

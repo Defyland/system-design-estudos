@@ -25,3 +25,9 @@ Quando um chapter apontar para um bridge lab no `Study Context`, use esse atalho
 - [Instrument Observability and Graceful Shutdown](./labs/instrument-observability-and-graceful-shutdown.md)
 - [Build a Ruby Rate Limiter](./labs/build-a-ruby-rate-limiter.md)
 - [Secure File Uploads and Storage Events](./labs/secure-file-uploads-and-storage-events.md)
+
+## Interview Bridge
+
+Para a trilha `Backend Interview Foundations`, o pack executavel de DSA vive em `interview/dsa-drills/README.md`.
+
+Use quando quiser transformar pattern selection em codigo rapido sem aumentar o escopo para um projeto inteiro.

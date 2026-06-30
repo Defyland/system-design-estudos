@@ -48,3 +48,4 @@ Aqui o foco e mais raciocinio do que codigo. Priorize:
 - [Snippet - Interview Checklist](./snippets/system-design-interview-checklist.md)
 - [Snippet - Senior Production Answer Template](./snippets/senior-production-answer-template.md)
 - [Snippet - First Principles Design Pass](./snippets/first-principles-design-pass.md)
+- [Side Track - Backend Interview Foundations](./backend-interview-foundations/README.md)

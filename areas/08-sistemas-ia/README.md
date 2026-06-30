@@ -26,6 +26,7 @@ Camada de produto e arquitetura em volta do modelo:
 Trilha paralela declarada no `curriculum.yml` para entender internals do modelo e pipeline de treino sem mudar a ordem canonica do repo:
 
 <!-- curriculum:start:side-track-list -->
+- [Backend Interview Foundations](../01-metodo-e-entrevistas/backend-interview-foundations/README.md) - Area: [Metodo e Entrevistas](../01-metodo-e-entrevistas/README.md) - [Source Map](../01-metodo-e-entrevistas/backend-interview-foundations/source-map.md) - [Reviews](../01-metodo-e-entrevistas/backend-interview-foundations/reviews/README.md)
 - [LLM Foundations](llm-foundations/README.md) - Area: [Sistemas de IA](README.md) - [Source Map](llm-foundations/source-map.md) - [Reviews](llm-foundations/reviews/README.md)
 <!-- curriculum:end:side-track-list -->
 

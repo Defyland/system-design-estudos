@@ -622,6 +622,84 @@ chapters:
     mastery_objectives: [candidate inventory, fanout cost, ranking latency]
     interview_objectives: [explicar ranking sem vender ML prematuro]
 side_tracks:
+  - id: backend-interview-foundations
+    title: Backend Interview Foundations
+    area_id: 01-metodo-e-entrevistas
+    path: areas/01-metodo-e-entrevistas/backend-interview-foundations/README.md
+    source_map: areas/01-metodo-e-entrevistas/backend-interview-foundations/source-map.md
+    reviews_readme: areas/01-metodo-e-entrevistas/backend-interview-foundations/reviews/README.md
+    chapters:
+      - number: 1
+        title: DSA Operating System and Pattern Selection
+        path: areas/01-metodo-e-entrevistas/backend-interview-foundations/chapters/01-dsa-operating-system-and-pattern-selection.md
+        review_card: areas/01-metodo-e-entrevistas/backend-interview-foundations/reviews/cards/01-dsa-operating-system-and-pattern-selection.md
+        upstream:
+          - https://www.techinterviewhandbook.org/algorithms/study-cheatsheet/
+          - https://www.techinterviewhandbook.org/best-practice-questions/
+          - https://neetcode.io/roadmap
+      - number: 2
+        title: DSA Core Problems in Ruby and TypeScript
+        path: areas/01-metodo-e-entrevistas/backend-interview-foundations/chapters/02-dsa-core-problems-in-ruby-and-typescript.md
+        review_card: areas/01-metodo-e-entrevistas/backend-interview-foundations/reviews/cards/02-dsa-core-problems-in-ruby-and-typescript.md
+        upstream:
+          - https://neetcode.io/practice
+          - https://www.techinterviewhandbook.org/best-practice-questions/
+          - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map
+      - number: 3
+        title: System Design Delivery Framework
+        path: areas/01-metodo-e-entrevistas/backend-interview-foundations/chapters/03-system-design-delivery-framework.md
+        review_card: areas/01-metodo-e-entrevistas/backend-interview-foundations/reviews/cards/03-system-design-delivery-framework.md
+        upstream:
+          - https://www.hellointerview.com/learn/system-design/in-a-hurry/delivery
+          - https://github.com/donnemartin/system-design-primer
+        bridge_topics:
+          - areas/09-backend-principles/cards/rest-api-design.md
+          - areas/09-backend-principles/cards/rate-limiting-algorithms-and-keys.md
+          - areas/09-backend-principles/cards/logging-monitoring-observability.md
+        bridge_cases:
+          - real-world-cases/03-async-workflows-and-payments/stripe-idempotent-payments/README.md
+          - real-world-cases/05-product-scenarios/uber-unified-checkout/README.md
+      - number: 4
+        title: System Design Canonical Problems
+        path: areas/01-metodo-e-entrevistas/backend-interview-foundations/chapters/04-system-design-canonical-problems.md
+        review_card: areas/01-metodo-e-entrevistas/backend-interview-foundations/reviews/cards/04-system-design-canonical-problems.md
+        upstream:
+          - https://www.hellointerview.com/blog/how-id-prepare
+          - https://github.com/donnemartin/system-design-primer
+        bridge_topics:
+          - areas/09-backend-principles/cards/caching.md
+          - areas/09-backend-principles/cards/realtime-backend-systems.md
+          - areas/09-backend-principles/cards/object-storage-large-files.md
+          - areas/09-backend-principles/cards/task-queues-background-jobs.md
+        bridge_cases:
+          - real-world-cases/05-product-scenarios/meta-news-feed-ranking/README.md
+          - real-world-cases/02-data-storage-and-search/dropbox-nautilus-search/README.md
+          - real-world-cases/02-data-storage-and-search/uber-h3-geospatial-marketplace/README.md
+      - number: 5
+        title: Ruby on Rails Interview Surface Area
+        path: areas/01-metodo-e-entrevistas/backend-interview-foundations/chapters/05-ruby-on-rails-interview-surface-area.md
+        review_card: areas/01-metodo-e-entrevistas/backend-interview-foundations/reviews/cards/05-ruby-on-rails-interview-surface-area.md
+        upstream:
+          - https://guides.rubyonrails.org/active_record_querying.html
+          - https://guides.rubyonrails.org/active_job_basics.html
+          - https://guides.rubyonrails.org/security.html
+        bridge_topics:
+          - areas/09-backend-principles/cards/postgres-databases.md
+          - areas/09-backend-principles/cards/caching.md
+          - areas/09-backend-principles/cards/task-queues-background-jobs.md
+          - areas/09-backend-principles/cards/backend-security.md
+          - areas/09-backend-principles/cards/scaling-performance.md
+        bridge_cases:
+          - real-world-cases/01-platforms-and-apps/github-rails-and-mysql-at-scale/README.md
+          - real-world-cases/03-async-workflows-and-payments/stripe-idempotent-payments/README.md
+      - number: 6
+        title: JavaScript and TypeScript Interview Surface Area
+        path: areas/01-metodo-e-entrevistas/backend-interview-foundations/chapters/06-javascript-and-typescript-interview-surface-area.md
+        review_card: areas/01-metodo-e-entrevistas/backend-interview-foundations/reviews/cards/06-javascript-and-typescript-interview-surface-area.md
+        upstream:
+          - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map
+          - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set
+          - https://www.typescriptlang.org/docs/handbook/2/narrowing.html
   - id: llm-foundations
     title: LLM Foundations
     area_id: 08-sistemas-ia

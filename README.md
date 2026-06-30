@@ -24,6 +24,7 @@ Se quiser o mapa pedagogico da mesma trilha:
 ## Parallel Tracks
 
 <!-- curriculum:start:side-track-list -->
+- [Backend Interview Foundations](areas/01-metodo-e-entrevistas/backend-interview-foundations/README.md) - Area: [Metodo e Entrevistas](areas/01-metodo-e-entrevistas/README.md) - [Source Map](areas/01-metodo-e-entrevistas/backend-interview-foundations/source-map.md) - [Reviews](areas/01-metodo-e-entrevistas/backend-interview-foundations/reviews/README.md)
 - [LLM Foundations](areas/08-sistemas-ia/llm-foundations/README.md) - Area: [Sistemas de IA](areas/08-sistemas-ia/README.md) - [Source Map](areas/08-sistemas-ia/llm-foundations/source-map.md) - [Reviews](areas/08-sistemas-ia/llm-foundations/reviews/README.md)
 <!-- curriculum:end:side-track-list -->
 
